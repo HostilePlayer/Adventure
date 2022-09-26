@@ -6,8 +6,14 @@ public class Interface {
     Scanner sc = new Scanner(System.in);
 
     public void startUp(){
-        System.out.println("Velkommen til *inset name* adventure!");
+        System.out.println("Welcome to a magical wonderland of adventure!");
+        forklaring();
         brugerValg();
+    }
+
+    public void forklaring(){
+        System.out.println("In this magical adventure you have to explore a maze of 9 rooms.\n" +
+                "Can you find the exit or be lost in the maze forever?");
     }
 
     public void brugerValg(){
