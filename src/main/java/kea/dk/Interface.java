@@ -1,25 +1,26 @@
 package kea.dk;
+
 import java.util.Scanner;
 
 public class Interface {
 
     Scanner sc = new Scanner(System.in);
 
-    public void startUp(){
+    public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
         forklaring();
         brugerValg();
     }
 
-    public void forklaring(){
+    public void forklaring() {
         System.out.println("In this magical adventure you have to explore a maze of 9 rooms.\n" +
                 "Can you find the exit or be lost in the maze forever?");
     }
 
-    public void brugerValg(){
+    public void brugerValg() {
         String brugerValg = sc.nextLine();
 
-        switch (brugerValg.trim().toLowerCase()){
+        switch (brugerValg.trim().toLowerCase()) {
             case "walk north":
             case "go north":
             case "north":
