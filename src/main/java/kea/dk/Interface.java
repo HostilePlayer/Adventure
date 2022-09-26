@@ -20,8 +20,35 @@ public class Interface {
             case "n":
                 System.out.println("going north");
                 break;
+            case "walk south":
+            case "go south":
+            case "south":
+            case "s":
+                System.out.println("going south");
+                break;
+            case "walk east":
+            case "go east":
+            case "east":
+            case "e":
+                System.out.println("going east");
+                break;
+            case "walk west":
+            case "go west":
+            case "west":
+            case "w":
+                System.out.println("going west");
+                break;
+            case "help":
+            case "h":
+                System.out.println("Here is a list of commands:\n" +
+                        "type (N)orth/(S)outh/(E)ast/(W)est to go that direction \n" +
+                        "type (look) to look around in your current location");
+                break;
+            case "look":
+            case "l":
+                break;
             default:
-                System.out.println("prøv noget andet");
+                System.out.println("if you need help type (help) to get help");
                 break;
         }
     }
