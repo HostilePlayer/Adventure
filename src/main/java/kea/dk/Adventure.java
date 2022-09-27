@@ -2,95 +2,68 @@ package kea.dk;
 
 public class Adventure {
     private Room currentRoom;
-    private Room Room1;
-    private Room Room2;
-    private Room Room3;
-    private Room Room4;
-    private Room Room5;
-    private Room Room6;
-    private Room Room7;
-    private Room Room8;
-    private Room Room9;
+
 
     public void Creator(){
-        //Room north, Room east, Room south, Room west
         //this.Room1 = setRoom();
-        Room1 = new Room();
-        Room1.setName("first room");
-        Room1.setDescription("starting room");
+        //laver aller rum
+        Room Room1 = new Room("first room", "starting room");
+        Room Room2 = new Room("2nd" , "stuff");
+        Room Room3 = new Room("3rd" , "stuff");
+        Room Room4 = new Room("4th" , "stuff");
+        Room Room5 = new Room("Winner Room" , "you found the way out! good job");
+        Room Room6 = new Room("6th" , "stuff");
+        Room Room7 = new Room("7th" , "stuff");
+        Room Room8 = new Room("8th" , "stuff");
+        Room Room9 = new Room("9th" , "stuff");
+
+        //laver paths i rum
+        //Room north, Room east, Room south, Room west
         Room1.setRoom(null, Room2, Room4, null);
-
-        Room2 = new Room();
-        Room2.setName("first room");
-        Room2.setDescription("starting room");
         Room2.setRoom(Room1, null, Room3, null);
-
-        Room3 = new Room();
-        Room3.setName("first room");
-        Room3.setDescription("starting room");
         Room3.setRoom(null, null, Room6, Room2);
-
-        Room4 = new Room();
-        Room4.setName("first room");
-        Room4.setDescription("starting room");
         Room4.setRoom(Room1, null, Room7, null);
-
-        Room5 = new Room();
-        Room5.setName("Winner Room");
-        Room5.setDescription("you found the way out! good job");
         Room5.setRoom(null, Room8, null, null);
-
-        Room6 = new Room();
-        Room6.setName("another room");
-        Room6.setDescription("you did a thing");
         Room6.setRoom(Room3, null, Room9, null);
-
-        Room7 = new Room();
-        Room7.setName("another room");
-        Room7.setDescription("you did a thing");
         Room7.setRoom(Room4, Room8, null, null);
-
-        Room8 = new Room();
-        Room8.setName("another room");
-        Room8.setDescription("you did a thing");
         Room8.setRoom(Room5, Room9, null, Room7);
-
-        Room9 = new Room();
-        Room9.setName("another room");
-        Room9.setDescription("you did a thing");
         Room9.setRoom(Room6, null, null, Room8);
 
         currentRoom = Room1;
     }
-    public Room currentRoom(){
+    public Room getCurrentRoom(){
         return currentRoom;
     }
+    public String look(){
+        String look = currentRoom.getDescription();
+        return look;
+    }
     public void getNorth(){
-        if(currentRoom() !=null){
-            currentRoom=currentRoom().getNorth();
+        if(getCurrentRoom() !=null){
+            currentRoom=currentRoom.getNorth();
         } else{
-            System.out.println("you somehow hit a wall in the forrest");
+            System.out.println("you somehow hit a wall in the forest");
         }
     }
     public void getEast(){
-        if(currentRoom() !=null){
-            currentRoom=currentRoom().getEast();
+        if(getCurrentRoom() !=null){
+            currentRoom=currentRoom.getEast();
         } else{
-            System.out.println("you somehow hit a wall in the forrest");
+            System.out.println("you somehow hit a wall in the forest");
         }
     }
     public void getSouth(){
-        if(currentRoom() !=null){
-            currentRoom=currentRoom().getSouth();
+        if(getCurrentRoom() !=null){
+            currentRoom=currentRoom.getSouth();
         } else{
-            System.out.println("you somehow hit a wall in the forrest");
+            System.out.println("you somehow hit a wall in the forest");
         }
     }
     public void getWest(){
-        if(currentRoom() !=null){
-            currentRoom=currentRoom().getWest();
+        if(getCurrentRoom() !=null){
+            currentRoom=currentRoom.getWest();
         } else{
-            System.out.println("you somehow hit a wall in the forrest");
+            System.out.println("you somehow hit a wall in the forest");
         }
     }
     public void startUp() {

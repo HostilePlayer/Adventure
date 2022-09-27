@@ -19,10 +19,10 @@ public class Interface {
 
     public void brugerValg() {
         Adventure adventure = new Adventure();
-        adventure.currentRoom();
-        boolean game = true;
+        boolean gameRunning = true;
         String brugerValg;
         do {
+            System.out.println("You are currently in " + adventure.getCurrentRoom() +   ". Which direction do you wanna go?");
             brugerValg = sc.nextLine();
             switch (brugerValg.trim().toLowerCase()) {
                 case "walk north":
@@ -62,16 +62,17 @@ public class Interface {
                     break;
                 case "look":
                 case "l":
+                    adventure.look();
                     break;
                 case "exit":
                 case "quit":
                 case "q":
-                    game = false;
+                    gameRunning = false;
                     break;
                 default:
                     System.out.println("if you need help type (help) to get help");
                     break;
             }
-        } while (game);
+        } while (gameRunning);
     }
 }
