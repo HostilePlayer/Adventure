@@ -18,9 +18,14 @@ public class Interface {
     }
 
     public void brugerValg() {
-        String brugerValg = sc.nextLine();
-
+        Adventure Rooms = new Adventure();
+        Room currentRoom = new Room();
+        Rooms.Creator();
+        currentRoom.currentRoom(Room1);
+        String brugerValg;
         do {
+            brugerValg = sc.nextLine();
+
             switch (brugerValg.trim().toLowerCase()) {
                 case "walk north":
                 case "go north":
