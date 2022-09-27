@@ -8,29 +8,24 @@ public class Room {
     private Room west;
     private Room east;
 
+    public Room(){
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getDescription() {
+        return description;
+    }
     public void setRoom(Room north, Room east, Room south, Room west) {
         this.north = north;
         this.south = south;
         this.east = east;
         this.west = west;
     }
-
-    public Room currentRoom(Room Room){
-        return Room;
-    }
-
     public void setName(String name){
         this.name = name;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }

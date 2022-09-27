@@ -18,14 +18,10 @@ public class Interface {
     }
 
     public void brugerValg() {
-        Adventure Rooms = new Adventure();
-        Room currentRoom = new Room();
-        Rooms.Creator();
-        currentRoom.currentRoom(Room1);
+        boolean game = true;
         String brugerValg;
         do {
             brugerValg = sc.nextLine();
-
             switch (brugerValg.trim().toLowerCase()) {
                 case "walk north":
                 case "go north":
@@ -61,10 +57,15 @@ public class Interface {
                 case "look":
                 case "l":
                     break;
+                case "exit":
+                case "quit":
+                case "q":
+                    game = false;
+                    break;
                 default:
                     System.out.println("if you need help type (help) to get help");
                     break;
             }
-        } while (brugerValg == "quit" || brugerValg == "q");
+        } while (game);
     }
 }
