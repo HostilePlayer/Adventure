@@ -3,6 +3,7 @@ package kea.dk;
 public class Adventure {
     private Room currentRoom;
     private Room nextRoom;
+    private Room endRoom;
 
 
     public void Creator() {
@@ -30,8 +31,13 @@ public class Adventure {
         room8.setRoom(room5, room9, null, room7);
         room9.setRoom(room6, null, null, room8);
 
+        endRoom = room5;
         nextRoom = null;
         currentRoom = room1;
+    }
+
+    public Room getWinningRoom(){
+        return endRoom;
     }
 
     public Room getCurrentRoom() {
