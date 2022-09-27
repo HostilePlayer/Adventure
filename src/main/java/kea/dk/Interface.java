@@ -23,7 +23,7 @@ public class Interface {
         boolean gameRunning = true;
         String brugerValg;
         do {
-            System.out.println("You are currently in " + adventure.getCurrentRoom() +   ". Which direction do you wanna go?");
+            System.out.println("You are currently in " + adventure.getCurrentRoom().getName() +   ". Which direction do you wanna go?");
             brugerValg = sc.nextLine();
             switch (brugerValg.trim().toLowerCase()) {
                 case "walk north":
