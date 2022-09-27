@@ -49,7 +49,7 @@ public class Adventure {
         return look;
     }
 
-    public boolean getNorth() {
+    public boolean goNorth() {
         nextRoom = currentRoom.getNorth();
         if (nextRoom != null) {
             currentRoom = currentRoom.getNorth();
@@ -60,7 +60,7 @@ public class Adventure {
         }
     }
 
-    public boolean getEast() {
+    public boolean goEast() {
         nextRoom = currentRoom.getEast();
         if (nextRoom != null) {
             currentRoom = currentRoom.getEast();
@@ -71,7 +71,7 @@ public class Adventure {
         }
     }
 
-    public boolean getSouth() {
+    public boolean goSouth() {
         nextRoom = currentRoom.getSouth();
         if (nextRoom != null) {
             currentRoom = currentRoom.getSouth();
@@ -82,7 +82,7 @@ public class Adventure {
         }
     }
 
-    public boolean getWest() {
+    public boolean goWest() {
         nextRoom = currentRoom.getWest();
         if (nextRoom != null) {
             currentRoom = currentRoom.getWest();

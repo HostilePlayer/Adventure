@@ -33,28 +33,28 @@ public class Interface {
                 case "north":
                 case "n":
                     System.out.println("going north");
-                    adventure.getNorth();
+                    adventure.goNorth();
                     break;
                 case "walk south":
                 case "go south":
                 case "south":
                 case "s":
                     System.out.println("going south");
-                    adventure.getSouth();
+                    adventure.goSouth();
                     break;
                 case "walk east":
                 case "go east":
                 case "east":
                 case "e":
                     System.out.println("going east");
-                    adventure.getEast();
+                    adventure.goEast();
                     break;
                 case "walk west":
                 case "go west":
                 case "west":
                 case "w":
                     System.out.println("going west");
-                    adventure.getWest();
+                    adventure.goWest();
                     break;
                 case "help":
                 case "h":
