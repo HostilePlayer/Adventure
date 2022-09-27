@@ -18,6 +18,8 @@ public class Interface {
     }
 
     public void brugerValg() {
+        Adventure adventure = new Adventure();
+        adventure.currentRoom();
         boolean game = true;
         String brugerValg;
         do {
@@ -28,24 +30,28 @@ public class Interface {
                 case "north":
                 case "n":
                     System.out.println("going north");
+                    adventure.getNorth();
                     break;
                 case "walk south":
                 case "go south":
                 case "south":
                 case "s":
                     System.out.println("going south");
+                    adventure.getSouth();
                     break;
                 case "walk east":
                 case "go east":
                 case "east":
                 case "e":
                     System.out.println("going east");
+                    adventure.getEast();
                     break;
                 case "walk west":
                 case "go west":
                 case "west":
                 case "w":
                     System.out.println("going west");
+                    adventure.getWest();
                     break;
                 case "help":
                 case "h":

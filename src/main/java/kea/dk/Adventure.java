@@ -1,9 +1,7 @@
 package kea.dk;
 
 public class Adventure {
-
-    private Room Room;
-
+    private Room currentRoom;
     private Room Room1;
     private Room Room2;
     private Room Room3;
@@ -14,7 +12,7 @@ public class Adventure {
     private Room Room8;
     private Room Room9;
 
-    public Room Creator(){
+    public void Creator(){
         //Room north, Room east, Room south, Room west
         //this.Room1 = setRoom();
         Room1 = new Room();
@@ -61,7 +59,39 @@ public class Adventure {
         Room9.setName("another room");
         Room9.setDescription("you did a thing");
         Room9.setRoom(Room6, null, null, Room8);
-        return Room1;
+
+        currentRoom = Room1;
+    }
+    public Room currentRoom(){
+        return currentRoom;
+    }
+    public void getNorth(){
+        if(currentRoom() !=null){
+            currentRoom=currentRoom().getNorth();
+        } else{
+            System.out.println("you somehow hit a wall in the forrest");
+        }
+    }
+    public void getEast(){
+        if(currentRoom() !=null){
+            currentRoom=currentRoom().getEast();
+        } else{
+            System.out.println("you somehow hit a wall in the forrest");
+        }
+    }
+    public void getSouth(){
+        if(currentRoom() !=null){
+            currentRoom=currentRoom().getSouth();
+        } else{
+            System.out.println("you somehow hit a wall in the forrest");
+        }
+    }
+    public void getWest(){
+        if(currentRoom() !=null){
+            currentRoom=currentRoom().getWest();
+        } else{
+            System.out.println("you somehow hit a wall in the forrest");
+        }
     }
     public void startUp() {
         Creator();
