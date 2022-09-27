@@ -9,15 +9,15 @@ public class Adventure {
     public void Creator() {
         //this.Room1 = setRoom();
         //laver aller rum
-        Room room1 = new Room("first room", "starting room");
-        Room room2 = new Room("2nd", "stuff");
-        Room room3 = new Room("3rd", "stuff");
-        Room room4 = new Room("4th", "stuff");
+        Room room1 = new Room("first room", "you are in a grand forest, not much to see");
+        Room room2 = new Room("2nd", "You see a lot of forest");
+        Room room3 = new Room("3rd", "What is that? a tree? in a forest");
+        Room room4 = new Room("4th", "In the forest you wonder, how many trees make a forest");
         Room room5 = new Room("Winner Room", "you found the way out! good job");
-        Room room6 = new Room("6th", "stuff");
-        Room room7 = new Room("7th", "stuff");
-        Room room8 = new Room("8th", "stuff");
-        Room room9 = new Room("9th", "stuff");
+        Room room6 = new Room("6th", "More trees and more grass");
+        Room room7 = new Room("7th", "Above the forest you see the sky");
+        Room room8 = new Room("8th", "You notice the trees all look like trees");
+        Room room9 = new Room("9th", "You have come to the other site of the forest and found more forest");
 
         //laver paths i rum
         //Room north, Room east, Room south, Room west
@@ -36,7 +36,7 @@ public class Adventure {
         currentRoom = room1;
     }
 
-    public Room getWinningRoom(){
+    public Room getWinningRoom() {
         return endRoom;
     }
 

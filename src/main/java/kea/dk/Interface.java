@@ -64,7 +64,7 @@ public class Interface {
                     break;
                 case "look":
                 case "l":
-                    adventure.look();
+                    System.out.println(adventure.look());
                     break;
                 case "exit":
                 case "quit":
