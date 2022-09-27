@@ -7,30 +7,31 @@ public class Adventure {
     public void Creator(){
         //this.Room1 = setRoom();
         //laver aller rum
-        Room Room1 = new Room("first room", "starting room");
-        Room Room2 = new Room("2nd" , "stuff");
-        Room Room3 = new Room("3rd" , "stuff");
-        Room Room4 = new Room("4th" , "stuff");
-        Room Room5 = new Room("Winner Room" , "you found the way out! good job");
-        Room Room6 = new Room("6th" , "stuff");
-        Room Room7 = new Room("7th" , "stuff");
-        Room Room8 = new Room("8th" , "stuff");
-        Room Room9 = new Room("9th" , "stuff");
+        Room room1 = new Room("first room", "starting room");
+        Room room2 = new Room("2nd" , "stuff");
+        Room room3 = new Room("3rd" , "stuff");
+        Room room4 = new Room("4th" , "stuff");
+        Room room5 = new Room("Winner Room" , "you found the way out! good job");
+        Room room6 = new Room("6th" , "stuff");
+        Room room7 = new Room("7th" , "stuff");
+        Room room8 = new Room("8th" , "stuff");
+        Room room9 = new Room("9th" , "stuff");
 
         //laver paths i rum
         //Room north, Room east, Room south, Room west
-        Room1.setRoom(null, Room2, Room4, null);
-        Room2.setRoom(Room1, null, Room3, null);
-        Room3.setRoom(null, null, Room6, Room2);
-        Room4.setRoom(Room1, null, Room7, null);
-        Room5.setRoom(null, Room8, null, null);
-        Room6.setRoom(Room3, null, Room9, null);
-        Room7.setRoom(Room4, Room8, null, null);
-        Room8.setRoom(Room5, Room9, null, Room7);
-        Room9.setRoom(Room6, null, null, Room8);
+        room1.setRoom(null, room2, room4, null);
+        room2.setRoom(room1, null, room3, null);
+        room3.setRoom(null, null, room6, room2);
+        room4.setRoom(room1, null, room7, null);
+        room5.setRoom(null, room8, null, null);
+        room6.setRoom(room3, null, room9, null);
+        room7.setRoom(room4, room8, null, null);
+        room8.setRoom(room5, room9, null, room7);
+        room9.setRoom(room6, null, null, room8);
 
-        currentRoom = Room1;
+        currentRoom = room1;
     }
+
     public Room getCurrentRoom(){
         return currentRoom;
     }
@@ -38,37 +39,43 @@ public class Adventure {
         String look = currentRoom.getDescription();
         return look;
     }
-    public void getNorth(){
+    public boolean getNorth(){
         if(getCurrentRoom() !=null){
             currentRoom=currentRoom.getNorth();
+            return true;
         } else{
             System.out.println("you somehow hit a wall in the forest");
+            return false;
         }
     }
-    public void getEast(){
+    public boolean getEast(){
         if(getCurrentRoom() !=null){
-            currentRoom=currentRoom.getEast();
+            currentRoom = currentRoom.getEast();
+            return true;
         } else{
             System.out.println("you somehow hit a wall in the forest");
+            return false;
         }
     }
-    public void getSouth(){
+    public boolean getSouth(){
         if(getCurrentRoom() !=null){
             currentRoom=currentRoom.getSouth();
+            return true;
         } else{
             System.out.println("you somehow hit a wall in the forest");
+            return false;
         }
     }
-    public void getWest(){
+    public boolean getWest(){
         if(getCurrentRoom() !=null){
             currentRoom=currentRoom.getWest();
+            return true;
         } else{
             System.out.println("you somehow hit a wall in the forest");
+            return false;
         }
     }
     public void startUp() {
         Creator();
-        Interface ui = new Interface();
-        ui.startUp();
     }
 }

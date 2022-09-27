@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class Interface {
 
     Scanner sc = new Scanner(System.in);
+    Adventure adventure = new Adventure();
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
+        adventure.startUp();
         forklaring();
         brugerValg();
     }
@@ -18,7 +20,6 @@ public class Interface {
     }
 
     public void brugerValg() {
-        Adventure adventure = new Adventure();
         boolean gameRunning = true;
         String brugerValg;
         do {
