@@ -37,22 +37,6 @@ public class Room {
         return west;
     }
 
-    public void setNorth(Room north) {
-        this.north = north;
-    }
-
-    public void setEast(Room east) {
-        this.east = east;
-    }
-
-    public void setSouth(Room south) {
-        this.south = south;
-    }
-
-    public void setWest(Room west) {
-        this.west = west;
-    }
-
     public void setRoom(Room north, Room east, Room south, Room west) {
         this.north = north;
         this.south = south;

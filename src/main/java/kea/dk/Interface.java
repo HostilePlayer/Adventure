@@ -23,7 +23,8 @@ public class Interface {
         boolean gameRunning = true;
         String brugerValg;
         do {
-            System.out.println("You are currently in " + adventure.getCurrentRoom().getName() + ". Which direction do you wanna go?");
+            System.out.println("You are currently in " + adventure.getCurrentRoom().getName() +   ". Which direction do you wanna go?");
+
             brugerValg = sc.nextLine();
 
             switch (brugerValg.trim().toLowerCase()) {
@@ -78,7 +79,7 @@ public class Interface {
             }
             if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
                 gameRunning = false;
-                System.out.println("Gongratz! you did a thing");
+                System.out.println("Congratz! you did a thing");
             }
         } while (gameRunning);
     }
