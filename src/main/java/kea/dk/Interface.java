@@ -12,7 +12,7 @@ public class Interface {
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
-        adventure.startUp();
+        adventure.startAdventure();
         map.startUp();
         introduction();
 
@@ -20,29 +20,30 @@ public class Interface {
         String gameStartInput;
         do {
             gameStartInput = sc.nextLine();
-        switch (gameStartInput.trim().toLowerCase()){
-            case "start game":
-            case "(s)tart":
-            case "start":
-            case "s":
-                userInput();
-                menuLoopEndValue = false;
-                break;
-            case "(h)elp":
-            case "help":
-            case "h":
-                help();
-                break;
-            case "(q)uit":
-            case "quit":
-            case "q":
-                menuLoopEndValue = false;
-                break;
-            default:
-                System.out.println(gameStartInput + " is not a valid input if you need help type (h)elp to get a list of commands, \n " +
-                        "type (s)tart to start or type (q)uit to quit");
-                break;
-        }
+            switch (gameStartInput.trim().toLowerCase()) {
+                case "start game":
+                case "(s)tart":
+                case "start":
+                case "s":
+                    introduction();
+                    userInput();
+                    menuLoopEndValue = false;
+                    break;
+                case "(h)elp":
+                case "help":
+                case "h":
+                    help();
+                    break;
+                case "(q)uit":
+                case "quit":
+                case "q":
+                    menuLoopEndValue = false;
+                    break;
+                default: //den høre det her hver gang, selv om man iver et rigtigt input
+                    System.out.println(gameStartInput + " is not a valid input if you need help type (h)elp to get a list of commands, \n " +
+                            "type (s)tart to start or type (q)uit to quit");
+                    break;
+            }
         } while (menuLoopEndValue);
     }
 
@@ -53,7 +54,7 @@ public class Interface {
                 "type (s)tart to start up the game or type (h)elp to get a list of commands");
     }
 
-    public void help(){
+    public void help() {
         System.out.println("Here is a list of commands:\n" +
                 "type (N)orth to go north \n" +
                 "type (S)outh to go south \n" +
@@ -68,7 +69,7 @@ public class Interface {
         boolean gameRunning = true;
         String userInput;
         do {
-            System.out.println("You are currently in " + map.getRoomOne().getName() +   ". Which direction do you wanna go?");
+            System.out.println("You are currently in " + map.getCurrentRoom().getName() + ". Which direction do you wanna go?");
 
             userInput = sc.nextLine();
 

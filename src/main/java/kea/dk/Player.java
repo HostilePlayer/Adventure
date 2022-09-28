@@ -6,12 +6,18 @@ public class Player {
     private Room nextRoom;
 
     public Room getCurrentRoom() {
-        return creator.getCurrentRoom();
+        return currentRoom;
     }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
     public String look() {
         String look = currentRoom.getDescription();
         return look;
     }
+
     public boolean goNorth() {
         nextRoom = currentRoom.getNorth();
         if (nextRoom != null) {
