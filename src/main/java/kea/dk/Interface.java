@@ -11,7 +11,7 @@ public class Interface {
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
-        adventure.startUp();
+        //kalder adventure.startUp(); i engine
         introduction();
 
         boolean menuLoopEndValue = true;
