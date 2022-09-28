@@ -6,8 +6,6 @@ public class Interface {
 
     Scanner sc = new Scanner(System.in);
     Adventure adventure = new Adventure();
-    Player player = new Player();
-    Map map = new Map();
 
 
     public void startUp() {
