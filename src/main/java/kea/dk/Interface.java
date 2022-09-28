@@ -20,22 +20,15 @@ public class Interface {
         do {
             gameStartInput = sc.nextLine();
             switch (gameStartInput.trim().toLowerCase()) {
-                case "start game":
-                case "(s)tart":
-                case "start":
-                case "s":
+                case "start game", "(s)tart",  "start", "s":
                     introduction();
                     userInput();
                     menuLoopEndValue = false;
                     break;
-                case "(h)elp":
-                case "help":
-                case "h":
+                case "(h)elp", "help", "h":
                     help();
                     break;
-                case "(q)uit":
-                case "quit":
-                case "q":
+                case "(q)uit", "quit", "q":
                     menuLoopEndValue = false;
                     break;
                 default: //den høre det her hver gang, selv om man iver et rigtigt input
@@ -124,9 +117,7 @@ public class Interface {
                 case "look", "l":
                     System.out.println(adventure.getCurrentRoom().getDescription());
                     break;
-                case "(q)uit":
-                case "quit":
-                case "q":
+                case "(q)uit" ,"quit" , "1":
                     System.out.println("Hope you enjoyed our game");
                     gameRunning = false;
                     break;
