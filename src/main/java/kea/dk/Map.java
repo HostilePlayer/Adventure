@@ -3,9 +3,9 @@ package kea.dk;
 public class Map {
     private Room currentRoom;
     private Room endRoom;
+    private Room room1;
 
     public void startUp() {
-        //this.Room1 = setRoom();
         //laver aller rum
         Room room1 = new Room("1st forest clearing", "you are in a grand forest, not much to see");
         Room room2 = new Room("2nd forest clearing", "You see a lot of forest");
@@ -35,6 +35,10 @@ public class Map {
 
     public Room getCurrentRoom() {
         return currentRoom; //currentRoom er altid null
+    }
+
+    public Room getRoomOne(){
+        return room1;
     }
 
     public Room getEndRoom(){
