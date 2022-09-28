@@ -118,11 +118,17 @@ public class Interface {
                     break;
 
                 case "help", "h":
-                    System.out.print("Help information");
+                    help();
                     break;
 
                 case "look", "l":
-                    System.out.println();
+                    System.out.println(adventure.getCurrentRoom().getDescription());
+                    break;
+                case "(q)uit":
+                case "quit":
+                case "q":
+                    System.out.println("Hope you enjoyed our game");
+                    gameRunning = false;
                     break;
                 default:
                     System.out.println("Could not find that command");
