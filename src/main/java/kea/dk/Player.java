@@ -3,14 +3,9 @@ package kea.dk;
 public class Player {
     Map creator = new Map();
     private Room currentRoom;
-    private Room nextRoom;
 
     public Room getCurrentRoom() {
         return currentRoom;
-    }
-
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
     }
 
     public String look() {
@@ -18,47 +13,44 @@ public class Player {
         return look;
     }
 
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
     public boolean goNorth() {
-        nextRoom = creator.getCurrentRoom().getNorth();
-        if (nextRoom != null) {
-            currentRoom = creator.getCurrentRoom().getNorth();
-            return true;
-        } else {
-            System.out.println("you somehow hit a wall in the forest");
+        if (currentRoom.getNorth() == null) {
             return false;
+        } else {
+            currentRoom = currentRoom.getNorth();
+            return true;
+        }
+
+    }
+
+    public boolean goSouth() {
+        if (currentRoom.getSouth() == null) {
+            return false;
+        } else {
+            currentRoom = currentRoom.getSouth();
+            return true;
         }
     }
 
     public boolean goEast() {
-        nextRoom = creator.getCurrentRoom().getEast();
-        if (nextRoom != null) {
-            currentRoom = creator.getCurrentRoom().getEast();
-            return true;
-        } else {
-            System.out.println("you somehow hit a wall in the forest");
+        if (currentRoom.getEast() == null) {
             return false;
-        }
-    }
-
-    public boolean goSouth() {
-        nextRoom = creator.getCurrentRoom().getSouth();
-        if (nextRoom != null) {
-            currentRoom = creator.getCurrentRoom().getSouth();
-            return true;
         } else {
-            System.out.println("you somehow hit a wall in the forest");
-            return false;
+            currentRoom = currentRoom.getEast();
+            return true;
         }
     }
 
     public boolean goWest() {
-        nextRoom = creator.getCurrentRoom().getWest();
-        if (nextRoom != null) {
-            currentRoom = creator.getCurrentRoom().getWest();
-            return true;
-        } else {
-            System.out.println("you somehow hit a wall in the forest");
+        if (currentRoom.getWest() == null) {
             return false;
+        } else {
+            currentRoom = currentRoom.getWest();
+            return true;
         }
     }
 }

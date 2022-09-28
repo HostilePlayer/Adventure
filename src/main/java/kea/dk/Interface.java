@@ -64,58 +64,68 @@ public class Interface {
     }
 
     public void userInput() {
-        Map map = new Map();
         boolean gameRunning = true;
-        String userInput;
-        do {
-            System.out.println("You are currently in " + map.getCurrentRoom().getName() + ". Which direction do you wanna go?");
+        System.out.println("You are now in a " + adventure.getStartRoom().getName() + "\n" + adventure.getStartRoom().getDescription());
+        while (gameRunning) {
+            String direction = sc.nextLine();
+            switch (direction) {
 
-            userInput = sc.nextLine();
+                case "Go north", "Walk North", "North", "n":
 
-            switch (userInput.trim().toLowerCase()) {
-                case "walk north":
-                case "go north":
-                case "north":
-                case "n":
-                    System.out.println("going north");
-                    player.goNorth();
+                    if (adventure.goNorth()) {
+                        System.out.println("Going north \n" + adventure.getStartRoom().getName() + "\n" + adventure.getStartRoom().getDescription());
+
+                    } else {
+                        System.out.println("You can not go that way");
+                    }
                     break;
-                case "walk south":
-                case "go south":
-                case "south":
-                case "s":
-                    System.out.println("going south");
-                    player.goSouth();
+
+
+                case "Go east", "Walk east", "east", "e":
+                    if (adventure.goEast()) {
+                        System.out.println("Going east \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
+
+                    } else {
+                        System.out.println("You can not go that way");
+                    }
                     break;
-                case "walk east":
-                case "go east":
-                case "east":
-                case "e":
-                    System.out.println("going east");
-                    player.goEast();
+
+
+                case "Go south", "Walk south", "South", "s":
+
+                    if (adventure.goSouth()) {
+                        System.out.println("Going south \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
+
+                    } else {
+                        System.out.println("You can not go that way");
+                    }
                     break;
-                case "walk west":
-                case "go west":
-                case "west":
-                case "w":
-                    System.out.println("going west");
-                    player.goWest();
+
+
+                case " Go west", "Walk west", "west", "w":
+
+                    if (adventure.goWest()) {
+                        System.out.println("Going west \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
+
+                    } else {
+                        System.out.println("You can not go that way");
+                    }
                     break;
-                case "help":
-                case "h":
-                    help();
-                    break;
-                case "look":
-                case "l":
-                    System.out.println(player.look());
-                    break;
-                case "exit":
-                case "quit":
-                case "q":
+
+                case "exit", "ex":
+                    System.out.println("Exiting progam...");
                     gameRunning = false;
                     break;
+
+                case "help", "h":
+                    System.out.print("Help information");
+                    break;
+
+                case "look", "l":
+                    System.out.println();
+                    break;
                 default:
-                    System.out.println(userInput + " is not a valid input if you need help type (h)elp to get help");
+                    System.out.println("Could not find that command");
                     break;
 
             }
@@ -123,6 +133,7 @@ public class Interface {
                 gameRunning = false;
                 System.out.println("Congratz! you did a thing");
             }
-        } while (gameRunning);
+        }
+        while (gameRunning) ;
     }
 }

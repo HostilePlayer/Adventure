@@ -12,8 +12,28 @@ public class Adventure {
         return player.getCurrentRoom();
     }
 
+    public boolean goNorth() {
+        return player.goNorth();
+    }
+
+    public boolean goEast() {
+        return player.goEast();
+    }
+
+    public boolean goSouth() {
+        return player.goSouth();
+    }
+
+    public boolean goWest() {
+        return player.goWest();
+    }
+
+    public Room getStartRoom() {
+        return creator.getStartingRoom();
+    }
+
     public void startAdventure() {
-        creator.startUp();
+        creator.createRooms();
         player.setCurrentRoom(creator.getCurrentRoom());
     }
 }

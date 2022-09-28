@@ -15,7 +15,7 @@ public class Map {
     Room room8 = new Room("8th forest clearing", "You notice the trees all look like trees");
     Room room9 = new Room("9th forest clearing", "You have come to the other side of the forest and found more forest");
 
-    public void startUp() {
+    public void createRooms() {
 
 
         //laver paths i rum
@@ -35,9 +35,12 @@ public class Map {
     }
 
     public Room getCurrentRoom() {
-        return room1; //currentRoom er altid null
+        return currentRoom; //er altid null, selv om linje 34 stiller den til room1
     }
 
+    public Room getStartingRoom() {
+        return room1;
+    }
 
     public Room getEndRoom() {
         return endRoom;
