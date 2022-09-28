@@ -13,7 +13,6 @@ public class Interface {
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
         adventure.startAdventure();
-        map.startUp();
         introduction();
 
         boolean menuLoopEndValue = true;

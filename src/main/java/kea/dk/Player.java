@@ -14,14 +14,14 @@ public class Player {
     }
 
     public String look() {
-        String look = currentRoom.getDescription();
+        String look = creator.getCurrentRoom().getDescription();
         return look;
     }
 
     public boolean goNorth() {
-        nextRoom = currentRoom.getNorth();
+        nextRoom = creator.getCurrentRoom().getNorth();
         if (nextRoom != null) {
-            currentRoom = currentRoom.getNorth();
+            currentRoom = creator.getCurrentRoom().getNorth();
             return true;
         } else {
             System.out.println("you somehow hit a wall in the forest");
@@ -30,9 +30,9 @@ public class Player {
     }
 
     public boolean goEast() {
-        nextRoom = currentRoom.getEast();
+        nextRoom = creator.getCurrentRoom().getEast();
         if (nextRoom != null) {
-            currentRoom = currentRoom.getEast();
+            currentRoom = creator.getCurrentRoom().getEast();
             return true;
         } else {
             System.out.println("you somehow hit a wall in the forest");
@@ -41,9 +41,9 @@ public class Player {
     }
 
     public boolean goSouth() {
-        nextRoom = currentRoom.getSouth();
+        nextRoom = creator.getCurrentRoom().getSouth();
         if (nextRoom != null) {
-            currentRoom = currentRoom.getSouth();
+            currentRoom = creator.getCurrentRoom().getSouth();
             return true;
         } else {
             System.out.println("you somehow hit a wall in the forest");
@@ -52,9 +52,9 @@ public class Player {
     }
 
     public boolean goWest() {
-        nextRoom = currentRoom.getWest();
+        nextRoom = creator.getCurrentRoom().getWest();
         if (nextRoom != null) {
-            currentRoom = currentRoom.getWest();
+            currentRoom = creator.getCurrentRoom().getWest();
             return true;
         } else {
             System.out.println("you somehow hit a wall in the forest");
