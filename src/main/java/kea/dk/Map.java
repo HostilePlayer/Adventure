@@ -34,7 +34,7 @@ public class Map {
     }
 
     public Room getCurrentRoom() {
-        return currentRoom;
+        return currentRoom; //currentRoom er altid null
     }
 
     public Room getEndRoom(){

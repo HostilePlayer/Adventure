@@ -11,7 +11,7 @@ public class Interface {
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
-        //kalder adventure.startUp(); i engine
+        adventure.startUp();
         introduction();
 
         boolean menuLoopEndValue = true;
@@ -62,10 +62,11 @@ public class Interface {
     }
 
     public void userInput() {
+        Map map = new Map();
         boolean gameRunning = true;
         String userInput;
         do {
-            System.out.println("You are currently in " + adventure.getCurrentRoom().getName() +   ". Which direction do you wanna go?");
+            System.out.println("You are currently in " + map.getCurrentRoom().getName() +   ". Which direction do you wanna go?");
 
             userInput = sc.nextLine();
 
