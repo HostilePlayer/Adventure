@@ -2,7 +2,6 @@ package kea.dk;
 
 public class Map {
     private Room currentRoom;
-    private Room nextRoom;
     private Room endRoom;
 
     public void startUp() {
@@ -31,7 +30,6 @@ public class Map {
         room9.setRoom(room6, null, null, room8);
 
         endRoom = room5;
-        nextRoom = null;
         currentRoom = room1;
     }
 

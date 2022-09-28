@@ -6,6 +6,8 @@ public class Interface {
 
     Scanner sc = new Scanner(System.in);
     Adventure adventure = new Adventure();
+    Player player = new Player();
+
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
@@ -73,28 +75,28 @@ public class Interface {
                 case "north":
                 case "n":
                     System.out.println("going north");
-                    adventure.goNorth();
+                    player.goNorth();
                     break;
                 case "walk south":
                 case "go south":
                 case "south":
                 case "s":
                     System.out.println("going south");
-                    adventure.goSouth();
+                    player.goSouth();
                     break;
                 case "walk east":
                 case "go east":
                 case "east":
                 case "e":
                     System.out.println("going east");
-                    adventure.goEast();
+                    player.goEast();
                     break;
                 case "walk west":
                 case "go west":
                 case "west":
                 case "w":
                     System.out.println("going west");
-                    adventure.goWest();
+                    player.goWest();
                     break;
                 case "help":
                 case "h":
@@ -102,7 +104,7 @@ public class Interface {
                     break;
                 case "look":
                 case "l":
-                    System.out.println(adventure.look());
+                    System.out.println(player.look());
                     break;
                 case "exit":
                 case "quit":
