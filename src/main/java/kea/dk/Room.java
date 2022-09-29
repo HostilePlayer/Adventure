@@ -1,5 +1,8 @@
 package kea.dk;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room {
     private String name;
     private String description;
@@ -7,12 +10,19 @@ public class Room {
     private Room south;
     private Room west;
     private Room east;
+    private ArrayList<Item> items = new ArrayList();
 
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
+    public void addItem(Item item) {
+        items.add(item);
+    }
+    public ArrayList<Item> getItems() {
+        return items;
+    }
     public String getName() {
         return name;
     }
