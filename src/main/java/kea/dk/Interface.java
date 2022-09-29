@@ -51,7 +51,7 @@ public class Interface {
                 "type (E)ast to go east \n" +
                 "type (W)est to go west \n" +
                 "type (l)ook to look around in your current location \n" +
-                "type (q)uit to exit program");
+                "type (ex)it to exit program");
     }
 
     public void userInput() {
@@ -60,7 +60,6 @@ public class Interface {
         while (gameRunning) {
             String direction = sc.nextLine();
             switch (direction) {
-
                 case "Go north", "Walk North", "North", "n":
 
                     if (adventure.goNorth()) {
@@ -103,7 +102,7 @@ public class Interface {
                     }
                     break;
 
-                case "exit", "ex":
+                case "exit", "ex", "q":
                     System.out.println("Exiting progam...");
                     gameRunning = false;
                     break;

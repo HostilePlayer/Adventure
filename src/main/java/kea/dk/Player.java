@@ -1,16 +1,10 @@
 package kea.dk;
 
 public class Player {
-    Map creator = new Map();
     private Room currentRoom;
 
     public Room getCurrentRoom() {
         return currentRoom;
-    }
-
-    public String look() {
-        String look = creator.getCurrentRoom().getDescription();
-        return look;
     }
 
     public void setCurrentRoom(Room currentRoom) {
