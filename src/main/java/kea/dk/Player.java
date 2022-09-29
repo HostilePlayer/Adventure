@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class Player {
     private Room currentRoom;
-
-    String[] inventory = new String[5];
+    int numberOfItems = 1;
+    String[] inventory = new String[numberOfItems];
 
     public String[] getInventory(){
         return inventory;
     }
 
     public void addToInventory(String item){
-        int numberOfItems = 0;
-        inventory[numberOfItems++] = item;
+        numberOfItems = numberOfItems + 1;
+        inventory[numberOfItems - 1] = item; //index out of bounds?
     }
     public Room getCurrentRoom() {
         return currentRoom;
