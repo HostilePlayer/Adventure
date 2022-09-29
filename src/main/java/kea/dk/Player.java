@@ -1,12 +1,15 @@
 package kea.dk;
 
+import java.util.ArrayList;
+
 public class Player {
     private Room currentRoom;
+    ArrayList<Item> playerItems = new ArrayList<>();
+
 
     public Room getCurrentRoom() {
         return currentRoom;
     }
-
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
@@ -20,7 +23,6 @@ public class Player {
         }
 
     }
-
     public boolean goSouth() {
         if (currentRoom.getSouth() == null) {
             return false;

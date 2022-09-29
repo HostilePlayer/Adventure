@@ -6,6 +6,7 @@ public class Interface {
 
     Scanner sc = new Scanner(System.in);
     Adventure adventure = new Adventure();
+    Room room = new Room("","");
 
 
     public void startUp() {
@@ -113,6 +114,9 @@ public class Interface {
 
                 case "look", "l":
                     System.out.println(adventure.getCurrentRoom().getDescription());
+                    for (Item roomItem : adventure.getCurrentRoom().getAllItems()) {
+                        System.out.println("current items in the room " + adventure.getCurrentRoom().getAllItems());
+                    }
                     break;
                 case "(q)uit" ,"quit" , "1":
                     System.out.println("Hope you enjoyed our game");

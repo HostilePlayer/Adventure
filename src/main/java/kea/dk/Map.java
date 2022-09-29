@@ -28,6 +28,11 @@ public class Map {
         room8.setRoom(room5, room9, null, room7);
         room9.setRoom(room6, null, null, room8);
 
+        //items get made here
+        room1.createItem("massive bong");
+        room1.createItem("machete");
+        room1.createItem("gun");
+
         endRoom = room5;
         currentRoom = room1;
     }
@@ -39,4 +44,5 @@ public class Map {
     public Room getEndRoom() {
         return endRoom;
     }
+
 }
