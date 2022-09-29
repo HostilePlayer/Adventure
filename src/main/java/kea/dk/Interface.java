@@ -112,10 +112,10 @@ public class Interface {
                     break;
 
                 case "inventory", "backpack", "pocket", "i":
-                    if (player.getInventory() == null) {
+                    if (player.getInventory().isEmpty()) {
                         System.out.println("You do not have any items");
                     } else {
-                        System.out.println("Items in inventory:" + player.getInventory());  ;
+                        System.out.println("Items in inventory:" + player.getInventory().toString());  ;
                     }
                     break;
 
@@ -123,8 +123,13 @@ public class Interface {
                     System.out.println("current items in the room " + adventure.getCurrentRoom().getAllItems());
                     System.out.println("what would you like to pick up?");
                     String searchTerm = sc.nextLine();
+                    if(adventure.getItem(searchTerm) == null){
                     player.addToInventory(adventure.getItem(searchTerm));
                     System.out.println("item have been added");
+                } else {
+                    System.out.println("cannot find that item");
+                }
+
                     break;
 
                 case "(q)uit", "quit", "q":
