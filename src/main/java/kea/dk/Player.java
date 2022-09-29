@@ -4,9 +4,17 @@ import java.util.ArrayList;
 
 public class Player {
     private Room currentRoom;
-    ArrayList<Item> playerItems = new ArrayList<>();
 
+    String[] inventory = new String[5];
 
+    public String[] getInventory(){
+        return inventory;
+    }
+
+    public void addToInventory(String item){
+        int numberOfItems = 0;
+        inventory[numberOfItems++] = item;
+    }
     public Room getCurrentRoom() {
         return currentRoom;
     }

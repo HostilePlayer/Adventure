@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Adventure {
     Map creator = new Map();
     Player player = new Player();
+    Item item = new Item("");
+    Room room = new Room("","");
 
     public Room getWinningRoom() {
         return creator.getEndRoom();
@@ -36,6 +38,14 @@ public class Adventure {
 
     public Room getAllItems(){
         return getAllItems();
+    }
+
+    public String getItem(String searhTerm){
+        if(room.roomItems.contains(searhTerm)) {
+            return item.getItemName();
+        }else {
+            return null;
+        }
     }
 
     public void startAdventure() {
