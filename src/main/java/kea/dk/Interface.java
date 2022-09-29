@@ -115,7 +115,7 @@ public class Interface {
                     if (player.getInventory() == null) {
                         System.out.println("You do not have any items");
                     } else {
-                        System.out.println("Items in inventory:" + player.inventory.toString());  ;
+                        System.out.println("Items in inventory:" + player.getInventory());  ;
                     }
                     break;
 
@@ -124,6 +124,7 @@ public class Interface {
                     System.out.println("what would you like to pick up?");
                     String searchTerm = sc.nextLine();
                     player.addToInventory(adventure.getItem(searchTerm));
+                    System.out.println("item have been added");
                     break;
 
                 case "(q)uit", "quit", "q":

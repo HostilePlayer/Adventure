@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Player {
     private Room currentRoom;
-    int numberOfItems = 1;
-    String[] inventory = new String[numberOfItems];
+    int numberOfItems = 0;
+    String[] inventory = new String[numberOfItems+1];
 
     public String[] getInventory(){
         return inventory;
     }
 
     public void addToInventory(String item){
-        numberOfItems = numberOfItems + 1;
+        numberOfItems++;
         inventory[numberOfItems - 1] = item; //index out of bounds?
     }
     public Room getCurrentRoom() {
