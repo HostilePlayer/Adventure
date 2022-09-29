@@ -1,8 +1,11 @@
 package kea.dk;
 
+import java.util.ArrayList;
+
 public class Map {
     private Room currentRoom;
     private Room endRoom;
+    Player player = new Player();
 
     //laver alle rum
     Room room1 = new Room("1st forest clearing", "you are in a grand forest, not much to see");
@@ -15,6 +18,24 @@ public class Map {
     Room room8 = new Room("8th forest clearing", "You notice the trees all look like trees");
     Room room9 = new Room("9th forest clearing", "You have come to the other side of the forest and found more forest");
 
+    public ArrayList<Item> searchResult = new ArrayList<>();
+/*
+    public ArrayList<Item> searchAndAdd(String searchTerm) {
+
+        for (Item addItem : adventure.getCurrentRoom().getAllItems()) {
+            //String name = addItem.getCurrentRoom().getItemName();
+            //nu skal den finde dem der passer og add dem til searchResult
+            if (adventure.getCurrentRoom().getItemName().contains(searchTerm)) {
+                //hvis et element matcher skal det addes
+                if (!searchResult.contains(player.inventory)) {
+                    //add element : men add 2 gange?
+                    player.inventory.add(addItem.getItemName());
+                }
+            }
+        }
+        return searchResult;
+    }
+*/
     public void createPaths() {
         //laver paths i rum
         //Room north, Room east, Room south, Room west

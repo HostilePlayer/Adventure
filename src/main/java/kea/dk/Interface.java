@@ -1,12 +1,15 @@
 package kea.dk;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interface {
 
     Scanner sc = new Scanner(System.in);
     Adventure adventure = new Adventure();
-    Room room = new Room("","");
+    Player player = new Player();
+    Map map = new Map();
+    Room room = new Room("", "");
 
 
     public void startUp() {
@@ -19,7 +22,7 @@ public class Interface {
         do {
             gameStartInput = sc.nextLine();
             switch (gameStartInput.trim().toLowerCase()) {
-                case "start game", "(s)tart",  "start", "s":
+                case "start game", "(s)tart", "start", "s":
                     introduction();
                     userInput();
                     menuLoopEndValue = false;
@@ -65,7 +68,6 @@ public class Interface {
 
                     if (adventure.goNorth()) {
                         System.out.println("Going north \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
-
                     } else {
                         System.out.println("You can not go that way");
                     }
@@ -81,9 +83,7 @@ public class Interface {
                     }
                     break;
 
-
                 case "Go south", "Walk south", "South", "s":
-
                     if (adventure.goSouth()) {
                         System.out.println("Going south \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
 
@@ -92,9 +92,7 @@ public class Interface {
                     }
                     break;
 
-
                 case " Go west", "Walk west", "west", "w":
-
                     if (adventure.goWest()) {
                         System.out.println("Going west \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
 
@@ -103,25 +101,37 @@ public class Interface {
                     }
                     break;
 
-                case "exit", "ex", "q":
-                    System.out.println("Exiting progam...");
-                    gameRunning = false;
-                    break;
-
                 case "help", "h":
                     help();
                     break;
 
                 case "look", "l":
                     System.out.println(adventure.getCurrentRoom().getDescription());
-                    for (Item roomItem : adventure.getCurrentRoom().getAllItems()) {
-                        System.out.println("current items in the room " + adventure.getCurrentRoom().getAllItems());
+                    System.out.println("current items in the room " + adventure.getCurrentRoom().getAllItems());
+
+                    break;
+
+                case "inventory", "backpack", "pocket", "i":
+                    if (player.getInventory() == null) {
+                        System.out.println("You do not have any items");
+                    } else {
+                        System.out.println("Items in inventory:" + player.inventory.toString());  ;
                     }
                     break;
-                case "(q)uit" ,"quit" , "1":
+
+                case "pick up", "p", "add":
+                    System.out.println("current items in the room " + adventure.getCurrentRoom().getAllItems());
+                    System.out.println("what would you like to pick up?");
+                    String searchTerm = sc.nextLine();
+                    player.addToInventory(adventure.getItem(searchTerm));
+                    break;
+
+                case "(q)uit", "quit", "q":
                     System.out.println("Hope you enjoyed our game");
+                    System.out.println("Exiting program....");
                     gameRunning = false;
                     break;
+
                 default:
                     System.out.println("Could not find that command");
                     break;
