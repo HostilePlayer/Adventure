@@ -1,6 +1,6 @@
 package kea.dk;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interface {
@@ -112,10 +112,10 @@ public class Interface {
                     break;
 
                 case "inventory", "backpack", "pocket", "i":
-                    if (player.inventory.length == 1) {
+                    if (player.getInventory() == null) {
                         System.out.println("You do not have any items");
                     } else {
-                        System.out.println("Items in inventory:" + Arrays.toString(player.inventory));
+                        System.out.println("Items in inventory:" + player.inventory.toString());  ;
                     }
                     break;
 
