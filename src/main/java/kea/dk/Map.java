@@ -4,7 +4,7 @@ public class Map {
     private Room currentRoom;
     private Room endRoom;
 
-    //laver aller rum
+    //laver alle rum
     Room room1 = new Room("1st forest clearing", "you are in a grand forest, not much to see");
     Room room2 = new Room("2nd forest clearing", "You see a lot of forest");
     Room room3 = new Room("3rd forest clearing", "What is that? a tree? in a forest");
@@ -15,9 +15,7 @@ public class Map {
     Room room8 = new Room("8th forest clearing", "You notice the trees all look like trees");
     Room room9 = new Room("9th forest clearing", "You have come to the other side of the forest and found more forest");
 
-    public void createRooms() {
-
-
+    public void createPaths() {
         //laver paths i rum
         //Room north, Room east, Room south, Room west
         room1.setRoom(null, room2, room4, null);

@@ -33,7 +33,7 @@ public class Adventure {
     }
 
     public void startAdventure() {
-        creator.createRooms();
+        creator.createPaths();
         player.setCurrentRoom(getStartRoom());
     }
 }
