@@ -38,10 +38,6 @@ public class Map {
         return currentRoom; //er altid null, selv om linje 34 stiller den til room1
     }
 
-    public Room getStartingRoom() {
-        return room1;
-    }
-
     public Room getEndRoom() {
         return endRoom;
     }

@@ -63,7 +63,7 @@ public class Interface {
                 case "Go north", "Walk North", "North", "n":
 
                     if (adventure.goNorth()) {
-                        System.out.println("Going north \n" + adventure.getStartRoom().getName() + "\n" + adventure.getStartRoom().getDescription());
+                        System.out.println("Going north \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
 
                     } else {
                         System.out.println("You can not go that way");

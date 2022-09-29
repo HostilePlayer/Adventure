@@ -29,11 +29,11 @@ public class Adventure {
     }
 
     public Room getStartRoom() {
-        return creator.getStartingRoom();
+        return creator.getCurrentRoom();
     }
 
     public void startAdventure() {
         creator.createRooms();
-        player.setCurrentRoom(creator.getCurrentRoom());
+        player.setCurrentRoom(getStartRoom());
     }
 }
