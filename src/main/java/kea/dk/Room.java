@@ -1,28 +1,23 @@
 package kea.dk;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Room {
     private String name;
     private String description;
+    private String itemName;
     private Room north;
     private Room south;
     private Room west;
     private Room east;
-    private ArrayList<Item> items = new ArrayList();
+
 
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
     }
+    public Room(String itemName){
+        this.itemName = itemName;
+    }
 
-    public void addItem(Item item) {
-        items.add(item);
-    }
-    public ArrayList<Item> getItems() {
-        return items;
-    }
     public String getName() {
         return name;
     }
