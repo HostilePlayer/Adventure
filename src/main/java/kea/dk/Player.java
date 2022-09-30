@@ -10,8 +10,9 @@ public class Player {
     public ArrayList<Item> getInventory() {
         return inventory;
     }
-    public void addToInventory(Item item){
-        inventory.add(item);
+    public boolean addToInventory(Item item){
+        boolean succes = inventory.add(item);
+        return succes;
     }
     public Room getCurrentRoom() {
         return currentRoom;

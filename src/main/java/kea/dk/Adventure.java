@@ -35,7 +35,11 @@ public class Adventure {
     public Room getStartRoom() {
         return creator.getCurrentRoom();
     }
-    /*public ArrayList<Item> getItem(String searchTerm) {
+    public boolean deleteRoomItem (Item item){
+        boolean succes = room.roomItems.remove(item);
+        return succes;
+    }
+    public ArrayList<Item> getItem(String searchTerm) {
         ArrayList<Item> searchResult = new ArrayList<>();
         for (Item item : getCurrentRoom().roomItems) {
             if (getCurrentRoom().getItemName().contains(searchTerm)) {
@@ -43,17 +47,15 @@ public class Adventure {
             }
         }
         return searchResult;
-    }*/
+    }
     /*
-    get item is broke af
-     */
     public Item getItem(String searhTerm){
         if(getCurrentRoom().roomItems.contains(searhTerm)) {
             return item;
         }else {
             return null;
         }
-    }
+    }*/
 
     public void startAdventure() {
         creator.createPaths();

@@ -131,23 +131,23 @@ public class Interface {
                         }
                         System.out.println("what would you like to pick up?");
                         String searchTerm = sc.nextLine();
+                        ArrayList<Item> searchResult = adventure.getItem(searchTerm);
+                        if (searchResult.size() == 0) {
+                            System.out.println("cannot find that item");
+                        } else {
+                            Item deleteItem = searchResult.get(0);
+                            player.addToInventory(deleteItem);
+                            System.out.println("item have been added");
+                        }
+
+                        /*
                         if(adventure.getItem(searchTerm) == null){
                             player.addToInventory(adventure.getItem(searchTerm));
                             System.out.println("item have been added");
                         } else {
                             System.out.println("cannot find that item");
                         }
-
-
-
-                        /*
-                        ArrayList<Item> searchResult = adventure.getItem(searchTerm);
-                        if (searchResult.size() == 0) {
-                            System.out.println("cannot find that item");
-                        } else {
-                            //player.addToInventory(searchResult);
-                            System.out.println("item have been added");
-                        }*/
+*/
                     }
 
                     break;
