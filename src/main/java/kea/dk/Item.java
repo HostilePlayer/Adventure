@@ -8,6 +8,9 @@ public class Item {
     public String getItemName() {
         return itemName;
     }
+    public void setItemName() {
+        this.itemName = itemName;
+    }
     @Override
     public String toString(){
         return itemName;

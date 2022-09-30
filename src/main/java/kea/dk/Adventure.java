@@ -42,7 +42,7 @@ public class Adventure {
     public ArrayList<Item> getItem(String searchTerm) {
         ArrayList<Item> searchResult = new ArrayList<>();
         for (Item item : getCurrentRoom().roomItems) {
-            if (getCurrentRoom().getItemName().contains(searchTerm)) {
+            if (getCurrentRoom().getItemName().contains(searchTerm.toLowerCase())) {
                 searchResult.add(item);
             }
         }
