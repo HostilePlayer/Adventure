@@ -7,9 +7,6 @@ public class Interface {
     Scanner sc = new Scanner(System.in);
     Adventure adventure = new Adventure();
     Player player = new Player();
-    Map map = new Map();
-    Room room = new Room("", "");
-
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
