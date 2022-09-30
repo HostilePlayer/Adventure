@@ -135,8 +135,8 @@ public class Interface {
                         if (searchResult.size() == 0) {
                             System.out.println("cannot find that item");
                         } else {
-                            Item deleteItem = searchResult.get(0);
-                            player.addToInventory(deleteItem);
+                            Item item = searchResult.get(0);
+                            player.addToInventory(item);
                             System.out.println("item have been added");
                         }
 
