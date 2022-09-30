@@ -33,9 +33,14 @@ public class Adventure {
     public Room getStartRoom() {
         return creator.getCurrentRoom();
     }
-    public String getItem(String searhTerm){
-        if(getCurrentRoom().roomItems.contains(searhTerm)) {
-            return item.getItemName();
+
+    public Room getAllItems(){
+        return getAllItems();
+    }
+
+    public Item getItem(String searhTerm){
+        if(room.roomItems.contains(searhTerm)) {
+            return item;
         }else {
             return null;
         }

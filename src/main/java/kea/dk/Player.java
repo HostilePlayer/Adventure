@@ -4,16 +4,15 @@ import java.util.ArrayList;
 
 public class Player {
     private Room currentRoom;
+    int numberOfItems = 0;
+    public ArrayList<Item> inventory = new ArrayList<>();
 
-    String[] inventory = new String[5];
-
-    public String[] getInventory(){
+    public ArrayList<Item> getInventory(){
         return inventory;
     }
 
-    public void addToInventory(String item){
-        int numberOfItems = 0;
-        inventory[numberOfItems++] = item;
+    public void addToInventory(Item item){
+        inventory.add(item);
     }
     public Room getCurrentRoom() {
         return currentRoom;
