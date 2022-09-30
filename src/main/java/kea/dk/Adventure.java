@@ -1,5 +1,7 @@
 package kea.dk;
 
+import java.util.ArrayList;
+
 public class Adventure {
     Map creator = new Map();
     Player player = new Player();
@@ -33,13 +35,20 @@ public class Adventure {
     public Room getStartRoom() {
         return creator.getCurrentRoom();
     }
-
-    public Room getAllItems(){
-        return getAllItems();
-    }
-
+    /*public ArrayList<Item> getItem(String searchTerm) {
+        ArrayList<Item> searchResult = new ArrayList<>();
+        for (Item item : getCurrentRoom().roomItems) {
+            if (getCurrentRoom().getItemName().contains(searchTerm)) {
+                searchResult.add(item);
+            }
+        }
+        return searchResult;
+    }*/
+    /*
+    get item is broke af
+     */
     public Item getItem(String searhTerm){
-        if(room.roomItems.contains(searhTerm)) {
+        if(getCurrentRoom().roomItems.contains(searhTerm)) {
             return item;
         }else {
             return null;

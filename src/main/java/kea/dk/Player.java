@@ -1,16 +1,15 @@
 package kea.dk;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Player {
     private Room currentRoom;
-    int numberOfItems = 0;
-    public ArrayList<Item> inventory = new ArrayList<>();
+    private ArrayList<Item> inventory = new ArrayList<>();
 
-    public ArrayList<Item> getInventory(){
+    public ArrayList<Item> getInventory() {
         return inventory;
     }
-
     public void addToInventory(Item item){
         inventory.add(item);
     }

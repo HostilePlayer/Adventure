@@ -1,5 +1,6 @@
 package kea.dk;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interface {
@@ -113,23 +114,41 @@ public class Interface {
                     if (player.getInventory().isEmpty()) {
                         System.out.println("You do not have any items");
                     } else {
-                        System.out.println("Items in inventory:" + player.getInventory().toString());  ;
+                        System.out.println("Items in inventory:" + player.getInventory().toString());
+                        for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
+                            System.out.println(adventure.getCurrentRoom().roomItems.get(i));
+                        }
                     }
                     break;
 
                 case "pick up", "p", "add":
-                    System.out.println("current items in the room ");
-                    for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
-                        System.out.println(adventure.getCurrentRoom().roomItems.get(i));
+                    if(adventure.getCurrentRoom().roomItems.size() == 0) {
+                        System.out.println("no items in the room");
+                    } else {
+                        System.out.println("current items in the room ");
+                        for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
+                            System.out.println(adventure.getCurrentRoom().roomItems.get(i));
+                        }
+                        System.out.println("what would you like to pick up?");
+                        String searchTerm = sc.nextLine();
+                        if(adventure.getItem(searchTerm) == null){
+                            player.addToInventory(adventure.getItem(searchTerm));
+                            System.out.println("item have been added");
+                        } else {
+                            System.out.println("cannot find that item");
+                        }
+
+
+
+                        /*
+                        ArrayList<Item> searchResult = adventure.getItem(searchTerm);
+                        if (searchResult.size() == 0) {
+                            System.out.println("cannot find that item");
+                        } else {
+                            //player.addToInventory(searchResult);
+                            System.out.println("item have been added");
+                        }*/
                     }
-                    System.out.println("what would you like to pick up?");
-                    String searchTerm = sc.nextLine();
-                    if(adventure.getItem(searchTerm) == null){
-                    player.addToInventory(adventure.getItem(searchTerm));
-                    System.out.println("item have been added");
-                } else {
-                    System.out.println("cannot find that item");
-                }
 
                     break;
 
