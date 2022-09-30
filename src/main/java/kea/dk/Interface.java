@@ -1,6 +1,5 @@
 package kea.dk;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interface {
@@ -8,9 +7,6 @@ public class Interface {
     Scanner sc = new Scanner(System.in);
     Adventure adventure = new Adventure();
     Player player = new Player();
-    Map map = new Map();
-    Room room = new Room("", "");
-
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
@@ -107,7 +103,9 @@ public class Interface {
 
                 case "look", "l":
                     System.out.println(adventure.getCurrentRoom().getDescription());
-                    System.out.println("current items in the room " + adventure.getCurrentRoom().getAllItems());
+                    for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
+                        System.out.println(adventure.getCurrentRoom().roomItems.get(i));
+                    }
 
                     break;
 
@@ -115,12 +113,15 @@ public class Interface {
                     if (player.getInventory() == null) {
                         System.out.println("You do not have any items");
                     } else {
-                        System.out.println("Items in inventory:" + player.inventory.toString());  ;
+                        System.out.println("Items in inventory:" + player.getInventory());  ;
                     }
                     break;
 
                 case "pick up", "p", "add":
-                    System.out.println("current items in the room " + adventure.getCurrentRoom().getAllItems());
+                    System.out.println("current items in the room ");
+                    for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
+                        System.out.println(adventure.getCurrentRoom().roomItems.get(i));
+                    }
                     System.out.println("what would you like to pick up?");
                     String searchTerm = sc.nextLine();
                     player.addToInventory(adventure.getItem(searchTerm));
