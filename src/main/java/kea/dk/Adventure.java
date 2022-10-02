@@ -3,10 +3,10 @@ package kea.dk;
 import java.util.ArrayList;
 
 public class Adventure {
-    Map creator = new Map();
+    Map creator = new Map(); //loop
     Player player = new Player();
-    Item item = new Item("");
-    Room room = new Room("","");
+    //Item item = new Item("");
+    //Room room = new Room("", "");
 
     public Room getWinningRoom() {
         return creator.getEndRoom();
@@ -35,10 +35,31 @@ public class Adventure {
     public Room getStartRoom() {
         return creator.getCurrentRoom();
     }
-    public boolean deleteRoomItem (Item item){
+
+    public ArrayList<Item> searchResult = new ArrayList<>();
+
+    public ArrayList<Item> searchAndAddItem(String searchTerm) {
+
+        for (Item addItem : getCurrentRoom().getAllItems()) {
+            String name = addItem.toString().toLowerCase(); //name is null
+            //nu skal den finde dem der passer og add dem til searchResult
+            player.getInventory();
+            if (name.contains(searchTerm)) {
+                //hvis et element ikke allerade er i inventory
+                if (!searchResult.contains(player.getInventory())) {
+                    //add element : men add 2 gange?
+                    player.getInventory().add(addItem);
+                }
+            }
+        }
+        return searchResult;
+    }
+/*
+    public boolean deleteRoomItem(Item item) {
         boolean succes = room.roomItems.remove(item);
         return succes;
     }
+
     public ArrayList<Item> getItem(String searchTerm) {
         ArrayList<Item> searchResult = new ArrayList<>();
         for (Item item : getCurrentRoom().roomItems) {
@@ -48,6 +69,7 @@ public class Adventure {
         }
         return searchResult;
     }
+   */
     /*
     public Item getItem(String searhTerm){
         if(getCurrentRoom().roomItems.contains(searhTerm)) {

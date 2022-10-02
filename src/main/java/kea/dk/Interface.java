@@ -1,6 +1,5 @@
 package kea.dk;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interface {
@@ -8,6 +7,7 @@ public class Interface {
     Scanner sc = new Scanner(System.in);
     Adventure adventure = new Adventure();
     Player player = new Player();
+    Map map = new Map();
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
@@ -122,7 +122,8 @@ public class Interface {
                     break;
 
                 case "pick up", "p", "add":
-                    if(adventure.getCurrentRoom().roomItems.size() == 0) {
+                    String searchTerm;
+                    if (adventure.getCurrentRoom().roomItems.size() == 0) {
                         System.out.println("no items in the room");
                     } else {
                         System.out.println("current items in the room ");
@@ -130,16 +131,21 @@ public class Interface {
                             System.out.println(adventure.getCurrentRoom().roomItems.get(i));
                         }
                         System.out.println("what would you like to pick up?");
-                        String searchTerm = sc.nextLine();
-                        ArrayList<Item> searchResult = adventure.getItem(searchTerm);
-                        if (searchResult.size() == 0) {
-                            System.out.println("cannot find that item");
-                        } else {
-                            Item item = searchResult.get(0);
-                            player.addToInventory(item);
-                            System.out.println("item have been added");
-                        }
+                        searchTerm = sc.nextLine();
 
+                        try {
+                            adventure.searchAndAddItem(searchTerm);
+
+                            if (!adventure.searchAndAddItem(searchTerm).isEmpty()) {
+                                System.out.println("added item to inventory");
+                            } else {
+                                System.out.println("was not able to find the item");
+                            }
+
+                            adventure.searchResult.clear();
+                        } catch (NullPointerException e ){
+                            System.out.println("adventure.name is null");
+                        }
                         /*
                         if(adventure.getItem(searchTerm) == null){
                             player.addToInventory(adventure.getItem(searchTerm));

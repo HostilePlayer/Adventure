@@ -18,24 +18,8 @@ public class Map {
     Room room8 = new Room("8th forest clearing", "You notice the trees all look like trees");
     Room room9 = new Room("9th forest clearing", "You have come to the other side of the forest and found more forest");
 
-    public ArrayList<Item> searchResult = new ArrayList<>();
-/*
-    public ArrayList<Item> searchAndAdd(String searchTerm) {
 
-        for (Item addItem : adventure.getCurrentRoom().getAllItems()) {
-            //String name = addItem.getCurrentRoom().getItemName();
-            //nu skal den finde dem der passer og add dem til searchResult
-            if (adventure.getCurrentRoom().getItemName().contains(searchTerm)) {
-                //hvis et element matcher skal det addes
-                if (!searchResult.contains(player.inventory)) {
-                    //add element : men add 2 gange?
-                    player.inventory.add(addItem.getItemName());
-                }
-            }
-        }
-        return searchResult;
-    }
-*/
+
     public void createPaths() {
         //laver paths i rum
         //Room north, Room east, Room south, Room west
@@ -50,9 +34,9 @@ public class Map {
         room9.setRoom(room6, null, null, room8);
 
         //items get made here
-        room1.createItem("massive bong");
-        room1.createItem("machete");
-        room1.createItem("gun");
+        room1.createItem("Massive bong");
+        room1.createItem("Machete");
+        room1.createItem("Gun");
 
         endRoom = room5;
         currentRoom = room1;

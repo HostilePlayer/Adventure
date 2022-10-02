@@ -1,7 +1,6 @@
 package kea.dk;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Player {
     private Room currentRoom;
@@ -10,13 +9,16 @@ public class Player {
     public ArrayList<Item> getInventory() {
         return inventory;
     }
-    public boolean addToInventory(Item item){
+/*
+    public boolean addToInventory(Item item) {
         boolean succes = inventory.add(item);
         return succes;
     }
+*/
     public Room getCurrentRoom() {
         return currentRoom;
     }
+
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
@@ -30,6 +32,7 @@ public class Player {
         }
 
     }
+
     public boolean goSouth() {
         if (currentRoom.getSouth() == null) {
             return false;

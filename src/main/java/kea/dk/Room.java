@@ -11,26 +11,29 @@ public class Room {
     private Room west;
     private Room east;
     public ArrayList<Item> roomItems = new ArrayList<>();
-/*
-    public void printItemsWithNumbers() {
-        for (int i = 0; i < roomItems.size(); i++) {
-            System.out.println(i + 1 + ":" + roomItems.get(i));
+
+    /*
+        public void printItemsWithNumbers() {
+            for (int i = 0; i < roomItems.size(); i++) {
+                System.out.println(i + 1 + ":" + roomItems.get(i));
+            }
         }
-    }
-*/
+    */
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
     }
-    public void createItem(String itemName){
+
+    public void createItem(String itemName) {
         Item item = new Item(itemName);
         roomItems.add(item);
     }
-    public ArrayList<Item> getAllItems(){
+
+    public ArrayList<Item> getAllItems() {
         return roomItems;
     }
 
-    public String getItemName(){
+    public String getItemName() {
         return itemName;
     }
 
