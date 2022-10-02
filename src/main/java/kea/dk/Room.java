@@ -5,23 +5,19 @@ import java.util.ArrayList;
 public class Room {
     private String name;
     private String description;
-    private String itemName;
     private Room north;
     private Room south;
     private Room west;
     private Room east;
     public ArrayList<Item> roomItems = new ArrayList<>();
 
-    /*
-        public void printItemsWithNumbers() {
-            for (int i = 0; i < roomItems.size(); i++) {
-                System.out.println(i + 1 + ":" + roomItems.get(i));
-            }
-        }
-    */
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public void removeItem(Item item){
+        roomItems.remove(item);
     }
 
     public void createItem(String itemName) {
@@ -31,10 +27,6 @@ public class Room {
 
     public ArrayList<Item> getAllItems() {
         return roomItems;
-    }
-
-    public String getItemName() {
-        return itemName;
     }
 
     public String getName() {

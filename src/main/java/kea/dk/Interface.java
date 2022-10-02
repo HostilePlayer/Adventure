@@ -135,20 +135,8 @@ public class Interface {
                         //få bruger input
                         searchTerm = sc.nextLine();
                         //tag nruger input til at finde items i rum der matcher
-                        adventure.searchAndAddItem(searchTerm);
-                        //se om den returnere et match
-                        if (player.getInventory() != null) { //vi kan se at den ikke er tom længere
-                            //TODO: if er true så der er elementer, men jeg kan ikke se nogle
-                            System.out.println("added item(s) to inventory");
-                            //prøver at få elementet printet hvis der er et
-                            System.out.println(player.getInventory().listIterator());
-                            //printer elementer
-                            System.out.println(player.getInventory().toString());
-                            //printer antal elementer i inventory
-                            System.out.println(player.getInventory().size());
-                        } else {
-                            System.out.println("was not able to find the item");
-                        }
+                        player.searchAndAddItem(searchTerm);
+                        System.out.println("took item " + player.getInventory().contains(searchTerm));
                     }
                     break;
 
