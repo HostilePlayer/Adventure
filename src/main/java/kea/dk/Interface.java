@@ -119,7 +119,7 @@ public class Interface {
                             System.out.println(player.getInventory().get(i));
                         }
                     }
-                    System.out.println(player.getInventory().size());
+
                     break;
 
                 case "pick up", "p", "add":
@@ -137,15 +137,19 @@ public class Interface {
                         //tag nruger input til at finde items i rum der matcher
                         adventure.searchAndAddItem(searchTerm);
                         //se om den returnere et match
-                        if (!adventure.searchAndAddItem(searchTerm).isEmpty()) { //vi kan se at den ikke er tom længere
+                        if (player.getInventory() != null) { //vi kan se at den ikke er tom længere
+                            //TODO: if er true så der er elementer, men jeg kan ikke se nogle
                             System.out.println("added item(s) to inventory");
-                            System.out.println(player.getInventory().toString()); //men den har ikke nogle elementer
+                            //prøver at få elementet printet hvis der er et
+                            System.out.println(player.getInventory().listIterator());
+                            //printer elementer
+                            System.out.println(player.getInventory().toString());
+                            //printer antal elementer i inventory
+                            System.out.println(player.getInventory().size());
                         } else {
                             System.out.println("was not able to find the item");
                         }
                     }
-                    //printer antal elementer i inventory
-                    System.out.println(player.getInventory().size());
                     break;
 
                 case "(q)uit", "quit", "q":

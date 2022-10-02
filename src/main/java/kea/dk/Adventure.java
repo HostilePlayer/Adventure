@@ -36,7 +36,7 @@ public class Adventure {
 
     public ArrayList<Item> searchAndAddItem(String searchTerm) { //vi modtager searchTerm
         //den skal gå igennem alle items i rummet
-        for (Item itemToAdd : getCurrentRoom().getAllItems()) { //vi ser den gå igennem alle ellementer
+        for (Item itemToAdd : getCurrentRoom().roomItems) { //vi ser den gå igennem alle ellementer
             //for hvert item skal den tage dens navn i lowercase og sammenligne med searchTerm
             if (itemToAdd.getItemName().toLowerCase().contains(searchTerm)) { //vi ser den tjekke om nogle matcher
                 //laver en ny plads i inventory og adder nyt item
