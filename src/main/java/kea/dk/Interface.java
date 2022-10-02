@@ -137,7 +137,7 @@ public class Interface {
                             adventure.searchAndAddItem(searchTerm);
 
                             if (!adventure.searchAndAddItem(searchTerm).isEmpty()) {
-                                System.out.println("added item to inventory");
+                                System.out.println("added item(s) to inventory");
                             } else {
                                 System.out.println("was not able to find the item");
                             }

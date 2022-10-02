@@ -49,6 +49,7 @@ public class Adventure {
                 if (!searchResult.contains(player.getInventory())) {
                     //add element : men add 2 gange?
                     player.getInventory().add(addItem);
+                   // getCurrentRoom().getAllItems().remove(addItem);
                 }
             }
         }
