@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Map {
     private Room currentRoom;
     private Room endRoom;
-    Player player = new Player();
 
     //laver alle rum
     Room room1 = new Room("1st forest clearing", "you are in a grand forest, not much to see");
@@ -17,7 +16,6 @@ public class Map {
     Room room7 = new Room("7th forest clearing", "Above the forest you see the sky");
     Room room8 = new Room("8th forest clearing", "You notice the trees all look like trees");
     Room room9 = new Room("9th forest clearing", "You have come to the other side of the forest and found more forest");
-
 
 
     public void createPaths() {

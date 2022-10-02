@@ -9,12 +9,7 @@ public class Player {
     public ArrayList<Item> getInventory() {
         return inventory;
     }
-/*
-    public boolean addToInventory(Item item) {
-        boolean succes = inventory.add(item);
-        return succes;
-    }
-*/
+
     public Room getCurrentRoom() {
         return currentRoom;
     }

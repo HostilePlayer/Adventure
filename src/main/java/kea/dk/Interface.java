@@ -7,7 +7,6 @@ public class Interface {
     Scanner sc = new Scanner(System.in);
     Adventure adventure = new Adventure();
     Player player = new Player();
-    Map map = new Map();
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
@@ -111,14 +110,16 @@ public class Interface {
                     break;
 
                 case "inventory", "backpack", "pocket", "i":
+                    System.out.println(player.getInventory());
                     if (player.getInventory().isEmpty()) {
                         System.out.println("You do not have any items");
                     } else {
                         System.out.println("Items in inventory:" + player.getInventory().toString());
-                        for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
-                            System.out.println(adventure.getCurrentRoom().roomItems.get(i));
+                        for (int i = 0; i < player.getInventory().size(); i++) {
+                            System.out.println(player.getInventory().get(i));
                         }
                     }
+                    System.out.println(player.getInventory().size());
                     break;
 
                 case "pick up", "p", "add":
@@ -131,31 +132,20 @@ public class Interface {
                             System.out.println(adventure.getCurrentRoom().roomItems.get(i));
                         }
                         System.out.println("what would you like to pick up?");
+                        //få bruger input
                         searchTerm = sc.nextLine();
-
-                        try {
-                            adventure.searchAndAddItem(searchTerm);
-
-                            if (!adventure.searchAndAddItem(searchTerm).isEmpty()) {
-                                System.out.println("added item(s) to inventory");
-                            } else {
-                                System.out.println("was not able to find the item");
-                            }
-
-                            adventure.searchResult.clear();
-                        } catch (NullPointerException e ){
-                            System.out.println("adventure.name is null");
-                        }
-                        /*
-                        if(adventure.getItem(searchTerm) == null){
-                            player.addToInventory(adventure.getItem(searchTerm));
-                            System.out.println("item have been added");
+                        //tag nruger input til at finde items i rum der matcher
+                        adventure.searchAndAddItem(searchTerm);
+                        //se om den returnere et match
+                        if (!adventure.searchAndAddItem(searchTerm).isEmpty()) { //vi kan se at den ikke er tom længere
+                            System.out.println("added item(s) to inventory");
+                            System.out.println(player.getInventory().toString()); //men den har ikke nogle elementer
                         } else {
-                            System.out.println("cannot find that item");
+                            System.out.println("was not able to find the item");
                         }
-*/
                     }
-
+                    //printer antal elementer i inventory
+                    System.out.println(player.getInventory().size());
                     break;
 
                 case "(q)uit", "quit", "q":
