@@ -120,7 +120,7 @@ public class Interface {
                             System.out.println(adventure.getCurrentRoom().roomItems.get(i));
                         }
                     } else {
-                        //har bruger en lamp?
+                        //har player en lamp?
                         haveLamp = player.haveLamp();
                         if (haveLamp) {
                             //er lampen tændt?
@@ -130,6 +130,8 @@ public class Interface {
                                 for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
                                     System.out.println(adventure.getCurrentRoom().roomItems.get(i));
                                 }
+                            } else {
+                                System.out.println("This unlit lamp is not working!");
                             }
                         }
                         if (!haveLamp) {
