@@ -131,7 +131,7 @@ public class Interface {
                         }
                         System.out.println("what would you like to pick up?");
                         String searchTerm = sc.nextLine();
-                        ArrayList<Item> searchResult = adventure.getItem(searchTerm);
+                        ArrayList<Item> searchResult = adventure.player.getItem(searchTerm);
                         if (searchResult.size() == 0) {
                             System.out.println("cannot find that item");
                         } else {

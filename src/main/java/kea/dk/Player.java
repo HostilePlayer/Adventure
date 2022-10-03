@@ -14,11 +14,21 @@ public class Player {
         boolean succes = inventory.add(item);
         return succes;
     }
+    public void setCurrentRoom(Room currentRoom) {
+
+        this.currentRoom = currentRoom;
+    }
     public Room getCurrentRoom() {
         return currentRoom;
     }
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
+    public ArrayList<Item> getItem(String searchTerm) {
+        ArrayList<Item> searchResult = getCurrentRoom().getAllItems();
+        for (Item item : searchResult) {
+            if (item.getItemName().equals(searchTerm.toLowerCase())) {
+                inventory.add(item);
+            }
+        }
+        return searchResult;
     }
 
     public boolean goNorth() {
