@@ -59,9 +59,13 @@ public class Interface {
         boolean gameRunning = true;
         System.out.println("You are now in a " + adventure.getStartRoom().getName() + "\n" + adventure.getStartRoom().getDescription());
         while (gameRunning) {
-            String direction = sc.nextLine();
-            switch (direction) {
-                case "Go north", "Walk North", "North", "n":
+            String input = sc.nextLine();
+
+            String[] words = input.split(" ");
+            String firstWord = words[0];
+            String secondWord = words[1];
+            switch (firstWord) {
+                case "(N)orth", "North", "n":
 
                     if (adventure.goNorth()) {
                         System.out.println("Going north \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
@@ -71,7 +75,7 @@ public class Interface {
                     break;
 
 
-                case "Go east", "Walk east", "east", "e":
+                case "(e)ast", "east", "e":
                     if (adventure.goEast()) {
                         System.out.println("Going east \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
 
@@ -80,7 +84,7 @@ public class Interface {
                     }
                     break;
 
-                case "Go south", "Walk south", "South", "s":
+                case "(S)outh", "South", "s":
                     if (adventure.goSouth()) {
                         System.out.println("Going south \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
 
@@ -89,7 +93,7 @@ public class Interface {
                     }
                     break;
 
-                case " Go west", "Walk west", "west", "w":
+                case "(w)est", "west", "w":
                     if (adventure.goWest()) {
                         System.out.println("Going west \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
 
@@ -113,8 +117,10 @@ public class Interface {
                 case "inventory", "backpack", "pocket", "i":
                     if (player.getInventory().isEmpty()) {
                         System.out.println("You do not have any items");
+
                     } else {
                         System.out.println("Items in inventory:" + player.getInventory().toString());
+
                         /*
                         for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
                             System.out.println(adventure.getCurrentRoom().roomItems.get(i));
@@ -124,31 +130,15 @@ public class Interface {
                     }
                     break;
 
-                case "pick up", "p", "add":
-                    if(adventure.getCurrentRoom().roomItems.size() == 0) {
-                        System.out.println("no items in the room");
+                case "take", "t", "add", "a":
+                    String itemName = secondWord;
+                    Item item = adventure.takeItem(itemName);
+
+                    if(item == null) {
+                        System.out.println("No item like that in this room");
                     } else {
-                        System.out.println("current items in the room ");
-                        for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
-                            System.out.println(adventure.getCurrentRoom().roomItems.get(i));
-                        }
-                        System.out.println("what would you like to pick up?");
-                        String searchTerm = sc.nextLine();
-                        //tilførger kun det første item og slette det ikke fra Room
-                        ArrayList<Item> searchResult = adventure.player.getItem(searchTerm);
-                        //System.out.println("item have been added");
-
-                        if (searchResult.size() == 0) {
-                            System.out.println("cannot find that item");
-                        } else {
-                            Item item = searchResult.get(0);
-                            player.addToInventory(item);
-                            System.out.println("item have been added");
-                        }
-
-
+                        System.out.println("You have picked up the " + item.getItemName());
                     }
-
                     break;
 
                 case "(q)uit", "quit", "q":

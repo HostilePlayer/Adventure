@@ -33,9 +33,9 @@ public class Map {
 
         //items get made here
         room1.createItem("gold coin");
-        room1.createItem("Massive Bong");
-        room1.createItem("Machete");
-        room1.createItem("Gun");
+        room1.createItem("massive bong");
+        room1.createItem("machete");
+        room1.createItem("gun");
 
         endRoom = room5;
         currentRoom = room1;
