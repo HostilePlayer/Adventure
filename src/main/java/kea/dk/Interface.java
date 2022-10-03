@@ -1,4 +1,5 @@
 package kea.dk;
+
 import org.w3c.dom.html.HTMLOptGroupElement;
 
 import java.util.Scanner;
@@ -76,7 +77,7 @@ public class Interface {
                 case "(n)orth", "north", "n":
 
                     if (adventure.goNorth()) {
-                        System.out.println("Going north \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
+                        System.out.println("Going north \n" + adventure.getCurrentRoom().getName());
                     } else {
                         System.out.println("You can not go that way");
                     }
@@ -85,7 +86,7 @@ public class Interface {
 
                 case "(e)ast", "east", "e":
                     if (adventure.goEast()) {
-                        System.out.println("Going east \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
+                        System.out.println("Going east \n" + adventure.getCurrentRoom().getName());
 
                     } else {
                         System.out.println("You can not go that way");
@@ -94,7 +95,7 @@ public class Interface {
 
                 case "(s)outh", "south", "s":
                     if (adventure.goSouth()) {
-                        System.out.println("Going south \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
+                        System.out.println("Going south \n" + adventure.getCurrentRoom().getName());
 
                     } else {
                         System.out.println("You can not go that way");
@@ -103,7 +104,7 @@ public class Interface {
 
                 case "(w)est", "west", "w":
                     if (adventure.goWest()) {
-                        System.out.println("Going west \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
+                        System.out.println("Going west \n" + adventure.getCurrentRoom().getName());
 
                     } else {
                         System.out.println("You can not go that way");
@@ -115,9 +116,28 @@ public class Interface {
                     break;
 
                 case "(l)ook", "look", "l":
-                    System.out.println(adventure.getCurrentRoom().getDescription());
-                    for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
-                        System.out.println(adventure.getCurrentRoom().roomItems.get(i));
+                    //er currentRoom mørkt
+                    if (adventure.getCurrentRoom().getDarkness() == 0) {
+                        System.out.println(adventure.getCurrentRoom().getDescription());
+                        for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
+                            System.out.println(adventure.getCurrentRoom().roomItems.get(i));
+                        }
+                    } else {
+                        //har bruger en lamp?
+                        haveLamp = player.haveLamp();
+                        if (haveLamp == true) {
+                            //er lampen tændt?
+                            if (player.isLightOn() == true) {
+                                //hvis lampen er tændt
+                                System.out.println(adventure.getCurrentRoom().getDescription());
+                                for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
+                                    System.out.println(adventure.getCurrentRoom().roomItems.get(i));
+                                }
+                            }
+                        }
+                        if (haveLamp == false) {
+                            System.out.println("You need a light to see");
+                        }
                     }
 
                     break;
@@ -125,7 +145,6 @@ public class Interface {
                 case "inventory", "backpack", "pocket", "i":
                     if (player.getInventory().isEmpty()) {
                         System.out.println("You do not have any items");
-
                     } else {
                         System.out.println("Items in inventory:" + player.getInventory().toString());
                     }
@@ -159,7 +178,7 @@ public class Interface {
 
                 case "light":
                     haveLamp = player.haveLamp();
-                    if (haveLamp == true){
+                    if (haveLamp == true) {
                         player.toggleLamp(true);
                         System.out.println("Lamp is now on!");
                     } else {
@@ -169,7 +188,7 @@ public class Interface {
 
                 case "extinguish":
                     haveLamp = player.haveLamp();
-                    if (haveLamp == true){
+                    if (haveLamp == true) {
                         player.toggleLamp(false);
                         System.out.println("Lamp is now off!");
                     } else {
@@ -178,8 +197,8 @@ public class Interface {
                     break;
                 case "status":
                     haveLamp = player.haveLamp();
-                    if (haveLamp == true){
-                        if(player.isLightOn() == true){
+                    if (haveLamp == true) {
+                        if (player.isLightOn() == true) {
                             System.out.println("Lamp is on");
                         } else {
                             System.out.println("Lamp is off");

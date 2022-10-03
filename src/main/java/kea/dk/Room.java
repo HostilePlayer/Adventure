@@ -10,21 +10,13 @@ public class Room {
     private Room south;
     private Room west;
     private Room east;
+    private int darkness;
     public ArrayList<Item> roomItems = new ArrayList<>();
 
-    public Room(String name, String description) {
+    public Room(String name, String description, int darkness) {
         this.name = name;
         this.description = description;
-    }
-
-    public Item removeItem(String name){
-        for (Item item : roomItems){
-            if (item.getItemName().equals(name)){
-                roomItems.remove(item);
-                return item;
-            }
-        }
-        return null;
+        this.darkness = darkness;
     }
 
     public void createItem(String itemName) {
@@ -62,6 +54,10 @@ public class Room {
 
     public Room getWest() {
         return west;
+    }
+
+    public int getDarkness(){
+        return darkness;
     }
 
     public void setRoom(Room north, Room east, Room south, Room west) {
