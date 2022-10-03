@@ -139,6 +139,7 @@ public class Interface {
                         System.out.println("No itemPickUp like that in this room");
                     } else {
                         System.out.println("You have picked up the " + itemPickUp.getItemName());
+                        player.getInventory().add(itemPickUp);
                     }
                     break;
 
