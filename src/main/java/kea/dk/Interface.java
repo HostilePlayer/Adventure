@@ -215,11 +215,9 @@ public class Interface {
 
                 case "xyzzy":
                     System.out.println(">>puff<<");
-                    adventure.teleportPLayer();
-                    if (adventure.teleportPLayer()){
-                        System.out.println("Something happened");
-                    } else {
-                        System.out.println("Nothing happened");
+                    adventure.canPlayerTeleport();
+                    if (adventure.goTeleport()) {
+                        System.out.println(adventure.getCurrentRoom().getName());
                     }
                     break;
 

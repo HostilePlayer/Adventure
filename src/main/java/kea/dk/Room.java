@@ -11,6 +11,7 @@ public class Room {
     private Room west;
     private Room east;
     private int darkness;
+    private Room teleport;
     public ArrayList<Item> roomItems = new ArrayList<>();
 
     public Room(String name, String description, int darkness) {
@@ -56,15 +57,20 @@ public class Room {
         return west;
     }
 
+    public Room goTeleport(){
+        return teleport;
+    }
+
     public int getDarkness(){
         return darkness;
     }
 
-    public void setRoom(Room north, Room east, Room south, Room west) {
+    public void setRoom(Room north, Room east, Room south, Room west, Room teleport) {
         this.north = north;
         this.south = south;
         this.east = east;
         this.west = west;
+        this.teleport = teleport;
     }
     //her skal vi lave vores room
 }

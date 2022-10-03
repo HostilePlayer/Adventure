@@ -103,6 +103,15 @@ public class Player {
         }
     }
 
+    public boolean goTeleport(){
+        if (currentRoom.goTeleport() == null) {
+            return false;
+        } else {
+            currentRoom = currentRoom.goTeleport();
+            return true;
+        }
+    }
+
     public Item removeItem(String name){
         for (Item item : inventory){
             if (item.getItemName().equals(name)){

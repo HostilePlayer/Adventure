@@ -22,18 +22,18 @@ public class Map {
 
     public void createPaths() {
         //laver paths i rum
-        //Room north, Room east, Room south, Room west
-        room1.setRoom(null, room2, room4, null);
-        room2.setRoom(null, room3, null, room1);
-        room3.setRoom(null, null, room6, room2);
-        room4.setRoom(room1, null, room7, Wroom);
-        Wroom.setRoom(null, room4, null, null);
-        room5.setRoom(null, room8, null, null);
-        room6.setRoom(room3, Eroom, room9, null);
-        Eroom.setRoom(null, null, null, room6);
-        room7.setRoom(room4, room8, null, null);
-        room8.setRoom(room5, room9, null, room7);
-        room9.setRoom(room6, null, null, room8);
+        //Room north, Room east, Room south, Room west, Room teleport
+        room1.setRoom(null, room2, room4, null, null);
+        room2.setRoom(null, room3, null, room1, null);
+        room3.setRoom(null, null, room6, room2, null);
+        room4.setRoom(room1, null, room7, Wroom, null);
+        Wroom.setRoom(null, room4, null, null, Eroom);
+        room5.setRoom(null, room8, null, null, null);
+        room6.setRoom(room3, Eroom, room9, null, null);
+        Eroom.setRoom(null, null, null, room6, Wroom);
+        room7.setRoom(room4, room8, null, null, null);
+        room8.setRoom(room5, room9, null, room7, null);
+        room9.setRoom(room6, null, null, room8, null);
 
         //items get made here
         room1.createItem("gold coin");
