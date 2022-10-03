@@ -115,9 +115,12 @@ public class Interface {
                         System.out.println("You do not have any items");
                     } else {
                         System.out.println("Items in inventory:" + player.getInventory().toString());
+                        /*
                         for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
                             System.out.println(adventure.getCurrentRoom().roomItems.get(i));
                         }
+
+                         */
                     }
                     break;
 
@@ -131,7 +134,10 @@ public class Interface {
                         }
                         System.out.println("what would you like to pick up?");
                         String searchTerm = sc.nextLine();
+                        //tilførger kun det første item og slette det ikke fra Room
                         ArrayList<Item> searchResult = adventure.player.getItem(searchTerm);
+                        //System.out.println("item have been added");
+
                         if (searchResult.size() == 0) {
                             System.out.println("cannot find that item");
                         } else {
@@ -139,6 +145,8 @@ public class Interface {
                             player.addToInventory(item);
                             System.out.println("item have been added");
                         }
+
+
                     }
 
                     break;

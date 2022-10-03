@@ -32,6 +32,7 @@ public class Map {
         room9.setRoom(room6, null, null, room8);
 
         //items get made here
+        room1.createItem("gold coin");
         room1.createItem("Massive Bong");
         room1.createItem("Machete");
         room1.createItem("Gun");

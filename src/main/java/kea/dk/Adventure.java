@@ -6,7 +6,18 @@ public class Adventure {
     Map creator = new Map();
     Player player = new Player();
 
-
+    public void searchAndAddItem(String wantedItem) { //vi modtager searchTerm
+        //den skal gå igennem alle items i rummet
+        for (Item itemToAdd : getCurrentRoom().getAllItems()) { //kan ikke køre currentRoom = null
+            //for hvert item skal den tage dens navn i lowercase og sammenligne med searchTerm
+            if (itemToAdd.getItemName().contains(wantedItem)) {
+                //add item til inventory
+                player.getInventory().add(itemToAdd);
+                //fjern item fra room
+                getCurrentRoom().removeItem(itemToAdd);
+            }
+        }
+    }
 
     public Room getWinningRoom() {
         return creator.getEndRoom();
