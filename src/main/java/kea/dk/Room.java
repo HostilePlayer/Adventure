@@ -17,12 +17,22 @@ public class Room {
         this.description = description;
     }
 
-    public void removeItem(Item item){
-        roomItems.remove(item);
+    public Item removeItem(String name){
+        for (Item item : roomItems){
+            if (item.getItemName().equals(name)){
+                roomItems.remove(item);
+                return item;
+            }
+        }
+        return null;
     }
 
     public void createItem(String itemName) {
         Item item = new Item(itemName);
+        roomItems.add(item);
+    }
+
+    public void addItem(Item item){
         roomItems.add(item);
     }
 

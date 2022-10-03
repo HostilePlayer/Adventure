@@ -1,7 +1,5 @@
 package kea.dk;
 
-import java.util.ArrayList;
-
 public class Adventure {
     Map creator = new Map();
     Player player = new Player();
@@ -41,8 +39,6 @@ public class Adventure {
 
     public Item takeItem(String itemName) {
         player.getItem(itemName);
-        //creator.deleteItem(itemName);
-        //return item
         return player.getItem(itemName);
     }
 }

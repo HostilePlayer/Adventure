@@ -130,7 +130,7 @@ public class Interface {
                     }
                     break;
 
-                case "take", "t", "add", "a":
+                case "take", "t", "add", "a", "pick", "p":
                     //secondWord
                     String itemName = command;
                     Item itemPickUp = adventure.takeItem(itemName);
@@ -140,6 +140,19 @@ public class Interface {
                     } else {
                         System.out.println("You have picked up the " + itemPickUp.getItemName());
                         player.getInventory().add(itemPickUp);
+                        adventure.getCurrentRoom().roomItems.remove(itemPickUp);
+                    }
+                    break;
+
+                case "drop", "d", "leave":
+                    String droppedItem = command;
+                    Item itemToDrop = player.removeItem(droppedItem);
+
+                    if (itemToDrop == null) {
+                        System.out.println("No such item in Inventory");
+                    } else {
+                        System.out.println("you have dropped " + itemToDrop.getItemName());
+                        adventure.getCurrentRoom().addItem(itemToDrop);
                     }
                     break;
 

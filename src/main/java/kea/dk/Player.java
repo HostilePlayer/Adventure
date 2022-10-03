@@ -76,4 +76,14 @@ public class Player {
             return true;
         }
     }
+
+    public Item removeItem(String name){
+        for (Item item : inventory){
+            if (item.getItemName().equals(name)){
+                inventory.remove(item);
+                return item;
+            }
+        }
+        return null;
+    }
 }
