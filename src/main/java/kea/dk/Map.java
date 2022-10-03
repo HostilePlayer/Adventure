@@ -7,17 +7,17 @@ public class Map {
     private Room endRoom;
 
     //laver alle rum
-    Room room1 = new Room("1st forest clearing", "you are in a grand forest, not much to see", 0);
-    Room room2 = new Room("2nd forest clearing", "You see a lot of forest", 0);
-    Room room3 = new Room("3rd forest clearing", "What is that? a tree? in a forest", 0);
-    Room room4 = new Room("4th forest clearing", "In the forest you wonder, how many trees make a forest", 0);
-    Room Wroom = new Room("dark spot to the west", "You see a path starting from nowhere", 1);
+    Room room1 = new Room("Forest clearing", "you are in a grand forest, not much to see", 0);
+    Room room2 = new Room("Northern part of the forest", "You see a lot of forest", 0);
+    Room room3 = new Room("North eastern forest part", "What is that? a tree? in a forest", 0);
+    Room room4 = new Room("Western forest", "In the forest you wonder, how many trees make a forest", 0);
+    Room Wroom = new Room("Dark spot to the west", "You see a path starting from nowhere", 1);
     Room room5 = new Room("Winner Room", "you found the way out! good job", 0);
-    Room room6 = new Room("6th forest clearing", "More trees and more grass", 0);
+    Room room6 = new Room("Eastern forest part", "More trees and more grass", 0);
     Room Eroom = new Room("dark spot to the east", "something is written on a tree: xyzzy", 1);
-    Room room7 = new Room("7th forest clearing", "Above the forest you see the sky", 0);
-    Room room8 = new Room("8th forest clearing", "You notice the trees all look like trees", 0);
-    Room room9 = new Room("9th forest clearing", "You have come to the other side of the forest and found more forest", 0);
+    Room room7 = new Room("South western forest clearing", "Above the forest you see the sky", 0);
+    Room room8 = new Room("Southern forest part", "You notice the trees all look like trees", 0);
+    Room room9 = new Room("South eastern", "You have come to the other side of the forest and found more forest", 0);
 
 
     public void createPaths() {
@@ -29,7 +29,7 @@ public class Map {
         room4.setRoom(room1, null, room7, Wroom);
         Wroom.setRoom(null, room4, null, null);
         room5.setRoom(null, room8, null, null);
-        room6.setRoom(room3, null, room9, null);
+        room6.setRoom(room3, Eroom, room9, null);
         Eroom.setRoom(null, null, null, room6);
         room7.setRoom(room4, room8, null, null);
         room8.setRoom(room5, room9, null, room7);
@@ -53,5 +53,13 @@ public class Map {
 
     public Room getEndRoom() {
         return endRoom;
+    }
+
+    public Room getWroom(){
+        return Wroom;
+    }
+
+    public Room getEroom(){
+        return Eroom;
     }
 }

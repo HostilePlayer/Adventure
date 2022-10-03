@@ -4,6 +4,28 @@ public class Adventure {
     Map creator = new Map();
     Player player = new Player();
 
+    public boolean teleportPLayer(){
+        boolean canTeleport;
+        if(getCurrentRoom() == getDarkRoom1()){
+            player.setCurrentRoom(getDarkRoom2());
+            canTeleport = true;
+        } else if(getCurrentRoom() == getDarkRoom2()){
+            player.setCurrentRoom(getDarkRoom1());
+            canTeleport = true;
+        } else {
+            canTeleport = false;
+        }
+        return canTeleport;
+    }
+
+    public Room getDarkRoom1(){
+        return creator.getEroom();
+    }
+
+    public Room getDarkRoom2(){
+        return creator.getWroom();
+    }
+
     public Room getWinningRoom() {
         return creator.getEndRoom();
     }

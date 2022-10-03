@@ -1,7 +1,4 @@
 package kea.dk;
-
-import org.w3c.dom.html.HTMLOptGroupElement;
-
 import java.util.Scanner;
 
 public class Interface {
@@ -61,7 +58,7 @@ public class Interface {
         boolean gameRunning = true;
         System.out.println("You are now in a " + adventure.getStartRoom().getName() + "\n" + adventure.getStartRoom().getDescription());
         while (gameRunning) {
-            String input = "";
+            String input;
 
             input = sc.nextLine().toLowerCase();
             String[] inputSplit = input.split(" ");
@@ -125,9 +122,9 @@ public class Interface {
                     } else {
                         //har bruger en lamp?
                         haveLamp = player.haveLamp();
-                        if (haveLamp == true) {
+                        if (haveLamp) {
                             //er lampen tændt?
-                            if (player.isLightOn() == true) {
+                            if (player.isLightOn()) {
                                 //hvis lampen er tændt
                                 System.out.println(adventure.getCurrentRoom().getDescription());
                                 for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
@@ -135,7 +132,7 @@ public class Interface {
                                 }
                             }
                         }
-                        if (haveLamp == false) {
+                        if (!haveLamp) {
                             System.out.println("You need a light to see");
                         }
                     }
@@ -178,7 +175,7 @@ public class Interface {
 
                 case "light":
                     haveLamp = player.haveLamp();
-                    if (haveLamp == true) {
+                    if (haveLamp) {
                         player.toggleLamp(true);
                         System.out.println("Lamp is now on!");
                     } else {
@@ -188,7 +185,7 @@ public class Interface {
 
                 case "extinguish":
                     haveLamp = player.haveLamp();
-                    if (haveLamp == true) {
+                    if (haveLamp) {
                         player.toggleLamp(false);
                         System.out.println("Lamp is now off!");
                     } else {
@@ -197,8 +194,8 @@ public class Interface {
                     break;
                 case "status":
                     haveLamp = player.haveLamp();
-                    if (haveLamp == true) {
-                        if (player.isLightOn() == true) {
+                    if (haveLamp) {
+                        if (player.isLightOn()) {
                             System.out.println("Lamp is on");
                         } else {
                             System.out.println("Lamp is off");
@@ -212,6 +209,16 @@ public class Interface {
                     System.out.println("Hope you enjoyed our game");
                     System.out.println("Exiting program....");
                     gameRunning = false;
+                    break;
+
+                case "xyzzy":
+                    System.out.println(">>puff<<");
+                    adventure.teleportPLayer();
+                    if (adventure.teleportPLayer()){
+                        System.out.println("Something happened");
+                    } else {
+                        System.out.println("Nothing happened");
+                    }
                     break;
 
                 default:
