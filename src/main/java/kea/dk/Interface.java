@@ -30,7 +30,7 @@ public class Interface {
                 case "(q)uit", "quit", "q":
                     menuLoopEndValue = false;
                     break;
-                default: //den høre det her hver gang, selv om man iver et rigtigt input
+                default: //den høre det her hver gang, selv om man hver et rigtigt input
                     System.out.println(gameStartInput + " is not a valid input if you need help type (h)elp to get a list of commands, \n " +
                             "type (s)tart to start or type (q)uit to quit");
                     break;
@@ -59,13 +59,20 @@ public class Interface {
         boolean gameRunning = true;
         System.out.println("You are now in a " + adventure.getStartRoom().getName() + "\n" + adventure.getStartRoom().getDescription());
         while (gameRunning) {
-            String input = sc.nextLine();
+            String input = "";
 
-            String[] words = input.split(" ");
-            String firstWord = words[0];
-            String secondWord = words[1];
+            input = sc.nextLine().toLowerCase();
+            String[] inputSplit = input.split(" ");
+            String firstWord = inputSplit[0];
+            String command = "";
+
+
+            if (inputSplit.length > 1) {
+                command = inputSplit[1];
+            }
+
             switch (firstWord) {
-                case "(N)orth", "North", "n":
+                case "(n)orth", "north", "n":
 
                     if (adventure.goNorth()) {
                         System.out.println("Going north \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
@@ -84,7 +91,7 @@ public class Interface {
                     }
                     break;
 
-                case "(S)outh", "South", "s":
+                case "(s)outh", "south", "s":
                     if (adventure.goSouth()) {
                         System.out.println("Going south \n" + adventure.getCurrentRoom().getName() + "\n" + adventure.getCurrentRoom().getDescription());
 
@@ -106,7 +113,7 @@ public class Interface {
                     help();
                     break;
 
-                case "look", "l":
+                case "(l)ook", "look", "l":
                     System.out.println(adventure.getCurrentRoom().getDescription());
                     for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
                         System.out.println(adventure.getCurrentRoom().roomItems.get(i));
@@ -120,24 +127,18 @@ public class Interface {
 
                     } else {
                         System.out.println("Items in inventory:" + player.getInventory().toString());
-
-                        /*
-                        for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
-                            System.out.println(adventure.getCurrentRoom().roomItems.get(i));
-                        }
-
-                         */
                     }
                     break;
 
                 case "take", "t", "add", "a":
-                    String itemName = secondWord;
-                    Item item = adventure.takeItem(itemName);
+                    //secondWord
+                    String itemName = command;
+                    Item itemPickUp = adventure.takeItem(itemName);
 
-                    if(item == null) {
-                        System.out.println("No item like that in this room");
+                    if (itemPickUp == null) {
+                        System.out.println("No itemPickUp like that in this room");
                     } else {
-                        System.out.println("You have picked up the " + item.getItemName());
+                        System.out.println("You have picked up the " + itemPickUp.getItemName());
                     }
                     break;
 
