@@ -6,14 +6,40 @@ public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
     private Item newItem;
+    boolean lampLight = false;
+    boolean lampInInventory;
 
     public ArrayList<Item> getInventory() {
         return inventory;
     }
+//item.getItemName().contains(searchTerm.toLowerCase())
+    public boolean haveLamp(){
+        for (Item item : inventory) {
+            if (item.getItemName().contains("lamp")) {
+                lampInInventory = true;
+            } else {
+                lampInInventory = false;
+            }
+        }
+        return lampInInventory;
+    }
 
-    public boolean addToInventory(Item item) {
-        boolean succes = inventory.add(item);
-        return succes;
+    public boolean isLightOn() {
+        boolean isLampOn;
+        if(lampLight == true){
+            isLampOn = true;
+        } else {
+            isLampOn = false;
+        }
+        return isLampOn;
+    }
+
+    public void toggleLamp(boolean toggleLight){
+        if (toggleLight = true){
+            lampLight = true;
+        } else {
+            lampLight = false;
+        }
     }
 
     public void setCurrentRoom(Room currentRoom) {

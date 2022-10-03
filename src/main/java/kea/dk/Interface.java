@@ -1,6 +1,6 @@
 package kea.dk;
+import org.w3c.dom.html.HTMLOptGroupElement;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interface {
@@ -8,6 +8,7 @@ public class Interface {
     Scanner sc = new Scanner(System.in);
     Adventure adventure = new Adventure();
     Player player = new Player();
+    boolean haveLamp = false;
 
     public void startUp() {
         System.out.println("Welcome to a magical wonderland of adventure!");
@@ -153,6 +154,38 @@ public class Interface {
                     } else {
                         System.out.println("you have dropped " + itemToDrop.getItemName());
                         adventure.getCurrentRoom().addItem(itemToDrop);
+                    }
+                    break;
+
+                case "light":
+                    haveLamp = player.haveLamp();
+                    if (haveLamp == true){
+                        player.toggleLamp(true);
+                        System.out.println("Lamp is now on!");
+                    } else {
+                        System.out.println("You do not have a light");
+                    }
+                    break;
+
+                case "extinguish":
+                    haveLamp = player.haveLamp();
+                    if (haveLamp == true){
+                        player.toggleLamp(false);
+                        System.out.println("Lamp is now off!");
+                    } else {
+                        System.out.println("You do not have a light");
+                    }
+                    break;
+                case "status":
+                    haveLamp = player.haveLamp();
+                    if (haveLamp == true){
+                        if(player.isLightOn() == true){
+                            System.out.println("Lamp is on");
+                        } else {
+                            System.out.println("Lamp is off");
+                        }
+                    } else {
+                        System.out.println("You do not have a light");
                     }
                     break;
 

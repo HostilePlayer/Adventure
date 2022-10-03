@@ -7,7 +7,7 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public String getItemName() { //denne metode ser ikke ud til at virke, men hvorfor?
+    public String getItemName() {
         return itemName;
     }
 
