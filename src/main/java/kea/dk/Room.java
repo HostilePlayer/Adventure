@@ -11,15 +11,22 @@ public class Room {
     private Room west;
     private Room east;
     public ArrayList<Item> roomItems = new ArrayList<>();
+
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
     }
-    public void createItem(String itemName){
+
+    public void removeItem(Item item){
+        roomItems.remove(item);
+    }
+
+    public void createItem(String itemName) {
         Item item = new Item(itemName);
         roomItems.add(item);
     }
-    public ArrayList<Item> getAllItems(){
+
+    public ArrayList<Item> getAllItems() {
         return roomItems;
     }
 

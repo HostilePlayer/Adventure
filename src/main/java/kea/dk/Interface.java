@@ -139,15 +139,6 @@ public class Interface {
                             player.addToInventory(item);
                             System.out.println("item have been added");
                         }
-
-                        /*
-                        if(adventure.getItem(searchTerm) == null){
-                            player.addToInventory(adventure.getItem(searchTerm));
-                            System.out.println("item have been added");
-                        } else {
-                            System.out.println("cannot find that item");
-                        }
-*/
                     }
 
                     break;
