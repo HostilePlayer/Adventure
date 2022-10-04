@@ -3,12 +3,14 @@ package kea.dk;
 public class Adventure {
     Map creator = new Map();
     Player player = new Player();
+    boolean isItemFood;
+    boolean isFoodGood;
 
-    public boolean canPlayerTeleport(){
+    public boolean canPlayerTeleport() {
         boolean canTeleport;
-        if(getCurrentRoom() == getDarkRoom1()){
+        if (getCurrentRoom() == getDarkRoom1()) {
             canTeleport = true;
-        } else if(getCurrentRoom() == getDarkRoom2()){
+        } else if (getCurrentRoom() == getDarkRoom2()) {
             canTeleport = true;
         } else {
             canTeleport = false;
@@ -16,11 +18,29 @@ public class Adventure {
         return canTeleport;
     }
 
-    public Room getDarkRoom1(){
+    public boolean isItemFood(String item) {
+        if (item.contains("pringles") || item.contains("flesh")) {
+            isItemFood = true;
+        } else {
+            isItemFood = false;
+        }
+        return isItemFood;
+    }
+
+    public boolean isItemGood(String item) {
+        if (item.contains("pringles")) {
+            isFoodGood = true;
+        } else {
+            isFoodGood = false;
+        }
+        return isFoodGood;
+    }
+
+    public Room getDarkRoom1() {
         return creator.getEroom();
     }
 
-    public Room getDarkRoom2(){
+    public Room getDarkRoom2() {
         return creator.getWroom();
     }
 
@@ -48,7 +68,7 @@ public class Adventure {
         return player.goWest();
     }
 
-    public boolean goTeleport(){
+    public boolean goTeleport() {
         return player.goTeleport();
     }
 
@@ -65,4 +85,15 @@ public class Adventure {
         player.getItem(itemName);
         return player.getItem(itemName);
     }
+
+    public Item removeItem(String name) {
+        for (Item item : getCurrentRoom().getAllItems()) {
+            if (item.getItemName().equals(name)) {
+                getCurrentRoom().getAllItems().remove(item);
+                return item;
+            }
+        }
+        return null;
+    }
+
 }

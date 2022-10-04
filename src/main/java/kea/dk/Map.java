@@ -43,6 +43,9 @@ public class Map {
         room3.createItem("lamp");
         //til motode til at låse en dør op
         room7.createItem("key");
+        //food
+        room4.createItem("pringles");
+        room4.createItem("flesh");
 
         endRoom = room5;
         currentRoom = room1;

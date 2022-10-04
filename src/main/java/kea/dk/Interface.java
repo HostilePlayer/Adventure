@@ -1,4 +1,5 @@
 package kea.dk;
+
 import java.util.Scanner;
 
 public class Interface {
@@ -56,6 +57,7 @@ public class Interface {
 
     public void userInput() {
         boolean gameRunning = true;
+        player.setPlayerHealth(5);
         System.out.println("You are now in a " + adventure.getStartRoom().getName() + "\n" + adventure.getStartRoom().getDescription());
         while (gameRunning) {
             String input;
@@ -225,6 +227,34 @@ public class Interface {
                     System.out.println("You have " + player.getPlayerHealth() + " health points");
                     break;
 
+                case "eat":
+                    String foodToEat = command;
+                    Item eatFromInventory = player.removeItem(command);
+                    Item eatFromRoom = adventure.removeItem(command);
+                    if (adventure.isItemFood(command)) {
+                        if (eatFromInventory != null) {
+
+                            if (adventure.isItemGood(command)) {
+                                player.setPlayerHealth(5);
+                                System.out.println("Nice filling meal");
+                            } else {
+                                player.setPlayerHealth(-5);
+                                System.out.println("Yuk, I'm gonna barf");
+                            }
+                        } else if (eatFromRoom != null) {
+                            if (adventure.isItemGood(command)) {
+                                player.setPlayerHealth(5);
+                                System.out.println("Nice filling meal");
+                            } else {
+                                player.setPlayerHealth(-5);
+                                System.out.println("Yuk, I'm gonna barf");
+                            }
+                        } else {
+                            System.out.println("can not find " + foodToEat);
+                        }
+                    }
+                    break;
+
                 default:
                     System.out.println("Could not find that command");
                     break;
@@ -233,6 +263,11 @@ public class Interface {
             if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
                 gameRunning = false;
                 System.out.println("Congratz! you did a thing");
+            }
+            if (player.getPlayerHealth() == 0) {
+                gameRunning = false;
+                System.out.println("GAME OVER");
+                System.out.println("You died in the maze");
             }
         }
         while (gameRunning) ;

@@ -14,15 +14,15 @@ public class Player {
         return inventory;
     }
 
-    public void setPayerHealth(){
-        Health = 100;
-    }
-
-    public int getPlayerHealth(){
+    public int getPlayerHealth() {
         return Health;
     }
 
-    public boolean haveLamp(){
+    public void setPlayerHealth(int change) {
+        Health += change;
+    }
+
+    public boolean haveLamp() {
         for (Item item : inventory) {
             if (item.getItemName().contains("lamp")) {
                 lampInInventory = true;
@@ -35,7 +35,7 @@ public class Player {
 
     public boolean isLightOn() {
         boolean isLampOn;
-        if(lampLight == true){
+        if (lampLight == true) {
             isLampOn = true;
         } else {
             isLampOn = false;
@@ -43,8 +43,8 @@ public class Player {
         return isLampOn;
     }
 
-    public void toggleLamp(boolean toggleLight){
-        if (toggleLight = true){
+    public void toggleLamp(boolean toggleLight) {
+        if (toggleLight = true) {
             lampLight = true;
         } else {
             lampLight = false;
@@ -59,6 +59,7 @@ public class Player {
     public Room getCurrentRoom() {
         return currentRoom;
     }
+
     public Item getItem(String searchTerm) {
         //laver en liste over items i currentRoom
         ArrayList<Item> searchResult = getCurrentRoom().getAllItems();
@@ -71,7 +72,6 @@ public class Player {
                 newItem = item;
             }
         }
-        //returner en list over items i currentRoom
         return newItem;
     }
 
@@ -112,7 +112,7 @@ public class Player {
         }
     }
 
-    public boolean goTeleport(){
+    public boolean goTeleport() {
         if (currentRoom.goTeleport() == null) {
             return false;
         } else {
@@ -121,9 +121,9 @@ public class Player {
         }
     }
 
-    public Item removeItem(String name){
-        for (Item item : inventory){
-            if (item.getItemName().equals(name)){
+    public Item removeItem(String name) {
+        for (Item item : inventory) {
+            if (item.getItemName().equals(name)) {
                 inventory.remove(item);
                 return item;
             }

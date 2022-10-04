@@ -25,7 +25,7 @@ public class Room {
         roomItems.add(item);
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         roomItems.add(item);
     }
 
@@ -57,11 +57,11 @@ public class Room {
         return west;
     }
 
-    public Room goTeleport(){
+    public Room goTeleport() {
         return teleport;
     }
 
-    public int getDarkness(){
+    public int getDarkness() {
         return darkness;
     }
 

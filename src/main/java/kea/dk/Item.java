@@ -11,10 +11,6 @@ public class Item {
         return itemName;
     }
 
-    public void removeItem(String itemName){
-       // itemName
-    }
-
     @Override
     public String toString() {
         return itemName;
