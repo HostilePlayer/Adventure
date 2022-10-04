@@ -229,6 +229,9 @@ public class Interface {
 
                 case "eat":
                     String foodToEat = command;
+                    //alt der her skal tages til en food class some arver fra item class
+                    //den fangede jeg ikke da jeg lavede dette
+
                     Item eatFromInventory = player.removeItem(command);
                     Item eatFromRoom = adventure.removeItem(command);
                     if (adventure.isItemFood(command)) {
@@ -266,9 +269,13 @@ public class Interface {
                                 }
                             }
                         } else {
-                            System.out.println("can not find " + foodToEat);
+                            System.out.println("Was not able to eat" + foodToEat);
                         }
                     }
+                    break;
+
+                case "unlock":
+                    System.out.println("dende mulighed er WIP");
                     break;
 
                 default:
