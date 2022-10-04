@@ -238,16 +238,32 @@ public class Interface {
                                 player.setPlayerHealth(5);
                                 System.out.println("Nice filling meal");
                             } else {
-                                player.setPlayerHealth(-5);
-                                System.out.println("Yuk, I'm gonna barf");
+                                System.out.println("Are you sure about that? It's raw and might be from a human");
+                                String anotherInput = sc.nextLine();
+                                if (anotherInput == "Yes" || anotherInput == "yes" || anotherInput == "Y" || anotherInput == "y"
+                                        || anotherInput == "Ja" || anotherInput == "ja" || anotherInput == "J"
+                                        || anotherInput == "j") {
+                                    player.setPlayerHealth(-5);
+                                    System.out.println("Yuk, I'm gonna barf");
+                                } else {
+                                    System.out.println("That's properly for the best");
+                                }
                             }
                         } else if (eatFromRoom != null) {
                             if (adventure.isItemGood(command)) {
                                 player.setPlayerHealth(5);
                                 System.out.println("Nice filling meal");
                             } else {
-                                player.setPlayerHealth(-5);
-                                System.out.println("Yuk, I'm gonna barf");
+                                System.out.println("Are you sure about that? It's raw and might be from a human");
+                                String anotherInput = sc.nextLine();
+                                if (anotherInput == "Yes" || anotherInput == "yes" || anotherInput == "Y" || anotherInput == "y"
+                                        || anotherInput == "Ja" || anotherInput == "ja" || anotherInput == "J"
+                                        || anotherInput == "j") {
+                                    player.setPlayerHealth(-5);
+                                    System.out.println("Yuk, I'm gonna barf");
+                                } else {
+                                    System.out.println("That's properly for the best");
+                                }
                             }
                         } else {
                             System.out.println("can not find " + foodToEat);
