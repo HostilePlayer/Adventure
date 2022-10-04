@@ -8,11 +8,20 @@ public class Player {
     private Item newItem;
     boolean lampLight = false;
     boolean lampInInventory;
+    int Health;
 
     public ArrayList<Item> getInventory() {
         return inventory;
     }
-//item.getItemName().contains(searchTerm.toLowerCase())
+
+    public void setPayerHealth(){
+        Health = 100;
+    }
+
+    public int getPlayerHealth(){
+        return Health;
+    }
+
     public boolean haveLamp(){
         for (Item item : inventory) {
             if (item.getItemName().contains("lamp")) {

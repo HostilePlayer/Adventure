@@ -221,6 +221,10 @@ public class Interface {
                     }
                     break;
 
+                case "health", "hp", "lives":
+                    System.out.println("You have " + player.getPlayerHealth() + " health points");
+                    break;
+
                 default:
                     System.out.println("Could not find that command");
                     break;

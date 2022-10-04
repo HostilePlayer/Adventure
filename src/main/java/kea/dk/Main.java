@@ -6,6 +6,7 @@ public class Main {
         Player player = new Player();
         Map map = new Map();
         player.setCurrentRoom(map.room1);
+        player.setPayerHealth();
         Interface ui = new Interface();
         ui.startUp();
     }

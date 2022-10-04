@@ -41,7 +41,8 @@ public class Map {
         room1.createItem("gun");
         room2.createItem("massive bong");
         room3.createItem("lamp");
-
+        //til motode til at låse en dør op
+        room7.createItem("key");
 
         endRoom = room5;
         currentRoom = room1;
@@ -55,11 +56,11 @@ public class Map {
         return endRoom;
     }
 
-    public Room getWroom(){
+    public Room getWroom() {
         return Wroom;
     }
 
-    public Room getEroom(){
+    public Room getEroom() {
         return Eroom;
     }
 }
