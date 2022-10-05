@@ -165,6 +165,7 @@ public class Interface {
                     }
                     break;
 
+
                 case "drop", "d", "leave":
                     String droppedItem = command;
                     Item itemToDrop = player.removeItem(droppedItem);

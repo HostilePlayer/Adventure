@@ -61,20 +61,23 @@ public class Player {
     }
 
     public Item getItem(String searchTerm) {
+        resetNewItem();
         //laver en liste over items i currentRoom
         ArrayList<Item> searchResult = getCurrentRoom().getAllItems();
         //for hvert item
         for (Item item : searchResult) {
             //check om item name passer med det bruger søger
-            if (item.getItemName().contains(searchTerm.toLowerCase())) {
+            if (item.getItemName().equals(searchTerm.toLowerCase())) {
                 //add item til inventory
-                inventory.add(item);
                 newItem = item;
             }
         }
         return newItem;
     }
-
+    public Item resetNewItem(){
+        newItem = null;
+        return newItem;
+    }
     public boolean goNorth() {
         if (currentRoom.getNorth() == null) {
             return false;
