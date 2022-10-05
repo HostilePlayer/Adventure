@@ -1,14 +1,14 @@
 package kea.dk;
 
 public class Food extends Item{
-    private boolean isEatAble;
+    private int isEatAble;
 
-    public Food(String itemName, boolean isEatAble) {
+    public Food(String itemName, int isEatAble) {
         super(itemName);
         this.isEatAble = isEatAble;
     }
 
-    public boolean getIsFood(){
+    public int getIsFood(){
         return isEatAble;
     }
 }

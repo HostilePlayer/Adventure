@@ -230,22 +230,23 @@ public class Interface {
 
                 case "eat":
                     String foodToEat = command;
-                    Item eatFromInventory = player.removeItem(command);
-                    Item eatFromRoom = adventure.removeItem(command);
+                    Item eatFromInventory = player.getItemFromInvetory(command);
+                    Item eatFromRoom = adventure.getItemFromRoom(command);
+
                     if (adventure.isItemFood(command)) {
                         if (eatFromInventory != null) {
 
                             if (adventure.isItemGood(command)) {
                                 player.setPlayerHealth(5);
                                 System.out.println("Nice filling meal");
+                                player.removeItem(command);
                             } else {
                                 System.out.println("Are you sure about that? It's raw and might be from a human");
                                 String anotherInput = sc.nextLine();
-                                if (anotherInput == "Yes" || anotherInput == "yes" || anotherInput == "Y" || anotherInput == "y"
-                                        || anotherInput == "Ja" || anotherInput == "ja" || anotherInput == "J"
-                                        || anotherInput == "j") {
+                                if (anotherInput.contains("y")) {
                                     player.setPlayerHealth(-5);
                                     System.out.println("Yuk, I'm gonna barf");
+                                    player.removeItem(command);
                                 } else {
                                     System.out.println("That's properly for the best");
                                 }
@@ -254,20 +255,20 @@ public class Interface {
                             if (adventure.isItemGood(command)) {
                                 player.setPlayerHealth(5);
                                 System.out.println("Nice filling meal");
+                                adventure.removeItem(command);
                             } else {
                                 System.out.println("Are you sure about that? It's raw and might be from a human");
                                 String anotherInput = sc.nextLine();
-                                if (anotherInput == "Yes" || anotherInput == "yes" || anotherInput == "Y" || anotherInput == "y"
-                                        || anotherInput == "Ja" || anotherInput == "ja" || anotherInput == "J"
-                                        || anotherInput == "j") {
+                                if (anotherInput.contains("y")) {
                                     player.setPlayerHealth(-5);
                                     System.out.println("Yuk, I'm gonna barf");
+                                    adventure.removeItem(command);
                                 } else {
                                     System.out.println("That's properly for the best");
                                 }
                             }
                         } else {
-                            System.out.println("Was not able to eat" + foodToEat);
+                            System.out.println("You were not able to eat " + foodToEat);
                         }
                     }
                     break;

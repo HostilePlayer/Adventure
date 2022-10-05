@@ -1,6 +1,7 @@
 package kea.dk;
 
 public class Item {
+
     private String itemName;
 
     public Item(String itemName) {

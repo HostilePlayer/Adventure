@@ -18,6 +18,15 @@ public class Adventure {
         return canTeleport;
     }
 
+    public Item getItemFromRoom(String itemName){
+        for(Item itemFromRoom : getCurrentRoom().getAllItems()){
+            if (itemFromRoom.getItemName().contains(itemName)){
+                return itemFromRoom;
+            }
+        }
+        return null;
+    }
+
     public boolean isItemFood(String item) {
         if (item.contains("pringles") || item.contains("flesh") ) {
             isItemFood = true;

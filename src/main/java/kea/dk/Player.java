@@ -8,10 +8,20 @@ public class Player {
     private Item newItem;
     boolean lampLight = false;
     boolean lampInInventory;
+
     int Health;
 
     public ArrayList<Item> getInventory() {
         return inventory;
+    }
+
+    public Item getItemFromInvetory(String itemName){
+        for(Item itemFromInventory : inventory){
+            if (itemFromInventory.getItemName().contains(itemName)){
+                return itemFromInventory;
+            }
+        }
+        return null;
     }
 
     public int getPlayerHealth() {
