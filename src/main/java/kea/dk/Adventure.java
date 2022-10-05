@@ -19,7 +19,7 @@ public class Adventure {
     }
 
     public boolean isItemFood(String item) {
-        if (item.contains("pringles") || item.contains("flesh")) {
+        if (item.contains("pringles") || item.contains("flesh") ) {
             isItemFood = true;
         } else {
             isItemFood = false;

@@ -230,9 +230,6 @@ public class Interface {
 
                 case "eat":
                     String foodToEat = command;
-                    //alt der her skal tages til en food class some arver fra item class
-                    //den fangede jeg ikke da jeg lavede dette
-
                     Item eatFromInventory = player.removeItem(command);
                     Item eatFromRoom = adventure.removeItem(command);
                     if (adventure.isItemFood(command)) {

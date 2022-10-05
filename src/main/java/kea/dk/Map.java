@@ -1,7 +1,5 @@
 package kea.dk;
 
-import java.util.ArrayList;
-
 public class Map {
     private Room currentRoom;
     private Room endRoom;
@@ -44,12 +42,13 @@ public class Map {
         //til motode til at låse en dør op
         room7.createItem("key");
         //food
-        room4.createItem("pringles");
-        room4.createItem("flesh");
+        room4.createFoodItem("pringles", true);
+        room4.createFoodItem("flesh", false);
 
         endRoom = room5;
         currentRoom = room1;
     }
+
 
     public Room getCurrentRoom() {
         return currentRoom;

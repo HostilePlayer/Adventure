@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class Room {
     private String name;
     private String description;
-
     private Room north;
     private Room south;
     private Room west;
     private Room east;
     private int darkness;
     private Room teleport;
+
     public ArrayList<Item> roomItems = new ArrayList<>();
 
     public Room(String name, String description, int darkness) {
@@ -23,6 +23,11 @@ public class Room {
     public void createItem(String itemName) {
         Item item = new Item(itemName);
         roomItems.add(item);
+    }
+
+    public void createFoodItem(String itemName, boolean isEatAble){
+        Food food = new Food(itemName, isEatAble);
+        roomItems.add(food);
     }
 
     public void addItem(Item item) {
