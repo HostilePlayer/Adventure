@@ -77,7 +77,7 @@ public class Player {
         //for hvert item
         for (Item item : searchResult) {
             //check om item name passer med det bruger søger
-            if (item.getItemName().equals(searchTerm.toLowerCase())) {
+            if (item.getItemName().contains(searchTerm.toLowerCase())) {
                 //add item til inventory
                 newItem = item;
             }

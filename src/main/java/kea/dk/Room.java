@@ -25,13 +25,17 @@ public class Room {
         roomItems.add(item);
     }
 
-    public void createFoodItem(String itemName, int isEatAble){
-        Food food = new Food(itemName, isEatAble);
+    public void createFoodItem(String itemName, boolean isEatAble, boolean isHealthy){
+        Food food = new Food(itemName, isEatAble, isHealthy);
         roomItems.add(food);
     }
 
     public void addItem(Item item) {
         roomItems.add(item);
+    }
+
+    public boolean getIsFood(){
+        return getIsFood();
     }
 
     public ArrayList<Item> getAllItems() {

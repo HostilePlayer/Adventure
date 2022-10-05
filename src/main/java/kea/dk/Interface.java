@@ -157,7 +157,7 @@ public class Interface {
                     Item itemPickUp = adventure.takeItem(itemName);
 
                     if (itemPickUp == null) {
-                        System.out.println("No itemPickUp like that in this room");
+                        System.out.println("No item like that in this room");
                     } else {
                         System.out.println("You have picked up the " + itemPickUp.getItemName());
                         player.getInventory().add(itemPickUp);
@@ -233,9 +233,11 @@ public class Interface {
                     Item eatFromInventory = player.getItemFromInvetory(command);
                     Item eatFromRoom = adventure.getItemFromRoom(command);
 
-                    if (adventure.isItemFood(command)) {
-                        if (eatFromInventory != null) {
+                    if (eatFromInventory != null) {
 
+                        //tager item fra inventory
+                        if (eatFromInventory != null) {
+                            //er item healthy?
                             if (adventure.isItemGood(command)) {
                                 player.setPlayerHealth(5);
                                 System.out.println("Nice filling meal");
@@ -251,7 +253,10 @@ public class Interface {
                                     System.out.println("That's properly for the best");
                                 }
                             }
+
+                        //tager item fra currentRoom
                         } else if (eatFromRoom != null) {
+                            //er item healthy
                             if (adventure.isItemGood(command)) {
                                 player.setPlayerHealth(5);
                                 System.out.println("Nice filling meal");

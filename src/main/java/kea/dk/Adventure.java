@@ -27,8 +27,8 @@ public class Adventure {
         return null;
     }
 
-    public boolean isItemFood(String item) {
-        if (item.contains("pringles") || item.contains("flesh") ) {
+    public boolean isItemFood(Item item) {
+        if (getCurrentRoom().getIsFood()) {
             isItemFood = true;
         } else {
             isItemFood = false;
