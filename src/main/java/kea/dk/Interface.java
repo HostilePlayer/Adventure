@@ -245,7 +245,7 @@ public class Interface {
 
                         //tager item fra currentRoom
                     } else if (eatFromRoom != null) {
-                        if (eatFromRoom instanceof Food) {
+                        if (eatFromRoom instanceof Food) { //kan lave check her
                             adventure.removeItem(foodToEat);
                             player.setPlayerHealth(((Food) eatFromRoom).getFoodHealth());
                             System.out.println("You're eating " + foodToEat);
@@ -277,7 +277,7 @@ public class Interface {
                             player.removeItem(weaponToEquip);
                             System.out.println("You equip " + weaponToEquip);
                         } else {
-                            System.out.println(weaponToEquip + " is not a weapon");
+                            System.out.println("Was not able to equip " + weaponToEquip);
                         }
 
                         //tager item fra currentRoom
@@ -287,7 +287,7 @@ public class Interface {
                             adventure.removeItem(weaponToEquip);
                             System.out.println("You equip " + weaponToEquip);
                         } else {
-                            System.out.println(weaponToEquip + " is not a weapon");
+                            System.out.println("Was not able to equip " + weaponToEquip);
                         }
 
                     } else {
