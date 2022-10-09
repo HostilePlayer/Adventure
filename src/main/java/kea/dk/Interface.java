@@ -59,8 +59,8 @@ public class Interface {
 
     public void userInput() {
         boolean gameRunning = true;
-        player.setPlayerHealth(5); //for tester
-        //player.setStartingHealth(); // for actual game
+        //player.setPlayerHealth(5); //for tester
+        player.setStartingHealth(); // for actual game
         System.out.println("You are now in a " + adventure.getStartRoom().getName() + "\n" + adventure.getStartRoom().getDescription());
         while (gameRunning) {
             String input;
@@ -256,8 +256,9 @@ public class Interface {
                         System.out.println(foodToEat + " not eatable");
                     }
                     break;
+
                 case "weapon":
-                    if (player.getCurrentWeapon() == null){
+                    if (player.getCurrentWeapon() == null) {
                         System.out.println("you have nothing equipped");
                     } else {
                         System.out.println("you have " + player.getCurrentWeapon() + " equip");
@@ -274,6 +275,7 @@ public class Interface {
                         if (takeFromInventory instanceof Weapons) { // fejler check
                             player.equipItem(takeFromInventory);
                             player.removeItem(weaponToEquip);
+                            System.out.println("You equip " + weaponToEquip);
                         } else {
                             System.out.println(weaponToEquip + " is not a weapon");
                         }
@@ -283,6 +285,7 @@ public class Interface {
                         if (takeFromRoom instanceof Weapons) { //fejler check
                             player.equipItem(takeFromRoom);
                             adventure.removeItem(weaponToEquip);
+                            System.out.println("You equip " + weaponToEquip);
                         } else {
                             System.out.println(weaponToEquip + " is not a weapon");
                         }
@@ -293,11 +296,16 @@ public class Interface {
                     break;
 
                 case "attack":
-                    System.out.println("this is WIP command");
+                    if (player.getCurrentWeapon() != null) {
+                        System.out.println("You attacked!... the air...");
+                    } else if (player.getCurrentWeapon() == null) {
+                        System.out.println("You have no weapon equipped");
+                    }
+
                     break;
 
                 case "unlock":
-                    System.out.println("dende mulighed er WIP");
+                    System.out.println("this is WIP command");
                     break;
 
                 default:
