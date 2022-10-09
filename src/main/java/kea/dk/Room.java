@@ -30,12 +30,13 @@ public class Room {
         roomItems.add(food);
     }
 
-    public void addItem(Item item) {
-        roomItems.add(item);
+    public void createWeaponItems(String itemName, int damage){
+        Food food = new Food(itemName, damage);
+        roomItems.add(food);
     }
 
-    public boolean getIsFood(){
-        return getIsFood();
+    public void addItem(Item item) {
+        roomItems.add(item);
     }
 
     public ArrayList<Item> getAllItems() {

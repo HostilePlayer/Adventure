@@ -36,14 +36,16 @@ public class Map {
         //items get made here
         room1.createItem("gold coin");
         room1.createItem("machete");
-        room1.createItem("gun");
-        room2.createItem("massive bong");
+
         room3.createItem("lamp");
         //til motode til at låse en dør op
         room7.createItem("key");
-        //food itemName, isEatAble, isHealthy
+        //food itemName, isEatAble, add health
         room4.createFoodItem("pringles", 5);
         room4.createFoodItem("flesh", -5);
+        //weapon items, name, damage
+        room1.createWeaponItems("gun", 50);
+        room2.createWeaponItems("massive bong", 10);
 
         endRoom = room5;
         currentRoom = room1;

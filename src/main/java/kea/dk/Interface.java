@@ -255,7 +255,45 @@ public class Interface {
                     } else {
                         System.out.println(foodToEat + " not eatable");
                     }
+                    break;
+                case "weapon":
+                    if (player.getCurrentWeapon() == null){
+                        System.out.println("you have nothing equipped");
+                    } else {
+                        System.out.println("you have " + player.getCurrentWeapon() + " equip");
+                    }
+                    break;
 
+                case "equip":
+                    String weaponToEquip = command;
+                    Item takeFromInventory = player.getItemFromInvetory(command);
+                    Item takeFromRoom = adventure.getItemFromRoom(command);
+
+                    //tager item fra inventory
+                    if (takeFromInventory != null) {
+                        if (takeFromInventory instanceof Weapons) { // fejler check
+                            player.equipItem(takeFromInventory);
+                            player.removeItem(weaponToEquip);
+                        } else {
+                            System.out.println(weaponToEquip + " is not a weapon");
+                        }
+
+                        //tager item fra currentRoom
+                    } else if (takeFromRoom != null) {
+                        if (takeFromRoom instanceof Weapons) { //fejler check
+                            player.equipItem(takeFromRoom);
+                            adventure.removeItem(weaponToEquip);
+                        } else {
+                            System.out.println(weaponToEquip + " is not a weapon");
+                        }
+
+                    } else {
+                        System.out.println(weaponToEquip + " is not a weapon");
+                    }
+                    break;
+
+                case "attack":
+                    System.out.println("this is WIP command");
                     break;
 
                 case "unlock":

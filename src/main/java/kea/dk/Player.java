@@ -6,6 +6,7 @@ public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
     private Item newItem;
+    private Item currentWeapon;
     boolean lampLight = false;
     boolean lampInInventory;
     boolean isEatAble;
@@ -15,6 +16,14 @@ public class Player {
 
     public ArrayList<Item> getInventory() {
         return inventory;
+    }
+
+    public void equipItem(Item weapon){
+        currentWeapon = weapon;
+    }
+
+    public Item getCurrentWeapon(){
+        return currentWeapon;
     }
 
     public Item getItemFromInvetory(String itemName){
@@ -36,6 +45,9 @@ public class Player {
 
     public void setPlayerHealth(int change) {
         health += change;
+        if (health > maxHealth){
+            health = maxHealth;
+        }
     }
 
     public boolean eatFromInventory(Item foodItem) {
