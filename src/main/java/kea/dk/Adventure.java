@@ -3,8 +3,6 @@ package kea.dk;
 public class Adventure {
     Map creator = new Map();
     Player player = new Player();
-    boolean isItemFood;
-    boolean isFoodGood;
 
     public boolean canPlayerTeleport() {
         boolean canTeleport;
@@ -18,6 +16,7 @@ public class Adventure {
         return canTeleport;
     }
 
+
     public Item getItemFromRoom(String itemName){
         for(Item itemFromRoom : getCurrentRoom().getAllItems()){
             if (itemFromRoom.getItemName().contains(itemName)){
@@ -25,24 +24,6 @@ public class Adventure {
             }
         }
         return null;
-    }
-
-    public boolean isItemFood(Item item) {
-        if (getCurrentRoom().getIsFood()) {
-            isItemFood = true;
-        } else {
-            isItemFood = false;
-        }
-        return isItemFood;
-    }
-
-    public boolean isItemGood(String item) {
-        if (item.contains("pringles")) {
-            isFoodGood = true;
-        } else {
-            isFoodGood = false;
-        }
-        return isFoodGood;
     }
 
     public Room getDarkRoom1() {

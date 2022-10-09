@@ -52,12 +52,15 @@ public class Interface {
                 "type (E)ast to go east \n" +
                 "type (W)est to go west \n" +
                 "type (l)ook to look around in your current location \n" +
+                "type (E)eat 'food' to eat" +
+                "type (A)ttack 'enemy' to attack" +
                 "type (ex)it to exit program");
     }
 
     public void userInput() {
         boolean gameRunning = true;
-        player.setPlayerHealth(5);
+        player.setPlayerHealth(5); //for tester
+        //player.setStartingHealth(); // for actual game
         System.out.println("You are now in a " + adventure.getStartRoom().getName() + "\n" + adventure.getStartRoom().getDescription());
         while (gameRunning) {
             String input;
@@ -233,49 +236,26 @@ public class Interface {
                     Item eatFromInventory = player.getItemFromInvetory(command);
                     Item eatFromRoom = adventure.getItemFromRoom(command);
 
+                    //tager item fra inventory
                     if (eatFromInventory != null) {
+                        player.eatFromInventory(eatFromRoom);
+                        player.removeItem(foodToEat);
 
-                        //tager item fra inventory
-                        if (eatFromInventory != null) {
-                            //er item healthy?
-                            if (adventure.isItemGood(command)) {
-                                player.setPlayerHealth(5);
-                                System.out.println("Nice filling meal");
-                                player.removeItem(command);
-                            } else {
-                                System.out.println("Are you sure about that? It's raw and might be from a human");
-                                String anotherInput = sc.nextLine();
-                                if (anotherInput.contains("y")) {
-                                    player.setPlayerHealth(-5);
-                                    System.out.println("Yuk, I'm gonna barf");
-                                    player.removeItem(command);
-                                } else {
-                                    System.out.println("That's properly for the best");
-                                }
-                            }
+                        System.out.println("you ate " + foodToEat);
 
                         //tager item fra currentRoom
-                        } else if (eatFromRoom != null) {
-                            //er item healthy
-                            if (adventure.isItemGood(command)) {
-                                player.setPlayerHealth(5);
-                                System.out.println("Nice filling meal");
-                                adventure.removeItem(command);
-                            } else {
-                                System.out.println("Are you sure about that? It's raw and might be from a human");
-                                String anotherInput = sc.nextLine();
-                                if (anotherInput.contains("y")) {
-                                    player.setPlayerHealth(-5);
-                                    System.out.println("Yuk, I'm gonna barf");
-                                    adventure.removeItem(command);
-                                } else {
-                                    System.out.println("That's properly for the best");
-                                }
-                            }
-                        } else {
-                            System.out.println("You were not able to eat " + foodToEat);
+                    } else if (eatFromRoom != null) {
+                        if (eatFromRoom instanceof Food) {
+                            adventure.removeItem(foodToEat);
+                            player.setPlayerHealth(((Food) eatFromRoom).getFoodHealth());
+                            System.out.println("You're eating " + foodToEat);
+
                         }
+
+                    } else {
+                        System.out.println(foodToEat + " not eatable");
                     }
+
                     break;
 
                 case "unlock":

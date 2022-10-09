@@ -42,8 +42,8 @@ public class Map {
         //til motode til at låse en dør op
         room7.createItem("key");
         //food itemName, isEatAble, isHealthy
-        room4.createFoodItem("pringles", true, true);
-        room4.createFoodItem("flesh", true, false);
+        room4.createFoodItem("pringles", 5);
+        room4.createFoodItem("flesh", -5);
 
         endRoom = room5;
         currentRoom = room1;

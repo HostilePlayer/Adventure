@@ -1,21 +1,16 @@
 package kea.dk;
 
 public class Food extends Item{
-    private boolean isEatAble;
-    private boolean isHealthy;
+    private int healthPoints;
 
-    public Food(String itemName, boolean isEatAble, boolean isHealthy) {
-        super(itemName);
-        this.isEatAble = isEatAble;
-        this.isHealthy = isHealthy;
+    public Food(String name, int healthPoints) {
+        super(name);
+        this.healthPoints = healthPoints;
     }
 
-    public boolean getIsEatAble(Item item){
-        return isEatAble;
+    public int getFoodHealth(){
+        return healthPoints;
     }
 
-    public boolean getIsHealhty(){
-        return isHealthy;
-    }
 
 }

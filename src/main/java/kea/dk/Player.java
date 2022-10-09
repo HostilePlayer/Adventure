@@ -8,8 +8,10 @@ public class Player {
     private Item newItem;
     boolean lampLight = false;
     boolean lampInInventory;
+    boolean isEatAble;
 
-    int Health;
+    private int health;
+    private final int maxHealth = 100;
 
     public ArrayList<Item> getInventory() {
         return inventory;
@@ -25,11 +27,24 @@ public class Player {
     }
 
     public int getPlayerHealth() {
-        return Health;
+        return health;
+    }
+
+    public void setStartingHealth(){
+        health = maxHealth;
     }
 
     public void setPlayerHealth(int change) {
-        Health += change;
+        health += change;
+    }
+
+    public boolean eatFromInventory(Item foodItem) {
+        if (foodItem instanceof Food) {
+            health += ((Food) foodItem).getFoodHealth();
+            return isEatAble = true; // eatable
+        } else {
+            return isEatAble = false; // not found
+        }
     }
 
     public boolean haveLamp() {

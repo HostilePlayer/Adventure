@@ -25,8 +25,8 @@ public class Room {
         roomItems.add(item);
     }
 
-    public void createFoodItem(String itemName, boolean isEatAble, boolean isHealthy){
-        Food food = new Food(itemName, isEatAble, isHealthy);
+    public void createFoodItem(String itemName, int healPoints){
+        Food food = new Food(itemName, healPoints);
         roomItems.add(food);
     }
 
