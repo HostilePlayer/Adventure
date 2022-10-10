@@ -10,6 +10,7 @@ public class Player {
     boolean lampLight = false;
     boolean lampInInventory;
     boolean isEatAble;
+    private int weaponDamage;
 
     private int health;
     private final int maxHealth = 100;
@@ -56,6 +57,17 @@ public class Player {
             return isEatAble = true; // eatable
         } else {
             return isEatAble = false; // not found
+        }
+    }
+
+    public int getWeaponDMG(Item weaponAtUse){
+        weaponDamage = ((Weapons) weaponAtUse).getDamage();
+        return weaponDamage;
+    }
+
+    public void equipFromInventory(Item weaponToUse) {
+        if (weaponToUse instanceof Weapons) {
+            currentWeapon = weaponToUse;
         }
     }
 

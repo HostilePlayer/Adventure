@@ -238,7 +238,7 @@ public class Interface {
 
                     //tager item fra inventory
                     if (eatFromInventory != null) {
-                        player.eatFromInventory(eatFromRoom);
+                        player.eatFromInventory(eatFromInventory);
                         player.removeItem(foodToEat);
 
                         System.out.println("you ate " + foodToEat);
@@ -272,12 +272,14 @@ public class Interface {
 
                     //tager item fra inventory
                     if (takeFromInventory != null) {
-                        if (takeFromInventory instanceof Weapons) { // fejler check
-                            player.equipItem(takeFromInventory);
-                            player.removeItem(weaponToEquip);
-                            System.out.println("You equip " + weaponToEquip);
-                        } else {
+                        player.equipFromInventory(takeFromInventory);
+
+
+                        if (player.getCurrentWeapon() == null){
                             System.out.println("Was not able to equip " + weaponToEquip);
+                        } else {
+                            System.out.println("You equip " + weaponToEquip);
+                            player.removeItem(weaponToEquip);
                         }
 
                         //tager item fra currentRoom
@@ -298,6 +300,8 @@ public class Interface {
                 case "attack":
                     if (player.getCurrentWeapon() != null) {
                         System.out.println("You attacked!... the air...");
+                        player.getWeaponDMG(player.getCurrentWeapon());
+                        System.out.println("you did " + player.getWeaponDMG(player.getCurrentWeapon()) + " DMG");
                     } else if (player.getCurrentWeapon() == null) {
                         System.out.println("You have no weapon equipped");
                     }
