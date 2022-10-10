@@ -49,6 +49,8 @@ public class Map {
 
         endRoom = room5;
         currentRoom = room1;
+        //create enemy: name, health, damage
+        room9.createEnemy("zombie" , 50, 20);
     }
 
 

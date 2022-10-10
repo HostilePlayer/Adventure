@@ -13,6 +13,7 @@ public class Room {
     private Room teleport;
 
     public ArrayList<Item> roomItems = new ArrayList<>();
+    public ArrayList<Weapons> roomWeapons = new ArrayList<>();
 
     public Room(String name, String description, int darkness) {
         this.name = name;
@@ -35,12 +36,21 @@ public class Room {
         roomItems.add(food);
     }
 
+    public void createEnemy(String enemyName, int enemyHP, int enemyDMG){
+        Enemy enemy = new Enemy(enemyName, enemyHP, enemyDMG);
+
+    }
+
     public void addItem(Item item) {
         roomItems.add(item);
     }
 
     public ArrayList<Item> getAllItems() {
         return roomItems;
+    }
+
+    public ArrayList<Weapons> getAllWeapons() {
+        return roomWeapons;
     }
 
     public String getName() {

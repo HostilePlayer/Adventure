@@ -317,7 +317,7 @@ public class Interface {
                 gameRunning = false;
                 System.out.println("Congratz! you did a thing");
             }
-            if (player.getPlayerHealth() == 0) {
+            if (player.getPlayerHealth() == 0 || player.getPlayerHealth() < 0) {
                 gameRunning = false;
                 System.out.println("GAME OVER");
                 System.out.println("You died in the maze");
