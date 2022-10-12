@@ -58,13 +58,23 @@ public class Interface {
     }
     public void enemyDetection(){
         // to be removed
-        if (adventure.getCurrentRoom().getEnemies().size() == 0){
-            System.out.println("no enemies ||debug to be removed");
-        } else if (adventure.getCurrentRoom().getEnemies().size() == 1) {
-            System.out.println(adventure.getCurrentRoom().getEnemies().get(0));
-        } else
-            System.out.println("dunno wtf happened here");
-        // to be removed
+        boolean combatState = true;
+        System.out.println("you have entered combat");
+
+        while (combatState) {
+            if (adventure.getCurrentRoom().getEnemies().size() == 0) {
+                System.out.println("no enemies ||debug to be removed");
+                combatState = false;
+            } else if (adventure.getCurrentRoom().getEnemies().size() == 1) {
+                Enemy enemy = adventure.getCurrentRoom().getEnemies().get(0);
+                System.out.println("current enemy: " + enemy);
+
+            } else {
+                System.out.println("dunno wtf happened here");
+                combatState = false;
+            }
+            // to be removed
+        } while (combatState);
     }
 
     public void userInput() {

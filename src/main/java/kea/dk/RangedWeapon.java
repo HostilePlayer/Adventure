@@ -1,6 +1,6 @@
 package kea.dk;
 
-public class RangedWeapon extends Weapons{
+/*public class RangedWeapon extends Weapons{
     private int ammo;
 
     public rangedWeapons(String name, int damage, int ammo) {
@@ -13,3 +13,4 @@ public class RangedWeapon extends Weapons{
     //merge conflict?
 
 }
+*/
