@@ -47,6 +47,7 @@ public class Map {
         room1.createWeaponItems("gun", 50);
         room2.createWeaponItems("machete", 10);
         //create enemy: name, health, damage
+        room8.createEnemy("peter" , 9999, 100);
         room9.createEnemy("zombie" , 50, 20);
 
         endRoom = room5;
