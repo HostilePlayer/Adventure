@@ -14,6 +14,7 @@ public class Room {
 
     public ArrayList<Item> roomItems = new ArrayList<>();
     public ArrayList<Weapons> roomWeapons = new ArrayList<>();
+    public ArrayList<Enemy> enemies = new ArrayList<>();
 
     public Room(String name, String description, int darkness) {
         this.name = name;
@@ -38,7 +39,7 @@ public class Room {
 
     public void createEnemy(String enemyName, int enemyHP, int enemyDMG){
         Enemy enemy = new Enemy(enemyName, enemyHP, enemyDMG);
-
+        enemies.add(enemy);
     }
 
     public void addItem(Item item) {
@@ -51,6 +52,10 @@ public class Room {
 
     public ArrayList<Weapons> getAllWeapons() {
         return roomWeapons;
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
     }
 
     public String getName() {

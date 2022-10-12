@@ -7,9 +7,11 @@ public class Weapons extends Item {
         super(name);
         this.damage = damage;
     }
-
     public int getDamage(){
         return damage;
     }
 
+    public boolean canUse(){
+        return true;
+    }
 }

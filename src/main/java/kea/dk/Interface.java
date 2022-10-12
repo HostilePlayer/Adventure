@@ -56,6 +56,16 @@ public class Interface {
                 "type (A)ttack 'enemy' to attack" +
                 "type (ex)it to exit program");
     }
+    public void enemyDetection(){
+        // to be removed
+        if (adventure.getCurrentRoom().getEnemies().size() == 0){
+            System.out.println("no enemies ||debug to be removed");
+        } else if (adventure.getCurrentRoom().getEnemies().size() == 1) {
+            System.out.println(adventure.getCurrentRoom().getEnemies().get(0));
+        } else
+            System.out.println("dunno wtf happened here");
+        // to be removed
+    }
 
     public void userInput() {
         boolean gameRunning = true;
@@ -326,6 +336,8 @@ public class Interface {
                 System.out.println("GAME OVER");
                 System.out.println("You died in the maze");
             }
+            // just checking if enemy gets detected
+            enemyDetection();
         }
         while (gameRunning) ;
     }

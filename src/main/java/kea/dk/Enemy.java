@@ -24,4 +24,8 @@ public class Enemy {
         return enemyDMG;
     }
 
+    @Override
+    public String toString() {
+        return enemyName;
+    }
 }

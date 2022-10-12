@@ -46,11 +46,11 @@ public class Map {
         //weapon items, name, damage
         room1.createWeaponItems("gun", 50);
         room2.createWeaponItems("machete", 10);
+        //create enemy: name, health, damage
+        room9.createEnemy("zombie" , 50, 20);
 
         endRoom = room5;
         currentRoom = room1;
-        //create enemy: name, health, damage
-        room9.createEnemy("zombie" , 50, 20);
     }
 
 
