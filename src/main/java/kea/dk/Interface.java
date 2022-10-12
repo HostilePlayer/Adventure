@@ -75,15 +75,16 @@ public class Interface {
                             System.out.println("you did " + dmg + " DMG to " + enemy);
                             enemy.setEnemyHP(dmg);
                             System.out.println(enemy + " have " + enemy.getEnemyHP() + "HP left");
-                            System.out.println(enemy + " hit you for " + enemydmg + " DMG");
-                            player.setPlayerHP(enemydmg);
-                            System.out.println("You have " + player.getPlayerHealth() + "HP left");
-
                             if (adventure.getCurrentRoom().isDead(enemy)){
                                 System.out.println("you killed " + enemy);
                                 combatState = false;
-                            } else if (player.getPlayerHealth() <= 0 ){
-                                combatState = false;
+                            } else {
+                                System.out.println(enemy + " hit you for " + enemydmg + " DMG");
+                                player.setPlayerHP(enemydmg);
+                                System.out.println("You have " + player.getPlayerHealth() + "HP left");
+                                if (player.getPlayerHealth() <= 0) {
+                                    combatState = false;
+                                }
                             }
                         } else if (player.getCurrentWeapon() == null) {
                             System.out.println("You have no weapon equipped");
