@@ -76,6 +76,8 @@ public class Interface {
                         if (player.getCurrentWeapon() != null) {
                             int dmg = player.getWeaponDMG(player.getCurrentWeapon());
                             System.out.println("you did " + dmg + " DMG");
+                            enemy.setEnemyHP(dmg);
+                            System.out.println(enemy.getEnemyHP());
                         } else if (player.getCurrentWeapon() == null) {
                             System.out.println("You have no weapon equipped");
                         }

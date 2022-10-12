@@ -19,6 +19,9 @@ public class Enemy {
     public int getEnemyHP(){
         return enemyHP;
     }
+    public void setEnemyHP(int yourDMG){
+        enemyHP = enemyHP - yourDMG;
+    }
 
     public int getEnemyDMG(){
         return enemyDMG;
