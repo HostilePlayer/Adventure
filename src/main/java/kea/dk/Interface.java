@@ -72,17 +72,23 @@ public class Interface {
 
                 combatInput = sc.nextLine().toLowerCase();
                 switch (combatInput) {
-                    case "attack", "a":
+                    case "attack", "atk", "a":
                         if (player.getCurrentWeapon() != null) {
                             int dmg = player.getWeaponDMG(player.getCurrentWeapon());
                             System.out.println("you did " + dmg + " DMG");
                             enemy.setEnemyHP(dmg);
+                            if (adventure.getCurrentRoom().isDead(enemy)){
+                                System.out.println("you killed " + enemy);
+                                combatState = false;
+                            } else{
                             System.out.println(enemy.getEnemyHP());
+                            }
                         } else if (player.getCurrentWeapon() == null) {
                             System.out.println("You have no weapon equipped");
                         }
                         break;
                     case "run", "r":
+                        System.out.println("you have run away from combat");
                         combatState = false;
                         break;
                 }
