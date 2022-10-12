@@ -50,6 +50,9 @@ public class Player {
             health = maxHealth;
         }
     }
+    public void setPlayerHP(int enemyDMG){
+        health = health - enemyDMG;
+    }
 
     public boolean eatFromInventory(Item foodItem) {
         if (foodItem instanceof Food) {
