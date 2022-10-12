@@ -77,7 +77,12 @@ public class Interface {
                             int dmg = player.getWeaponDMG(player.getCurrentWeapon());
                             System.out.println("you did " + dmg + " DMG");
                             enemy.setEnemyHP(dmg);
+                            if (adventure.getCurrentRoom().isDead(enemy)){
+                                System.out.println("you killed " + enemy);
+                                combatState = false;
+                            } else{
                             System.out.println(enemy.getEnemyHP());
+                            }
                         } else if (player.getCurrentWeapon() == null) {
                             System.out.println("You have no weapon equipped");
                         }

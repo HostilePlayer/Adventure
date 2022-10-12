@@ -40,7 +40,12 @@ public class Room {
         Enemy enemy = new Enemy(enemyName, enemyHP, enemyDMG);
         enemies.add(enemy);
     }
-
+    public boolean isDead(Enemy enemy){
+        if (enemy.getEnemyHP() <= 0){
+            enemies.remove(enemy);
+            return true;
+        } else return false;
+    }
     public void addItem(Item item) {
         roomItems.add(item);
     }
