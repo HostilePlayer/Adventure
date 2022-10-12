@@ -13,7 +13,6 @@ public class Room {
     private Room teleport;
 
     public ArrayList<Item> roomItems = new ArrayList<>();
-    public ArrayList<Weapons> roomWeapons = new ArrayList<>();
     public ArrayList<Enemy> enemies = new ArrayList<>();
 
     public Room(String name, String description, int darkness) {
@@ -33,8 +32,8 @@ public class Room {
     }
 
     public void createWeaponItems(String itemName, int damage){
-        Food food = new Food(itemName, damage);
-        roomItems.add(food);
+        Weapons weapons = new Weapons(itemName, damage);
+        roomItems.add(weapons);
     }
 
     public void createEnemy(String enemyName, int enemyHP, int enemyDMG){
@@ -48,10 +47,6 @@ public class Room {
 
     public ArrayList<Item> getAllItems() {
         return roomItems;
-    }
-
-    public ArrayList<Weapons> getAllWeapons() {
-        return roomWeapons;
     }
 
     public ArrayList<Enemy> getEnemies() {

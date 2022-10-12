@@ -58,23 +58,37 @@ public class Interface {
     }
     public void enemyDetection(){
         // to be removed
-        boolean combatState = true;
-        System.out.println("you have entered combat");
-
-        while (combatState) {
             if (adventure.getCurrentRoom().getEnemies().size() == 0) {
                 System.out.println("no enemies ||debug to be removed");
-                combatState = false;
+
             } else if (adventure.getCurrentRoom().getEnemies().size() == 1) {
+                boolean combatState = true;
+
+                while (combatState) {
+                String combatInput;
+                System.out.println("you have entered combat");
                 Enemy enemy = adventure.getCurrentRoom().getEnemies().get(0);
                 System.out.println("current enemy: " + enemy);
 
+                combatInput = sc.nextLine().toLowerCase();
+                switch (combatInput) {
+                    case "attack", "a":
+                        if (player.getCurrentWeapon() != null) {
+                            int dmg = player.getWeaponDMG(player.getCurrentWeapon());
+                            System.out.println("you did " + dmg + " DMG");
+                        } else if (player.getCurrentWeapon() == null) {
+                            System.out.println("You have no weapon equipped");
+                        }
+                        break;
+                    case "run", "r":
+                        combatState = false;
+                        break;
+                }
+                } while (combatState);
             } else {
                 System.out.println("dunno wtf happened here");
-                combatState = false;
             }
             // to be removed
-        } while (combatState);
     }
 
     public void userInput() {
