@@ -57,7 +57,8 @@ public class Interface {
                 "type (R)un to run away from combat \n" +
                 "type (ex)it to exit program \n");
     }
-    public void combatState(){
+
+    public void combatState() {
         if (adventure.getCurrentRoom().getEnemies().size() == 1) {
             boolean combatState = true;
             System.out.println("you have entered combat");
@@ -76,7 +77,7 @@ public class Interface {
                             System.out.println("you did " + dmg + " DMG to " + enemy);
                             enemy.setEnemyHP(dmg);
                             System.out.println(enemy + " have " + enemy.getEnemyHP() + "HP left");
-                            if (adventure.getCurrentRoom().isDead(enemy)){
+                            if (adventure.getCurrentRoom().isDead(enemy)) {
                                 System.out.println("you killed " + enemy);
                                 combatState = false;
                             } else {
@@ -91,13 +92,14 @@ public class Interface {
                             System.out.println("You have no weapon equipped");
                         }
                         break;
-                        case "run", "r":
-                            System.out.println("you have run away from " + enemy);
-                            combatState = false;
-                            break;
-                   }
-               } while (combatState);
-           }
+                    case "run", "r":
+                        System.out.println("you have run away from " + enemy);
+                        combatState = false;
+                        break;
+                }
+            }
+            while (combatState) ;
+        }
     }
 
     public void userInput() {
@@ -283,18 +285,43 @@ public class Interface {
 
                     //tager item fra inventory
                     if (eatFromInventory != null) {
-                        player.eatFromInventory(eatFromInventory);
-
-                        System.out.println("you ate " + foodToEat);
-                        System.out.println(((Food) eatFromRoom).getFoodHealth() + " to HP");
-                        player.removeItem(foodToEat);
+                        if (((Food) eatFromInventory).getFoodHealth() < 0) {
+                            System.out.println("are you sure abouth that? yes / no");
+                            String eatPosion = sc.nextLine().toLowerCase();
+                            if (eatPosion.equals("yes")) {
+                                player.eatFromInventory(eatFromInventory);
+                                System.out.println("you ate " + foodToEat);
+                                System.out.println(((Food) eatFromInventory).getFoodHealth() + " to HP");
+                                player.removeItem(foodToEat);
+                            } else {
+                                System.out.println("That's is most likely for the best");
+                            }
+                        } else {
+                            player.eatFromInventory(eatFromInventory);
+                            System.out.println("you ate " + foodToEat);
+                            System.out.println(((Food) eatFromInventory).getFoodHealth() + " to HP");
+                            player.removeItem(foodToEat);
+                        }
                         //tager item fra currentRoom
                     } else if (eatFromRoom != null) {
                         if (eatFromRoom instanceof Food) {
-                            System.out.println(((Food) eatFromRoom).getFoodHealth() + " to HP");
-                            player.setPlayerHealth(((Food) eatFromRoom).getFoodHealth());
-                            System.out.println("You're eating " + foodToEat);
-                            adventure.removeItem(foodToEat);
+                            if (((Food) eatFromRoom).getFoodHealth() < 0) {
+                                System.out.println("are you sure abouth that? yes / no");
+                                String eatPosion = sc.nextLine().toLowerCase();
+                                if (eatPosion.equals("yes")) {
+                                    System.out.println(((Food) eatFromRoom).getFoodHealth() + " to HP");
+                                    player.setPlayerHealth(((Food) eatFromRoom).getFoodHealth());
+                                    System.out.println("You're eating " + foodToEat);
+                                    adventure.removeItem(foodToEat);
+                                } else {
+                                    System.out.println("That's is most likely for the best");
+                                }
+                            } else {
+                                System.out.println(((Food) eatFromRoom).getFoodHealth() + " to HP");
+                                player.setPlayerHealth(((Food) eatFromRoom).getFoodHealth());
+                                System.out.println("You're eating " + foodToEat);
+                                adventure.removeItem(foodToEat);
+                            }
 
                         }
 
@@ -310,96 +337,122 @@ public class Interface {
 
                     //tager item fra inventory
                     if (drinkFromInventory != null) {
-                        player.drinkFromInventory(drinkFromInventory);
+                        if (((Drinks) drinkFromInventory).getDrinkHealth() < 0) {
+                            System.out.println("are you sure abouth that? yes / no");
+                            String drinkpoison = sc.nextLine().toLowerCase();
+                            if (drinkpoison.equals("yes")) {
+                                player.drinkFromInventory(drinkFromInventory);
+                                System.out.println("You drink " + itemToDrink);
+                                System.out.println(((Drinks) drinkFromInventory).getDrinkHealth() + " to HP");
+                                player.removeItem(itemToDrink);
+                            } else {
+                                System.out.println("That's is most likely for the best");
+                            }
 
-                        System.out.println("You drink " + itemToDrink);
-                        System.out.println(((Drinks) drinkFromInventory).getDrinkHealth() + " to HP");
-                        player.removeItem(itemToDrink);
+                        } else {
+                            player.drinkFromInventory(drinkFromInventory);
+                            System.out.println("You drink " + itemToDrink);
+                            System.out.println(((Drinks) drinkFromInventory).getDrinkHealth() + " to HP");
+                            player.removeItem(itemToDrink);
+                        }
+
                         //tager item fra currentRoom
                     } else if (drinkFromRoom != null) {
                         if (drinkFromRoom instanceof Drinks) {
-                            System.out.println(((Drinks) drinkFromRoom).getDrinkHealth() + " to HP");
-                            player.setPlayerHealth(((Drinks) drinkFromRoom).getDrinkHealth());
-                            System.out.println("You're drinking " + itemToDrink);
-                            adventure.removeItem(itemToDrink);
-
+                            if (((Drinks) drinkFromRoom).getDrinkHealth() < 0) {
+                                System.out.println("are you sure abouth that? yes / no");
+                                String drinkpoison = sc.nextLine().toLowerCase();
+                                if (drinkpoison.equals("yes")) {
+                                    System.out.println(((Drinks) drinkFromRoom).getDrinkHealth() + " to HP");
+                                    player.setPlayerHealth(((Drinks) drinkFromRoom).getDrinkHealth());
+                                    System.out.println("You're drinking " + itemToDrink);
+                                    adventure.removeItem(itemToDrink);
+                                } else {
+                                    System.out.println("That's is most likely for the best");
+                                }
+                            } else {
+                                System.out.println(((Drinks) drinkFromRoom).getDrinkHealth() + " to HP");
+                                player.setPlayerHealth(((Drinks) drinkFromRoom).getDrinkHealth());
+                                System.out.println("You're drinking " + itemToDrink);
+                                adventure.removeItem(itemToDrink);
+                            }
                         }
                     } else {
                         System.out.println(itemToDrink + " not eatable");
                     }
-                    break;
+            break;
 
-                case "weapon":
+            case "weapon":
+                if (player.getCurrentWeapon() == null) {
+                    System.out.println("you have nothing equipped");
+                } else {
+                    System.out.println("you have " + player.getCurrentWeapon() + " equip");
+                }
+                break;
+
+            case "equip":
+                String weaponToEquip = command;
+                Item takeFromInventory = player.getItemFromInvetory(command);
+                Item takeFromRoom = adventure.getItemFromRoom(command);
+
+                //tager item fra inventory
+                if (takeFromInventory != null) {
+                    player.equipFromInventory(takeFromInventory);
+
+
                     if (player.getCurrentWeapon() == null) {
-                        System.out.println("you have nothing equipped");
+                        System.out.println("Was not able to equip " + weaponToEquip);
                     } else {
-                        System.out.println("you have " + player.getCurrentWeapon() + " equip");
+                        System.out.println("You equip " + weaponToEquip);
+                        player.removeItem(weaponToEquip);
                     }
-                    break;
 
-                case "equip":
-                    String weaponToEquip = command;
-                    Item takeFromInventory = player.getItemFromInvetory(command);
-                    Item takeFromRoom = adventure.getItemFromRoom(command);
-
-                    //tager item fra inventory
-                    if (takeFromInventory != null) {
-                        player.equipFromInventory(takeFromInventory);
-
-
-                        if (player.getCurrentWeapon() == null){
-                            System.out.println("Was not able to equip " + weaponToEquip);
-                        } else {
-                            System.out.println("You equip " + weaponToEquip);
-                            player.removeItem(weaponToEquip);
-                        }
-
-                        //tager item fra currentRoom
-                    } else if (takeFromRoom != null) {
-                        if (takeFromRoom instanceof Weapons) { //fejler check
-                            player.equipItem(takeFromRoom);
-                            adventure.removeItem(weaponToEquip);
-                            System.out.println("You equip " + weaponToEquip);
-                        } else {
-                            System.out.println("Was not able to equip " + weaponToEquip);
-                        }
-
+                    //tager item fra currentRoom
+                } else if (takeFromRoom != null) {
+                    if (takeFromRoom instanceof Weapons) { //fejler check
+                        player.equipItem(takeFromRoom);
+                        adventure.removeItem(weaponToEquip);
+                        System.out.println("You equip " + weaponToEquip);
                     } else {
-                        System.out.println(weaponToEquip + " is not a weapon");
-                    }
-                    break;
-
-                case "attack":
-                    if (player.getCurrentWeapon() != null) {
-                        System.out.println("You attacked!... the air...");
-                        player.getWeaponDMG(player.getCurrentWeapon());
-                        System.out.println("you did " + player.getWeaponDMG(player.getCurrentWeapon()) + " DMG");
-                    } else if (player.getCurrentWeapon() == null) {
-                        System.out.println("You have no weapon equipped");
+                        System.out.println("Was not able to equip " + weaponToEquip);
                     }
 
-                    break;
+                } else {
+                    System.out.println(weaponToEquip + " is not a weapon");
+                }
+                break;
 
-                case "unlock":
-                    System.out.println("this is WIP command");
-                    break;
+            case "attack":
+                if (player.getCurrentWeapon() != null) {
+                    System.out.println("You attacked!... the air...");
+                    player.getWeaponDMG(player.getCurrentWeapon());
+                    System.out.println("you did " + player.getWeaponDMG(player.getCurrentWeapon()) + " DMG");
+                } else if (player.getCurrentWeapon() == null) {
+                    System.out.println("You have no weapon equipped");
+                }
 
-                default:
-                    System.out.println("Could not find that command");
-                    break;
+                break;
 
-            }
-            if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
-                gameRunning = false;
-                System.out.println("Congratz! you did a thing");
-            }
-            combatState();
-            if (player.getPlayerHealth() == 0 || player.getPlayerHealth() < 0) {
-                gameRunning = false;
-                System.out.println("GAME OVER");
-                System.out.println("You died in the maze");
-            }
+            case "unlock":
+                System.out.println("this is WIP command");
+                break;
+
+            default:
+                System.out.println("Could not find that command");
+                break;
+
         }
-        while (gameRunning) ;
+        if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
+            gameRunning = false;
+            System.out.println("Congratz! you did a thing");
+        }
+        combatState();
+        if (player.getPlayerHealth() == 0 || player.getPlayerHealth() < 0) {
+            gameRunning = false;
+            System.out.println("GAME OVER");
+            System.out.println("You died in the maze");
+        }
     }
+        while(gameRunning);
+}
 }
