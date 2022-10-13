@@ -52,14 +52,15 @@ public class Interface {
                 "type (E)ast to go east \n" +
                 "type (W)est to go west \n" +
                 "type (l)ook to look around in your current location \n" +
-                "type (E)eat 'food' to eat" +
-                "type (A)ttack 'enemy' to attack" +
-                "type (ex)it to exit program");
+                "type (E)eat 'food' to eat \n" +
+                "type (A)ttack 'enemy' to attack \n" +
+                "type (R)un to run away from combat \n" +
+                "type (ex)it to exit program \n");
     }
     public void enemyDetection(){
         // to be removed
             if (adventure.getCurrentRoom().getEnemies().size() == 0) {
-                System.out.println("no enemies ||debug to be removed");
+                //System.out.println("no enemies ||debug to be removed");
 
             } else if (adventure.getCurrentRoom().getEnemies().size() == 1) {
                 boolean combatState = true;
@@ -126,7 +127,7 @@ public class Interface {
                     if (adventure.goNorth()) {
                         System.out.println("Going north \n" + adventure.getCurrentRoom().getName());
                     } else {
-                        System.out.println("You can not go that way");
+                        System.out.println("You somehow hit a wall in a forest");
                     }
                     break;
 
@@ -136,7 +137,7 @@ public class Interface {
                         System.out.println("Going east \n" + adventure.getCurrentRoom().getName());
 
                     } else {
-                        System.out.println("You can not go that way");
+                        System.out.println("You somehow hit a wall in a forest");
                     }
                     break;
 
@@ -145,7 +146,7 @@ public class Interface {
                         System.out.println("Going south \n" + adventure.getCurrentRoom().getName());
 
                     } else {
-                        System.out.println("You can not go that way");
+                        System.out.println("You somehow hit a wall in a forest");
                     }
                     break;
 
@@ -154,7 +155,7 @@ public class Interface {
                         System.out.println("Going west \n" + adventure.getCurrentRoom().getName());
 
                     } else {
-                        System.out.println("You can not go that way");
+                        System.out.println("You somehow hit a wall in a forest");
                     }
                     break;
 
@@ -269,6 +270,8 @@ public class Interface {
                     adventure.canPlayerTeleport();
                     if (adventure.goTeleport()) {
                         System.out.println(adventure.getCurrentRoom().getName());
+                    } else {
+                        System.out.println("Nothing changed");
                     }
                     break;
 
@@ -290,7 +293,7 @@ public class Interface {
 
                         //tager item fra currentRoom
                     } else if (eatFromRoom != null) {
-                        if (eatFromRoom instanceof Food) { //kan lave check her
+                        if (eatFromRoom instanceof Food) {
                             adventure.removeItem(foodToEat);
                             player.setPlayerHealth(((Food) eatFromRoom).getFoodHealth());
                             System.out.println("You're eating " + foodToEat);
