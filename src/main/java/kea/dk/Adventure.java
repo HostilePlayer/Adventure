@@ -11,7 +11,7 @@ public class Adventure {
     Player player = new Player();
 
     public void loadMusic(){
-        //for the love of god! husk at lav om så fil placering passer og navnet passer
+        //for the love of god! husk at lav om så fil placering passer og navnet passer. NOTE: skal være en wav fil
         File backgroundMusic = new File("C:\\Users\\Hostile\\IdeaProjects\\Adventure\\Sound\\GameMusic.wav");
         playMusic(backgroundMusic);
     }
