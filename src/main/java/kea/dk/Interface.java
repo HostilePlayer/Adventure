@@ -284,16 +284,17 @@ public class Interface {
                     //tager item fra inventory
                     if (eatFromInventory != null) {
                         player.eatFromInventory(eatFromInventory);
-                        player.removeItem(foodToEat);
 
                         System.out.println("you ate " + foodToEat);
-
+                        System.out.println(((Food) eatFromRoom).getFoodHealth() + " to HP");
+                        player.removeItem(foodToEat);
                         //tager item fra currentRoom
                     } else if (eatFromRoom != null) {
                         if (eatFromRoom instanceof Food) {
-                            adventure.removeItem(foodToEat);
+                            System.out.println(((Food) eatFromRoom).getFoodHealth() + " to HP");
                             player.setPlayerHealth(((Food) eatFromRoom).getFoodHealth());
                             System.out.println("You're eating " + foodToEat);
+                            adventure.removeItem(foodToEat);
 
                         }
 
