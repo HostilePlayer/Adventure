@@ -40,9 +40,12 @@ public class Map {
         room3.createItem("lamp");
         //til motode til at låse en dør op
         room7.createItem("key");
-        //food itemName, isEatAble, add health
+        //food itemName, add health
         room4.createFoodItem("pringles", 5);
         room4.createFoodItem("flesh", -5);
+        //drinks itemName, add health
+        room6.createDrinkItem("cola", 20);
+        room6.createDrinkItem("vodka", -20);
         //weapon items, name, damage
         room1.createWeaponItems("gun", 50);
         room2.createWeaponItems("machete", 10);

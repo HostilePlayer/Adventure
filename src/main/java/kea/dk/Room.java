@@ -36,6 +36,12 @@ public class Room {
         roomItems.add(weapons);
     }
 
+    public void createDrinkItem(String itemName, int healPoints){
+        Drinks drink = new Drinks(itemName, healPoints);
+        roomItems.add(drink);
+    }
+
+
     public void createEnemy(String enemyName, int enemyHP, int enemyDMG){
         Enemy enemy = new Enemy(enemyName, enemyHP, enemyDMG);
         enemies.add(enemy);

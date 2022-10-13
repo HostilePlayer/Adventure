@@ -63,6 +63,15 @@ public class Player {
         }
     }
 
+    public boolean drinkFromInventory(Item drinkItem) {
+        if (drinkItem instanceof Drinks) {
+            health += ((Drinks) drinkItem).getDrinkHealth();
+            return isEatAble = true; // eatable
+        } else {
+            return isEatAble = false; // not found
+        }
+    }
+
     public int getWeaponDMG(Item weaponAtUse){
         weaponDamage = ((Weapons) weaponAtUse).getDamage();
         return weaponDamage;

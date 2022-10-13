@@ -303,6 +303,32 @@ public class Interface {
                     }
                     break;
 
+                case "drink":
+                    String itemToDrink = command;
+                    Item drinkFromInventory = player.getItemFromInvetory(command);
+                    Item drinkFromRoom = adventure.getItemFromRoom(command);
+
+                    //tager item fra inventory
+                    if (drinkFromInventory != null) {
+                        player.drinkFromInventory(drinkFromInventory);
+
+                        System.out.println("You drink " + itemToDrink);
+                        System.out.println(((Drinks) drinkFromInventory).getDrinkHealth() + " to HP");
+                        player.removeItem(itemToDrink);
+                        //tager item fra currentRoom
+                    } else if (drinkFromRoom != null) {
+                        if (drinkFromRoom instanceof Drinks) {
+                            System.out.println(((Drinks) drinkFromRoom).getDrinkHealth() + " to HP");
+                            player.setPlayerHealth(((Drinks) drinkFromRoom).getDrinkHealth());
+                            System.out.println("You're drinking " + itemToDrink);
+                            adventure.removeItem(itemToDrink);
+
+                        }
+                    } else {
+                        System.out.println(itemToDrink + " not eatable");
+                    }
+                    break;
+
                 case "weapon":
                     if (player.getCurrentWeapon() == null) {
                         System.out.println("you have nothing equipped");
