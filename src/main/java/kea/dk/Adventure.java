@@ -1,8 +1,31 @@
 package kea.dk;
 
+import java.io.File;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+
+
 public class Adventure {
     Map creator = new Map();
     Player player = new Player();
+
+    public void loadMusic(){
+        //for the love of god! husk at lav om så fil placering passer og navnet passer
+        File backgroundMusic = new File("C:\\Users\\Hostile\\IdeaProjects\\Adventure\\Sound\\GameMusic.wav");
+        playMusic(backgroundMusic);
+    }
+
+    static void playMusic(File Sound){
+        try{
+            Clip music = AudioSystem.getClip();
+            music.open(AudioSystem.getAudioInputStream(Sound));
+            music.loop(999999);
+
+        }catch (Exception e){
+            System.out.println("music crashed");
+        }
+    }
 
     public boolean canPlayerTeleport() {
         boolean canTeleport;
