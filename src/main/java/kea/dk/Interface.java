@@ -57,19 +57,15 @@ public class Interface {
                 "type (R)un to run away from combat \n" +
                 "type (ex)it to exit program \n");
     }
-    public void enemyDetection(){
-        // to be removed
-            if (adventure.getCurrentRoom().getEnemies().size() == 0) {
-                //System.out.println("no enemies ||debug to be removed");
+    public void combatState(){
+        if (adventure.getCurrentRoom().getEnemies().size() == 1) {
+            boolean combatState = true;
+            System.out.println("you have entered combat");
+            Enemy enemy = adventure.getCurrentRoom().getEnemies().get(0);
+            System.out.println("current enemy: " + enemy);
 
-            } else if (adventure.getCurrentRoom().getEnemies().size() == 1) {
-                boolean combatState = true;
-
-                while (combatState) {
+            while (combatState) {
                 String combatInput;
-                System.out.println("you have entered combat");
-                Enemy enemy = adventure.getCurrentRoom().getEnemies().get(0);
-                System.out.println("current enemy: " + enemy);
 
                 combatInput = sc.nextLine().toLowerCase();
                 switch (combatInput) {
@@ -77,30 +73,31 @@ public class Interface {
                         if (player.getCurrentWeapon() != null) {
                             int dmg = player.getWeaponDMG(player.getCurrentWeapon());
                             int enemydmg = enemy.getEnemyDMG();
-                            System.out.println("you did " + dmg + " DMG");
+                            System.out.println("you did " + dmg + " DMG to " + enemy);
                             enemy.setEnemyHP(dmg);
+                            System.out.println(enemy + " have " + enemy.getEnemyHP() + "HP left");
                             if (adventure.getCurrentRoom().isDead(enemy)){
                                 System.out.println("you killed " + enemy);
                                 combatState = false;
-                            } else{
-                                System.out.println(enemy.getEnemyHP());
-                                System.out.println("the enemy hit you for " + enemydmg + " DMG");
+                            } else {
+                                System.out.println(enemy + " hit you for " + enemydmg + " DMG");
                                 player.setPlayerHP(enemydmg);
+                                System.out.println("You have " + player.getPlayerHealth() + "HP left");
+                                if (player.getPlayerHealth() <= 0) {
+                                    combatState = false;
+                                }
                             }
                         } else if (player.getCurrentWeapon() == null) {
                             System.out.println("You have no weapon equipped");
                         }
                         break;
-                    case "run", "r":
-                        System.out.println("you have run away from combat");
-                        combatState = false;
-                        break;
-                }
-                } while (combatState);
-            } else {
-                System.out.println("dunno wtf happened here");
-            }
-            // to be removed
+                        case "run", "r":
+                            System.out.println("you have run away from " + enemy);
+                            combatState = false;
+                            break;
+                   }
+               } while (combatState);
+           }
     }
 
     public void userInput() {
@@ -369,13 +366,12 @@ public class Interface {
                 gameRunning = false;
                 System.out.println("Congratz! you did a thing");
             }
+            combatState();
             if (player.getPlayerHealth() == 0 || player.getPlayerHealth() < 0) {
                 gameRunning = false;
                 System.out.println("GAME OVER");
                 System.out.println("You died in the maze");
             }
-            // just checking if enemy gets detected
-            enemyDetection();
         }
         while (gameRunning) ;
     }
