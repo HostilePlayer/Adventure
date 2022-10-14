@@ -47,7 +47,7 @@ public class Map {
         room6.createDrinkItem("cola", 20);
         room6.createDrinkItem("vodka", -20);
         //weapon items, name, damage
-        room1.createRangedWeapon("gun", 50);
+        room1.createRangedWeapon("gun", 50, 7);
         room2.createMeleeWeapon("machete", 10);
         //create enemy: name, health, damage
         room8.createEnemy("peter" , 9999, 100);

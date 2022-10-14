@@ -8,7 +8,12 @@ public class RangedWeapon extends Weapons{
         this.ammo = ammo;
     }
 
-    public int getAmmo(){
+    public int getAmmoLeft() {
         return ammo;
+    }
+
+    public boolean canUse() {
+        ammo -= 1;
+        return (ammo > 0);
     }
 }

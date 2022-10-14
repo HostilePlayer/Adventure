@@ -35,8 +35,8 @@ public class Room {
         Weapons weapons = new Weapons(itemName, damage);
         roomItems.add(weapons);
     }
-    public void createRangedWeapon(String itemName, int damage){
-        RangedWeapon rangedWeapon = new RangedWeapon(itemName, damage);
+    public void createRangedWeapon(String itemName, int damage, int ammo){
+        RangedWeapon rangedWeapon = new RangedWeapon(itemName, damage, ammo);
         roomItems.add(rangedWeapon);
     }
     public void createMeleeWeapon(String itemName, int damage){
