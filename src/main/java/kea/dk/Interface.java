@@ -95,7 +95,7 @@ public class Interface {
                             } else {
                                 if (player.haveShield()){
                                     System.out.println("You blocked some of the incomming DMG with your shield");
-                                    player.setPlayerHealth(enemydmg/2);
+                                    player.setPlayerHealth(-enemydmg/2);
                                     System.out.println("You have " + player.getPlayerHealth() + "HP left");
                                 } else {
                                     System.out.println(enemy + " hit you for " + enemydmg + " DMG");
