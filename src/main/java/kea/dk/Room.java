@@ -35,6 +35,14 @@ public class Room {
         Weapons weapons = new Weapons(itemName, damage);
         roomItems.add(weapons);
     }
+    public void createRangedWeapon(String itemName, int damage){
+        RangedWeapon rangedWeapon = new RangedWeapon(itemName, damage);
+        roomItems.add(rangedWeapon);
+    }
+    public void createMeleeWeapon(String itemName, int damage){
+        MeleeWeapon meleeWeapon = new MeleeWeapon(itemName, damage);
+        roomItems.add(meleeWeapon);
+    }
 
     public void createDrinkItem(String itemName, int healPoints){
         Drinks drink = new Drinks(itemName, healPoints);
