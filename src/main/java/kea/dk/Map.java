@@ -4,7 +4,7 @@ public class Map {
     private Room currentRoom;
     private Room endRoom;
 
-    //laver alle rum
+    //make alle rum
     Room room1 = new Room("Forest clearing", "you are in a grand forest, not much to see", 0, false);
     Room room2 = new Room("Northern part of the forest", "You see a lot of forest", 0, false);
     Room room3 = new Room("North eastern forest part", "What is that? a tree? in a forest", 0, false);
@@ -19,7 +19,7 @@ public class Map {
 
 
     public void createPaths() {
-        //laver paths i rum
+        //make paths i rum
         //Room north, Room east, Room south, Room west, Room teleport
         room1.setRoom(null, room2, room4, null, null);
         room2.setRoom(null, room3, null, room1, null);
@@ -38,7 +38,7 @@ public class Map {
         room1.createItem("massive bong");
 
         room3.createItem("lamp");
-        //til motode til at låse en dør op
+        //til mode til at lcok en dør op
         room7.createItem("key");
         //food itemName, add health
         room4.createFoodItem("pringles", 5);

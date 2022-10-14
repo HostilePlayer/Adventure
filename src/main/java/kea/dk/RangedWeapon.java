@@ -1,7 +1,7 @@
 package kea.dk;
 
 public class RangedWeapon extends Weapons{
-    private int ammo;
+    private final int ammo;
 
     public RangedWeapon(String name, int damage, int ammo) {
         super(name, damage);
@@ -13,10 +13,6 @@ public class RangedWeapon extends Weapons{
     }
 
     public boolean canUse() {
-        if (ammo < 1){
-            return false;
-        } else {
-            return true;
-        }
+        return ammo >= 1;
     }
 }

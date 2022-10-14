@@ -25,7 +25,7 @@ public class Adventure {
     }
 
     public void loadMusic(){
-        //for the love of god! husk at lav om så fil placering passer og navnet passer. NOTE: skal være en wav fil
+        //make sure file name and location is correct
         File backgroundMusic = new File("C:\\Users\\Hostile\\IdeaProjects\\Adventure\\Sound\\GameMusic.wav");
         playMusic(backgroundMusic);
     }
@@ -46,11 +46,7 @@ public class Adventure {
         boolean canTeleport;
         if (getCurrentRoom() == getDarkRoom1()) {
             canTeleport = true;
-        } else if (getCurrentRoom() == getDarkRoom2()) {
-            canTeleport = true;
-        } else {
-            canTeleport = false;
-        }
+        } else canTeleport = getCurrentRoom() == getDarkRoom2();
         return canTeleport;
     }
 

@@ -2,7 +2,7 @@ package kea.dk;
 
 public class Item {
 
-    private String itemName;
+    private final String itemName;
 
     public Item(String itemName) {
         this.itemName = itemName;

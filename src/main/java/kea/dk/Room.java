@@ -3,14 +3,14 @@ package kea.dk;
 import java.util.ArrayList;
 
 public class Room {
-    private String name;
-    private String description;
+    private final String name;
+    private final String description;
     private Room north;
     private Room south;
     private Room west;
     private Room east;
-    private int darkness;
-    private boolean npcInRoom;
+    private final int darkness;
+    private final boolean npcInRoom;
     private Room teleport;
 
     public ArrayList<Item> roomItems = new ArrayList<>();
@@ -119,5 +119,4 @@ public class Room {
         this.west = west;
         this.teleport = teleport;
     }
-    //her skal vi lave vores room
 }

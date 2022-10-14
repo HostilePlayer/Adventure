@@ -1,7 +1,7 @@
 package kea.dk;
 
 public class Food extends Item{
-    private int healthPoints;
+    private final int healthPoints;
 
     public Food(String name, int healthPoints) {
         super(name);

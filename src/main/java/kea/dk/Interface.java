@@ -10,16 +10,17 @@ public class Interface {
     boolean haveLamp = false;
 
     public void startUp() {
-        System.out.println("\u001B[0m\u001B[1;32m" +
-                "01100010 01100101 01110011 01110100 00100000 01000111 01100001 01101101 01100101\n" +
-                "01100010 01100101 01110011 01110100 00100000 01000111 01100001 01101101 01100101\n" +
-                "\u001B[0m \u001B[1;32m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\u001B[0m\n" +
-                " \u001B[1;32m█\u001B[0m  \u001B[1;32m                                                                          █\u001B[0m\n" +
-                " \u001B[1;32m█\u001B[0m  \u001B[1;32m                           Welcome Adventure!\u001B[0m                             \u001B[1;32m█\u001B[0m\n" +
-                " \u001B[1;32m█\u001B[0m  \u001B[1;32m \u001B[0m                                                                         \u001B[1;32m█\u001B[0m\n" +
-                " \u001B[1;32m▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n" +
-                "01100010 01100101 01110011 01110100 00100000 01000111 01100001 01101101 01100101\n" +
-                "01100010 01100101 01110011 01110100 00100000 01000111 01100001 01101101 01100101\n");
+        System.out.println("""
+                \u001B[0m\u001B[1;32m01100010 01100101 01110011 01110100 00100000 01000111 01100001 01101101 01100101
+                01100010 01100101 01110011 01110100 00100000 01000111 01100001 01101101 01100101
+                \u001B[0m \u001B[1;32m▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\u001B[0m
+                 \u001B[1;32m█\u001B[0m  \u001B[1;32m                                                                          █\u001B[0m
+                 \u001B[1;32m█\u001B[0m  \u001B[1;32m                           Welcome Adventure!\u001B[0m                             \u001B[1;32m█\u001B[0m
+                 \u001B[1;32m█\u001B[0m  \u001B[1;32m \u001B[0m                                                                         \u001B[1;32m█\u001B[0m
+                 \u001B[1;32m▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                01100010 01100101 01110011 01110100 00100000 01000111 01100001 01101101 01100101
+                01100010 01100101 01110011 01110100 00100000 01000111 01100001 01101101 01100101
+                """);
 
         System.out.println("\033[0m");
         adventure.startAdventure();
@@ -31,43 +32,41 @@ public class Interface {
         do {
             gameStartInput = sc.nextLine();
             switch (gameStartInput.trim().toLowerCase()) {
-                case "start game", "(s)tart", "start", "s":
+                case "start game", "(s)tart", "start", "s" -> {
                     introduction();
                     userInput();
                     menuLoopEndValue = false;
-                    break;
-                case "(h)elp", "help", "h":
-                    help();
-                    break;
-                case "(q)uit", "quit", "q":
-                    menuLoopEndValue = false;
-                    break;
-                default: //den høre det her hver gang, selv om man hver et rigtigt input
-                    System.out.println(gameStartInput + " is not a valid input if you need help type (h)elp to get a list of commands, \n " +
-                            "type (s)tart to start or type (q)uit to quit");
-                    break;
+                }
+                case "(h)elp", "help", "h" -> help();
+                case "(q)uit", "quit", "q" -> menuLoopEndValue = false;
+                default ->
+                        System.out.println(gameStartInput + " is not a valid input if you need help type (h)elp to get a list of commands, \n " +
+                                "type (s)tart to start or type (q)uit to quit");
             }
         } while (menuLoopEndValue);
     }
 
     public void introduction() {
-        System.out.println("In this magical adventure you have to explore a maze of 9 rooms.\n" +
-                "Can you find the exit or be lost in the maze forever?\n" +
-                "\n" +
-                "type (s)tart to start up the game or type (h)elp to get a list of commands");
+        System.out.println("""
+                In this magical adventure you have to explore a maze of 9 rooms.
+                Can you find the exit or be lost in the maze forever?
+
+                type (s)tart to start up the game or type (h)elp to get a list of commands""");
     }
 
     public void help() {
-        System.out.println("Here is a list of commands:\n" +
-                "type (N)orth to go north \n" +
-                "type (S)outh to go south \n" +
-                "type (E)ast to go east \n" +
-                "type (W)est to go west \n" +
-                "type (l)ook to look around in your current location \n" +
-                "type (E)eat 'food' to eat \n" +
-                "type (A)ttack 'enemy' to attack \n" +
-                "type (R)un to run away from combat \n" +
-                "type (ex)it to exit program \n");
+        System.out.println("""
+                Here is a list of commands:
+                type (N)orth to go north\s
+                type (S)outh to go south\s
+                type (E)ast to go east\s
+                type (W)est to go west\s
+                type (l)ook to look around in your current location\s
+                type (E)eat 'food' to eat\s
+                type (A)ttack 'enemy' to attack\s
+                type (R)un to run away from combat\s
+                type (ex)it to exit program\s
+                """);
     }
 
     public void combatState() {
@@ -85,7 +84,7 @@ public class Interface {
                     case "attack", "atk", "a":
                         if (player.getCurrentWeapon() != null) {
                             int dmg = player.getWeaponDMG(player.getCurrentWeapon());
-                            int enemydmg = enemy.getEnemyDMG();
+                            int enemyDMG = enemy.getEnemyDMG();
                             System.out.println("you did " + dmg + " DMG to " + enemy);
                             enemy.setEnemyHP(dmg);
                             System.out.println(enemy + " have " + enemy.getEnemyHP() + "HP left");
@@ -95,12 +94,12 @@ public class Interface {
                                 combatState = false;
                             } else {
                                 if (player.haveShield()) {
-                                    System.out.println("You blocked some of the incomming DMG with your shield");
-                                    player.setPlayerHealth(-enemydmg / 2);
+                                    System.out.println("You blocked some of the incoming DMG with your shield");
+                                    player.setPlayerHealth(-enemyDMG / 2);
                                     System.out.println("You have " + player.getPlayerHealth() + "HP left");
                                 } else {
-                                    System.out.println(enemy + " hit you for " + enemydmg + " DMG");
-                                    player.setPlayerHP(enemydmg);
+                                    System.out.println(enemy + " hit you for " + enemyDMG + " DMG");
+                                    player.setPlayerHP(enemyDMG);
                                     System.out.println("You have " + player.getPlayerHealth() + "HP left");
                                 }
 
@@ -118,7 +117,7 @@ public class Interface {
                         break;
                 }
             }
-            while (combatState) ;
+            while (combatState);
         }
     }
 
@@ -202,7 +201,7 @@ public class Interface {
                     break;
 
                 case "(l)ook", "look", "l":
-                    //er currentRoom mørkt
+                    //er currentRoom dark
                     if (adventure.getCurrentRoom().getDarkness() == 0) {
                         System.out.println(adventure.getCurrentRoom().getDescription());
                         for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
@@ -212,9 +211,9 @@ public class Interface {
                         //har player en lamp?
                         haveLamp = player.haveLamp();
                         if (haveLamp) {
-                            //er lampen tændt?
+                            //er lamp pm?
                             if (player.isLightOn()) {
-                                //hvis lampen er tændt
+                                //if lamp is on
                                 System.out.println(adventure.getCurrentRoom().getDescription());
                                 for (int i = 0; i < adventure.getCurrentRoom().roomItems.size(); i++) {
                                     System.out.println(adventure.getCurrentRoom().roomItems.get(i));
@@ -319,15 +318,15 @@ public class Interface {
 
                 case "eat":
                     String foodToEat = command;
-                    Item eatFromInventory = player.getItemFromInvetory(command);
+                    Item eatFromInventory = player.getItemFromInventory(command);
                     Item eatFromRoom = adventure.getItemFromRoom(command);
 
-                    //tager item fra inventory
+                    //takes item fra inventory
                     if (eatFromInventory != null) {
                         if (((Food) eatFromInventory).getFoodHealth() < 0) {
-                            System.out.println("are you sure abouth that? yes / no");
-                            String eatPosion = sc.nextLine().toLowerCase();
-                            if (eatPosion.equals("yes")) {
+                            System.out.println("are you sure about that? yes / no");
+                            String poison = sc.nextLine().toLowerCase();
+                            if (poison.equals("yes")) {
                                 player.eatFromInventory(eatFromInventory);
                                 System.out.println("you ate " + foodToEat);
                                 System.out.println(((Food) eatFromInventory).getFoodHealth() + " to HP");
@@ -341,13 +340,13 @@ public class Interface {
                             System.out.println(((Food) eatFromInventory).getFoodHealth() + " to HP");
                             player.removeItem(foodToEat);
                         }
-                        //tager item fra currentRoom
+                        //takes item fra currentRoom
                     } else if (eatFromRoom != null) {
                         if (eatFromRoom instanceof Food) {
                             if (((Food) eatFromRoom).getFoodHealth() < 0) {
-                                System.out.println("are you sure abouth that? yes / no");
-                                String eatPosion = sc.nextLine().toLowerCase();
-                                if (eatPosion.equals("yes")) {
+                                System.out.println("are you sure about that? yes / no");
+                                String eatPoison = sc.nextLine().toLowerCase();
+                                if (eatPoison.equals("yes")) {
                                     System.out.println(((Food) eatFromRoom).getFoodHealth() + " to HP");
                                     player.setPlayerHealth(((Food) eatFromRoom).getFoodHealth());
                                     System.out.println("You're eating " + foodToEat);
@@ -371,15 +370,15 @@ public class Interface {
 
                 case "drink":
                     String itemToDrink = command;
-                    Item drinkFromInventory = player.getItemFromInvetory(command);
+                    Item drinkFromInventory = player.getItemFromInventory(command);
                     Item drinkFromRoom = adventure.getItemFromRoom(command);
 
-                    //tager item fra inventory
+                    //takes item fra inventory
                     if (drinkFromInventory != null) {
                         if (((Drinks) drinkFromInventory).getDrinkHealth() < 0) {
-                            System.out.println("are you sure abouth that? yes / no");
-                            String drinkpoison = sc.nextLine().toLowerCase();
-                            if (drinkpoison.equals("yes")) {
+                            System.out.println("are you sure about that? yes / no");
+                            String drinkPoison = sc.nextLine().toLowerCase();
+                            if (drinkPoison.equals("yes")) {
                                 player.drinkFromInventory(drinkFromInventory);
                                 System.out.println("You drink " + itemToDrink);
                                 System.out.println(((Drinks) drinkFromInventory).getDrinkHealth() + " to HP");
@@ -395,13 +394,13 @@ public class Interface {
                             player.removeItem(itemToDrink);
                         }
 
-                        //tager item fra currentRoom
+                        //takes item fra currentRoom
                     } else if (drinkFromRoom != null) {
                         if (drinkFromRoom instanceof Drinks) {
                             if (((Drinks) drinkFromRoom).getDrinkHealth() < 0) {
-                                System.out.println("are you sure abouth that? yes / no");
-                                String drinkpoison = sc.nextLine().toLowerCase();
-                                if (drinkpoison.equals("yes")) {
+                                System.out.println("are you sure about that? yes / no");
+                                String drinkPoison = sc.nextLine().toLowerCase();
+                                if (drinkPoison.equals("yes")) {
                                     System.out.println(((Drinks) drinkFromRoom).getDrinkHealth() + " to HP");
                                     player.setPlayerHealth(((Drinks) drinkFromRoom).getDrinkHealth());
                                     System.out.println("You're drinking " + itemToDrink);
@@ -431,10 +430,10 @@ public class Interface {
 
                 case "equip":
                     String weaponToEquip = command;
-                    Item takeFromInventory = player.getItemFromInvetory(command);
+                    Item takeFromInventory = player.getItemFromInventory(command);
                     Item takeFromRoom = adventure.getItemFromRoom(command);
 
-                    //tager item fra inventory
+                    //takes item fra inventory
                     if (takeFromInventory != null) {
                         player.equipFromInventory(takeFromInventory);
 
@@ -446,9 +445,9 @@ public class Interface {
                             player.removeItem(weaponToEquip);
                         }
 
-                        //tager item fra currentRoom
+                        //takes item fra currentRoom
                     } else if (takeFromRoom != null) {
-                        if (takeFromRoom instanceof Weapons) { //fejler check
+                        if (takeFromRoom instanceof Weapons) {
                             player.equipItem(takeFromRoom);
                             adventure.removeItem(weaponToEquip);
                             System.out.println("You equip " + weaponToEquip);
@@ -486,7 +485,7 @@ public class Interface {
             }
             if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
                 gameRunning = false;
-                System.out.println("Congratz! you did a thing");
+                System.out.println("Congrats! you did a thing");
             }
             combatState();
             if (player.getPlayerHealth() == 0 || player.getPlayerHealth() < 0) {
@@ -520,7 +519,7 @@ public class Interface {
 
                     case "info":
                         System.out.println("I used be an adventure like you then i took an arrow to the... wait no");
-                        System.out.println("thats right i was drunk and went to the forrest looking for moonshine and have been stuck in a tree since");
+                        System.out.println("that's right i was drunk and went to the forrest looking for moonshine and have been stuck in a tree since");
                         break;
 
                     case "leave":

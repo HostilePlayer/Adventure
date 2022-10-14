@@ -1,7 +1,7 @@
 package kea.dk;
 
 public class Weapons extends Item {
-    private int damage;
+    private final int damage;
 
     public Weapons(String name, int damage) {
         super(name);

@@ -2,18 +2,14 @@ package kea.dk;
 
 public class Enemy {
 
-    private String enemyName;
+    private final String enemyName;
     private int enemyHP;
-    private int enemyDMG;
+    private final int enemyDMG;
 
     public Enemy(String enemyName, int enemyHP, int enemyDMG) {
         this.enemyName = enemyName;
         this.enemyHP = enemyHP;
         this.enemyDMG = enemyDMG;
-    }
-
-    public String getEnemyName() {
-        return enemyName;
     }
 
     public int getEnemyHP(){

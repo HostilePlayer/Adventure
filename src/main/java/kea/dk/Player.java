@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Player {
     private Room currentRoom;
-    private ArrayList<Item> inventory = new ArrayList<>();
+    private final ArrayList<Item> inventory = new ArrayList<>();
     private Item newItem;
     private Item currentWeapon;
     boolean lampLight = false;
@@ -28,7 +28,7 @@ public class Player {
         return currentWeapon;
     }
 
-    public Item getItemFromInvetory(String itemName){
+    public Item getItemFromInventory(String itemName){
         for(Item itemFromInventory : inventory){
             if (itemFromInventory.getItemName().contains(itemName)){
                 return itemFromInventory;
@@ -86,22 +86,14 @@ public class Player {
 
     public boolean haveShield(){
         for (Item item : inventory){
-            if (item.getItemName().contains("shield")){
-                shieldInInventory = true;
-            } else {
-                shieldInInventory = false;
-            }
+            shieldInInventory = item.getItemName().contains("shield");
         }
         return shieldInInventory;
     }
 
     public boolean haveLamp() {
         for (Item item : inventory) {
-            if (item.getItemName().contains("lamp")) {
-                lampInInventory = true;
-            } else {
-                lampInInventory = false;
-            }
+            lampInInventory = item.getItemName().contains("lamp");
         }
         return lampInInventory;
     }
@@ -117,11 +109,7 @@ public class Player {
     }
 
     public void toggleLamp(boolean toggleLight) {
-        if (toggleLight = true) {
-            lampLight = true;
-        } else {
-            lampLight = false;
-        }
+        lampLight = toggleLight;
     }
 
     public void setCurrentRoom(Room currentRoom) {
@@ -135,11 +123,11 @@ public class Player {
 
     public Item getItem(String searchTerm) {
         resetNewItem();
-        //laver en liste over items i currentRoom
+        //make list over items in currentRoom
         ArrayList<Item> searchResult = getCurrentRoom().getAllItems();
-        //for hvert item
+        //for each item
         for (Item item : searchResult) {
-            //check om item name passer med det bruger søger
+            //if item name match searchTerm
             if (item.getItemName().contains(searchTerm.toLowerCase())) {
                 //add item til inventory
                 newItem = item;
