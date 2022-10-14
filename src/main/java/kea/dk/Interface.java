@@ -114,6 +114,24 @@ public class Interface {
         }
     }
 
+    public void getDoors(){
+        if (adventure.goNorth() != false){
+            System.out.println("you see a path leading North");
+        }
+
+        if (adventure.goSouth() != false){
+            System.out.println("you see a path leading South");
+        }
+
+        if (adventure.goEast() != false){
+            System.out.println("you see a path leading East");
+        }
+
+        if (adventure.goWest() != false){
+            System.out.println("you see a path leading West");
+        }
+    }
+
     public void userInput() {
         boolean gameRunning = true;
         //player.setPlayerHealth(5); //for tester
@@ -137,6 +155,7 @@ public class Interface {
 
                     if (adventure.goNorth()) {
                         System.out.println("Going north \n" + adventure.getCurrentRoom().getName());
+                        getDoors();
                     } else {
                         System.out.println("You somehow hit a wall in a forest");
                     }
@@ -146,7 +165,7 @@ public class Interface {
                 case "(e)ast", "east", "e":
                     if (adventure.goEast()) {
                         System.out.println("Going east \n" + adventure.getCurrentRoom().getName());
-
+                        getDoors();
                     } else {
                         System.out.println("You somehow hit a wall in a forest");
                     }
@@ -155,7 +174,7 @@ public class Interface {
                 case "(s)outh", "south", "s":
                     if (adventure.goSouth()) {
                         System.out.println("Going south \n" + adventure.getCurrentRoom().getName());
-
+                        getDoors();
                     } else {
                         System.out.println("You somehow hit a wall in a forest");
                     }
@@ -164,7 +183,7 @@ public class Interface {
                 case "(w)est", "west", "w":
                     if (adventure.goWest()) {
                         System.out.println("Going west \n" + adventure.getCurrentRoom().getName());
-
+                        getDoors();
                     } else {
                         System.out.println("You somehow hit a wall in a forest");
                     }
