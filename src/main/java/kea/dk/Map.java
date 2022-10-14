@@ -5,17 +5,17 @@ public class Map {
     private Room endRoom;
 
     //laver alle rum
-    Room room1 = new Room("Forest clearing", "you are in a grand forest, not much to see", 0);
-    Room room2 = new Room("Northern part of the forest", "You see a lot of forest", 0);
-    Room room3 = new Room("North eastern forest part", "What is that? a tree? in a forest", 0);
-    Room room4 = new Room("Western forest", "In the forest you wonder, how many trees make a forest", 0);
-    Room Wroom = new Room("Dark spot to the west", "You see a path starting from nowhere", 1);
-    Room room5 = new Room("Winner Room", "you found the way out! good job", 0);
-    Room room6 = new Room("Eastern forest part", "More trees and more grass", 0);
-    Room Eroom = new Room("dark spot to the east", "something is written on a tree: xyzzy", 1);
-    Room room7 = new Room("South western forest clearing", "Above the forest you see the sky", 0);
-    Room room8 = new Room("Southern forest part", "You notice the trees all look like trees", 0);
-    Room room9 = new Room("South eastern", "You have come to the other side of the forest and found more forest", 0);
+    Room room1 = new Room("Forest clearing", "you are in a grand forest, not much to see", 0, false);
+    Room room2 = new Room("Northern part of the forest", "You see a lot of forest", 0, false);
+    Room room3 = new Room("North eastern forest part", "What is that? a tree? in a forest", 0, false);
+    Room room4 = new Room("Western forest", "In the forest you wonder, how many trees make a forest", 0, false);
+    Room Wroom = new Room("Dark spot to the west", "You see a path starting from nowhere", 1, false);
+    Room room5 = new Room("Winner Room", "you found the way out! good job", 0, false);
+    Room room6 = new Room("Eastern forest part", "You see a old man that is, smelling of bear and his lower body in a tree", 0, true);
+    Room Eroom = new Room("dark spot to the east", "something is written on a tree: xyzzy", 1, false);
+    Room room7 = new Room("South western forest clearing", "Above the forest you see the sky", 0, false);
+    Room room8 = new Room("Southern forest part", "You notice the trees all look like trees", 0, false);
+    Room room9 = new Room("South eastern", "You have come to the other side of the forest and found more forest", 0, false);
 
 
     public void createPaths() {

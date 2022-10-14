@@ -108,6 +108,8 @@ public class Adventure {
         creator.createPaths();
         player.setCurrentRoom(getStartRoom());
         createLoot("gold coins");
+        createLoot("gold coins");
+        createLoot("ammo");
         createLoot("ammo");
     }
 

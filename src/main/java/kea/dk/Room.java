@@ -10,15 +10,17 @@ public class Room {
     private Room west;
     private Room east;
     private int darkness;
+    private boolean npcInRoom;
     private Room teleport;
 
     public ArrayList<Item> roomItems = new ArrayList<>();
     public ArrayList<Enemy> enemies = new ArrayList<>();
 
-    public Room(String name, String description, int darkness) {
+    public Room(String name, String description, int darkness, boolean npcInRoom) {
         this.name = name;
         this.description = description;
         this.darkness = darkness;
+        this.npcInRoom = npcInRoom;
     }
 
     public void createItem(String itemName) {
@@ -104,6 +106,10 @@ public class Room {
 
     public int getDarkness() {
         return darkness;
+    }
+
+    public boolean getNpcInRoom(){
+        return npcInRoom;
     }
 
     public void setRoom(Room north, Room east, Room south, Room west, Room teleport) {

@@ -92,12 +92,11 @@ public class Interface {
                             if (adventure.getCurrentRoom().isDead(enemy)) {
                                 System.out.println("you killed " + enemy);
                                 adventure.dropLoot();
-                                adventure.dropLoot();
                                 combatState = false;
                             } else {
-                                if (player.haveShield()){
+                                if (player.haveShield()) {
                                     System.out.println("You blocked some of the incomming DMG with your shield");
-                                    player.setPlayerHealth(-enemydmg/2);
+                                    player.setPlayerHealth(-enemydmg / 2);
                                     System.out.println("You have " + player.getPlayerHealth() + "HP left");
                                 } else {
                                     System.out.println(enemy + " hit you for " + enemydmg + " DMG");
@@ -123,20 +122,20 @@ public class Interface {
         }
     }
 
-    public void getDoors(){
-        if (adventure.getCurrentRoom().getNorth() != null){
+    public void getDoors() {
+        if (adventure.getCurrentRoom().getNorth() != null) {
             System.out.println("you see a path leading North");
         }
 
-        if (adventure.getCurrentRoom().getSouth() != null){
+        if (adventure.getCurrentRoom().getSouth() != null) {
             System.out.println("you see a path leading South");
         }
 
-        if (adventure.getCurrentRoom().getEast() != null){
+        if (adventure.getCurrentRoom().getEast() != null) {
             System.out.println("you see a path leading East");
         }
 
-        if (adventure.getCurrentRoom().getWest() != null){
+        if (adventure.getCurrentRoom().getWest() != null) {
             System.out.println("you see a path leading West");
         }
     }
@@ -420,79 +419,119 @@ public class Interface {
                     } else {
                         System.out.println(itemToDrink + " not eatable");
                     }
-            break;
+                    break;
 
-            case "weapon":
-                if (player.getCurrentWeapon() == null) {
-                    System.out.println("you have nothing equipped");
-                } else {
-                    System.out.println("you have " + player.getCurrentWeapon() + " equip");
-                }
-                break;
-
-            case "equip":
-                String weaponToEquip = command;
-                Item takeFromInventory = player.getItemFromInvetory(command);
-                Item takeFromRoom = adventure.getItemFromRoom(command);
-
-                //tager item fra inventory
-                if (takeFromInventory != null) {
-                    player.equipFromInventory(takeFromInventory);
-
-
+                case "weapon":
                     if (player.getCurrentWeapon() == null) {
-                        System.out.println("Was not able to equip " + weaponToEquip);
+                        System.out.println("you have nothing equipped");
                     } else {
-                        System.out.println("You equip " + weaponToEquip);
-                        player.removeItem(weaponToEquip);
+                        System.out.println("you have " + player.getCurrentWeapon() + " equip");
+                    }
+                    break;
+
+                case "equip":
+                    String weaponToEquip = command;
+                    Item takeFromInventory = player.getItemFromInvetory(command);
+                    Item takeFromRoom = adventure.getItemFromRoom(command);
+
+                    //tager item fra inventory
+                    if (takeFromInventory != null) {
+                        player.equipFromInventory(takeFromInventory);
+
+
+                        if (player.getCurrentWeapon() == null) {
+                            System.out.println("Was not able to equip " + weaponToEquip);
+                        } else {
+                            System.out.println("You equip " + weaponToEquip);
+                            player.removeItem(weaponToEquip);
+                        }
+
+                        //tager item fra currentRoom
+                    } else if (takeFromRoom != null) {
+                        if (takeFromRoom instanceof Weapons) { //fejler check
+                            player.equipItem(takeFromRoom);
+                            adventure.removeItem(weaponToEquip);
+                            System.out.println("You equip " + weaponToEquip);
+                        } else {
+                            System.out.println("Was not able to equip " + weaponToEquip);
+                        }
+
+                    } else {
+                        System.out.println(weaponToEquip + " is not a weapon");
+                    }
+                    break;
+
+                case "attack":
+                    if (player.getCurrentWeapon() != null) {
+                        System.out.println("You attacked!... the air...");
+                        player.getWeaponDMG(player.getCurrentWeapon());
+                        System.out.println("you did " + player.getWeaponDMG(player.getCurrentWeapon()) + " DMG");
+                    } else if (player.getCurrentWeapon() == null) {
+                        System.out.println("You have no weapon equipped");
                     }
 
-                    //tager item fra currentRoom
-                } else if (takeFromRoom != null) {
-                    if (takeFromRoom instanceof Weapons) { //fejler check
-                        player.equipItem(takeFromRoom);
-                        adventure.removeItem(weaponToEquip);
-                        System.out.println("You equip " + weaponToEquip);
-                    } else {
-                        System.out.println("Was not able to equip " + weaponToEquip);
-                    }
+                    break;
+                case "talk":
+                        npcChat();
+                    break;
 
-                } else {
-                    System.out.println(weaponToEquip + " is not a weapon");
-                }
-                break;
+                case "unlock":
+                    System.out.println("this is WIP command");
+                    break;
 
-            case "attack":
-                if (player.getCurrentWeapon() != null) {
-                    System.out.println("You attacked!... the air...");
-                    player.getWeaponDMG(player.getCurrentWeapon());
-                    System.out.println("you did " + player.getWeaponDMG(player.getCurrentWeapon()) + " DMG");
-                } else if (player.getCurrentWeapon() == null) {
-                    System.out.println("You have no weapon equipped");
-                }
+                default:
+                    System.out.println("Could not find that command");
+                    break;
 
-                break;
-
-            case "unlock":
-                System.out.println("this is WIP command");
-                break;
-
-            default:
-                System.out.println("Could not find that command");
-                break;
-
+            }
+            if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
+                gameRunning = false;
+                System.out.println("Congratz! you did a thing");
+            }
+            combatState();
+            if (player.getPlayerHealth() == 0 || player.getPlayerHealth() < 0) {
+                gameRunning = false;
+                System.out.println("GAME OVER");
+                System.out.println("You died in the maze");
+            }
         }
-        if (adventure.getCurrentRoom() == adventure.getWinningRoom()) {
-            gameRunning = false;
-            System.out.println("Congratz! you did a thing");
-        }
-        combatState();
-        if (player.getPlayerHealth() == 0 || player.getPlayerHealth() < 0) {
-            gameRunning = false;
-            System.out.println("GAME OVER");
-            System.out.println("You died in the maze");
+        while (gameRunning) ;
+    }
+
+    public void npcChat(){
+        if (adventure.getCurrentRoom().getNpcInRoom()) {
+            System.out.println("-Hey kiddo, you seem like a lost fella. When i feel lost i drink, then i feel drunk");
+            System.out.println("--------------");
+            System.out.println("What do you say to the man?");
+            System.out.println("hint: for some help");
+            System.out.println("info: to talk about the man");
+            System.out.println("leave: to stop talking to the man");
+
+            boolean chatting = true;
+
+            do {
+                String subject = sc.nextLine();
+
+                switch (subject){
+                    case "hint":
+                        System.out.println("The trees wisher about a portal in the middle of the forest just east of here");
+                        System.out.println("or i might be just be insane");
+                        break;
+
+                    case "info":
+                        System.out.println("I used be an adventure like you then i took an arrow to the... wait no");
+                        System.out.println("thats right i was drunk and went to the forrest looking for moonshine and have been stuck in a tree since");
+                        break;
+
+                    case "leave":
+                        System.out.println("See you late kiddo, and bring beer next time");
+                        chatting = false;
+                        break;
+                }
+            }while (chatting);
+        } else {
+            System.out.println("There is no one to talk to...");
         }
     }
-        while(gameRunning);
-}
+
 }
