@@ -13,7 +13,10 @@ public class RangedWeapon extends Weapons{
     }
 
     public boolean canUse() {
-        ammo -= 1;
-        return (ammo >= 0);
+        if (ammo < 1){
+            return false;
+        } else {
+            return true;
+        }
     }
 }
