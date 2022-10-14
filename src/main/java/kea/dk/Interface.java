@@ -85,8 +85,12 @@ public class Interface {
                         if (player.getCurrentWeapon() != null) {
                             int dmg = player.getWeaponDMG(player.getCurrentWeapon());
                             int enemyDMG = enemy.getEnemyDMG();
-                            System.out.println("you did " + dmg + " DMG to " + enemy);
-                            enemy.setEnemyHP(dmg);
+
+                            if (player.attack(enemy)) {
+                                System.out.println("you did " + dmg + " DMG to " + enemy);
+                            } else {
+                                System.out.println("no ammo left");
+                            }
                             System.out.println(enemy + " have " + enemy.getEnemyHP() + "HP left");
                             if (adventure.getCurrentRoom().isDead(enemy)) {
                                 System.out.println("you killed " + enemy);
@@ -478,6 +482,12 @@ public class Interface {
                     System.out.println("this is WIP command");
                     break;
 
+                case "ammo":
+                    if (player.getCurrentWeapon() instanceof RangedWeapon){
+                        System.out.println(((RangedWeapon) player.getCurrentWeapon()).getAmmoLeft());
+                    } else
+                        System.out.println("you don't have a weapon with ammo");
+                    break;
                 default:
                     System.out.println("Could not find that command");
                     break;

@@ -36,7 +36,25 @@ public class Player {
         }
         return null;
     }
+    public int currentWeaponDMG(){
+        int dmg = getWeaponDMG(getCurrentWeapon());
+        return dmg;
+    }
+    public boolean attack(Enemy enemy){
+        int dmg = getWeaponDMG(getCurrentWeapon());
 
+        if (getCurrentWeapon() instanceof RangedWeapon){
+            if (((RangedWeapon) getCurrentWeapon()).canUse()){
+                enemy.setEnemyHP(dmg);
+                ((RangedWeapon) getCurrentWeapon()).setAmmo();
+                return true;
+            }
+        } else if (getCurrentWeapon() instanceof MeleeWeapon){
+            enemy.setEnemyHP(dmg);
+            return true;
+        }
+        return false;
+    }
     public int getPlayerHealth() {
         return health;
     }
@@ -184,6 +202,7 @@ public class Player {
             return true;
         }
     }
+
 
     public Item removeItem(String name) {
         for (Item item : inventory) {
