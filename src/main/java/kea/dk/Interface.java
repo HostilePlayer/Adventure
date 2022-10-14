@@ -91,6 +91,8 @@ public class Interface {
                             System.out.println(enemy + " have " + enemy.getEnemyHP() + "HP left");
                             if (adventure.getCurrentRoom().isDead(enemy)) {
                                 System.out.println("you killed " + enemy);
+                                adventure.dropLoot();
+                                adventure.dropLoot();
                                 combatState = false;
                             } else {
                                 if (player.haveShield()){

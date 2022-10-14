@@ -1,6 +1,7 @@
 package kea.dk;
 
 import java.io.File;
+import java.util.ArrayList;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
@@ -9,6 +10,19 @@ import javax.sound.sampled.Clip;
 public class Adventure {
     Map creator = new Map();
     Player player = new Player();
+
+    public ArrayList<Item> lootItems = new ArrayList<>();
+
+    public void createLoot(String itemName) {
+        Item item = new Item(itemName);
+        lootItems.add(item);
+    }
+
+    public void dropLoot(){
+        for (Item item : lootItems){
+            getCurrentRoom().addItem(item);
+        }
+    }
 
     public void loadMusic(){
         //for the love of god! husk at lav om så fil placering passer og navnet passer. NOTE: skal være en wav fil
@@ -93,6 +107,8 @@ public class Adventure {
     public void startAdventure() {
         creator.createPaths();
         player.setCurrentRoom(getStartRoom());
+        createLoot("gold coins");
+        createLoot("ammo");
     }
 
     public Item takeItem(String itemName) {

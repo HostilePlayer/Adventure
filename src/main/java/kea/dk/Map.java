@@ -54,6 +54,8 @@ public class Map {
         //create enemy: name, health, damage
         room8.createEnemy("peter" , 9999, 100);
         room9.createEnemy("zombie" , 50, 20);
+        //loot from kill
+
 
         endRoom = room5;
         currentRoom = room1;
