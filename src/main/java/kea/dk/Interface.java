@@ -93,9 +93,16 @@ public class Interface {
                                 System.out.println("you killed " + enemy);
                                 combatState = false;
                             } else {
-                                System.out.println(enemy + " hit you for " + enemydmg + " DMG");
-                                player.setPlayerHP(enemydmg);
-                                System.out.println("You have " + player.getPlayerHealth() + "HP left");
+                                if (player.haveShield()){
+                                    System.out.println("You blocked some of the incomming DMG with your shield");
+                                    player.setPlayerHealth(enemydmg/2);
+                                    System.out.println("You have " + player.getPlayerHealth() + "HP left");
+                                } else {
+                                    System.out.println(enemy + " hit you for " + enemydmg + " DMG");
+                                    player.setPlayerHP(enemydmg);
+                                    System.out.println("You have " + player.getPlayerHealth() + "HP left");
+                                }
+
                                 if (player.getPlayerHealth() <= 0) {
                                     combatState = false;
                                 }
@@ -115,19 +122,19 @@ public class Interface {
     }
 
     public void getDoors(){
-        if (adventure.goNorth() != false){
+        if (adventure.getCurrentRoom().getNorth() != null){
             System.out.println("you see a path leading North");
         }
 
-        if (adventure.goSouth() != false){
+        if (adventure.getCurrentRoom().getSouth() != null){
             System.out.println("you see a path leading South");
         }
 
-        if (adventure.goEast() != false){
+        if (adventure.getCurrentRoom().getEast() != null){
             System.out.println("you see a path leading East");
         }
 
-        if (adventure.goWest() != false){
+        if (adventure.getCurrentRoom().getWest() != null){
             System.out.println("you see a path leading West");
         }
     }

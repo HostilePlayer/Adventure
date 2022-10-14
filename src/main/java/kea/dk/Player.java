@@ -9,6 +9,7 @@ public class Player {
     private Item currentWeapon;
     boolean lampLight = false;
     boolean lampInInventory;
+    boolean shieldInInventory;
     boolean isEatAble;
     private int weaponDamage;
 
@@ -81,6 +82,17 @@ public class Player {
         if (weaponToUse instanceof Weapons) {
             currentWeapon = weaponToUse;
         }
+    }
+
+    public boolean haveShield(){
+        for (Item item : inventory){
+            if (item.getItemName().contains("shield")){
+                shieldInInventory = true;
+            } else {
+                shieldInInventory = false;
+            }
+        }
+        return shieldInInventory;
     }
 
     public boolean haveLamp() {

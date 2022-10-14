@@ -46,6 +46,10 @@ public class Room {
         roomItems.add(drink);
     }
 
+    public void createShield(String itemName){
+        Shield shield = new Shield(itemName);
+        roomItems.add(shield);
+    }
 
     public void createEnemy(String enemyName, int enemyHP, int enemyDMG){
         Enemy enemy = new Enemy(enemyName, enemyHP, enemyDMG);
