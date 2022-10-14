@@ -534,4 +534,9 @@ public class Interface {
         }
     }
 
+    // missing features:
+    //locked door
+    //max inventory
+    //duel wilding
+
 }
